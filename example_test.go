@@ -3,29 +3,58 @@ package hotstuff
 import (
 	"context"
 	"time"
+	"math/rand"
+	"testing"
 
 	"github.com/dshulyak/go-hotstuff/crypto"
 	"github.com/dshulyak/go-hotstuff/types"
 	"go.uber.org/zap"
 )
 
-func ExampleFull() {
+func createExampleNodes(n int, interval time.Duration) []*Node {
+    genesis := randGenesis()
+    rng := rand.New(rand.NewSource(*seed))
 
-	logger, err := zap.NewProduction()
+    logger, err := zap.NewDevelopment()
 	must(err)
 
-	db := NewMemDB()
-	store := NewBlockStore(db)
-
-	pkey, _, err := crypto.GenerateKey(nil)
+    replicas := []Replica{}
+    pubs, privs, err := crypto.GenerateKeys(rng, n)
 	must(err)
 
-	conf := Config{
-		Interval: 100 * time.Millisecond, // estimated max network delay
-		Replicas: []Replica{},
+    verifier := crypto.NewBLS12381Verifier(2*len(pubs)/3+1, pubs)
+    for id, pub := range pubs {
+        replicas = append(replicas, Replica{ID: pub})
+
+        signer := crypto.NewBLS12381Signer(privs[id])
+        sig := signer.Sign(nil, genesis.Header.Hash())
+        verifier.Merge(genesis.Cert.Sig, uint64(id), sig)
+    }
+
+	okay := verifier.VerifyAggregated(genesis.Header.Hash(), genesis.Cert.Sig)
+	if !okay {
+		panic("verifier failed")
 	}
 
-	node := NewNode(logger, store, pkey, conf)
+    nodes := make([]*Node, n)
+    for i, priv := range privs {
+        db := NewMemDB()
+        store := NewBlockStore(db)
+        must(ImportGenesis(store, genesis))
+
+        node := NewNode(logger, store, priv, Config{
+            Replicas: replicas,
+            ID:       replicas[i].ID,
+            Interval: interval,
+        })
+        nodes[i] = node
+    }
+    return nodes
+}
+
+func TestFull(t *testing.T) {
+	nodes := createExampleNodes(1, 100 * time.Millisecond)
+	node := nodes[0] 
 	node.Start()
 
 	// any message from the network
