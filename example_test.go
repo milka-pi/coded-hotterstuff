@@ -53,28 +53,32 @@ func createExampleNodes(n int, interval time.Duration) []*Node {
 }
 
 func TestFull(t *testing.T) {
-	nodes := createExampleNodes(1, 100 * time.Millisecond)
-	node := nodes[0] 
+	nodes := createExampleNodes(4, 100 * time.Millisecond)
+	node := nodes[0]
 	node.Start()
 
 	// any message from the network
 	node.Step(context.Background(), &types.Message{})
 
-	select {
-	case <-node.Ready():
-		node.Send(context.Background(), Data{
-			State: []byte{},
-			Root:  []byte{},
-			Data:  &types.Data{},
-		})
-	case msgs := <-node.Messages():
-		_ = msgs
-		// broadcast message or send it to a peer if specified
-	case blocks := <-node.Blocks():
-		_ = blocks
-		// each block will appear up to two times
-		// first time non-finalized, for speculative execution
-		// second time finalized, execution can be persisted on disk
+	proposed := 0
+	for proposed < 10 {
+		select {
+		case <-node.Ready():
+			proposed += 1
+			node.Send(context.Background(), Data{
+				State: []byte{},
+				Root:  []byte{},
+				Data:  &types.Data{},
+			})
+		case msgs := <-node.Messages():
+			_ = msgs
+			// broadcast message or send it to a peer if specified
+		case blocks := <-node.Blocks():
+			_ = blocks
+			// each block will appear up to two times
+			// first time non-finalized, for speculative execution
+			// second time finalized, execution can be persisted on disk
+		}
 	}
 }
 
