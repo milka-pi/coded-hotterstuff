@@ -121,15 +121,18 @@ func (n *Node) Step(ctx context.Context, msg *types.Message) error {
 
 // Ready emit signals whenever node a leader and can make a proposal.
 func (n *Node) Ready() <-chan struct{} {
+	n.logger.Debug("n.Ready()") // extra
 	return n.waitingData
 }
 
 // Blocks will emit headers of the commited blocks.
 func (n *Node) Blocks() <-chan []BlockEvent {
+	n.logger.Debug("n.Blocks()") // extra
 	return n.blocks
 }
 
 func (n *Node) Messages() <-chan []MsgTo {
+	n.logger.Debug("n.Messages()") // extra
 	return n.deliver
 }
 
@@ -165,19 +168,26 @@ func (n *Node) run() {
 	for {
 		// wait until all existing progress will be consumed
 		if missing == nil && waitingData == nil && blocks == nil && messages == nil {
+
+			// n.logger.Debug("n.run() -> for loop -> if condition satisfied") // extra
+
 			progress := n.consensus.Progress
 			if len(progress.Messages) > 0 {
+				// n.logger.Debug("n.run() -> for loop -> if stmt -> len(progress.Messages) > 0") // extra
 				toSend = progress.Messages
 				messages = n.deliver
 			}
 			if len(progress.Events) > 0 {
+				// n.logger.Debug("n.run() -> for loop -> if stmt -> len(progress.Events) > 0") // extra
 				toUpdate = progress.Events
 				blocks = n.blocks
 			}
 			if progress.WaitingData {
+				// n.logger.Debug("n.run() -> for loop -> if stmt -> len(progress.WaitingData) > 0") // extra
 				waitingData = n.waitingData
 			}
 			if len(progress.NotFound) > 0 {
+				// n.logger.Debug("n.run() -> for loop -> if stmt -> len(progress.NotFound) > 0") // extra
 				missing = n.missing
 				toSync = progress.NotFound
 			}
@@ -186,15 +196,20 @@ func (n *Node) run() {
 
 		select {
 		case <-n.start:
+			// n.logger.Debug("Case: n.start") // extra
 			n.start = nil
 			n.consensus.Start()
 		case msg := <-n.received:
+			// n.logger.Debug("Case: n.received") // extra
 			n.consensus.Step(msg)
 		case data := <-n.send:
+			// n.logger.Debug("Case: n.send") // extra
 			n.consensus.Send(data.State, data.Root, data.Data)
 		case <-ticker.C:
+			// n.logger.Debug("Case: ticker.C") // extra
 			n.consensus.Tick()
 		case waitingData <- struct{}{}:
+			// n.logger.Debug("Case: waitingData") // extra
 			waitingData = nil
 		case missing <- toSync:
 			missing = nil
