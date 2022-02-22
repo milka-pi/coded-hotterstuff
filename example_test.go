@@ -3,9 +3,8 @@ package hotstuff
 import (
 	"context"
 	"math/rand"
-	"strconv"
 	"sync"
-	"sync/atomic"
+	//"sync/atomic"
 	"testing"
 	"time"
 
@@ -15,44 +14,44 @@ import (
 )
 
 func createExampleNodes(n int, interval time.Duration) []*Node {
-    genesis := randGenesis()
-    rng := rand.New(rand.NewSource(*seed))
+	genesis := randGenesis()
+	rng := rand.New(rand.NewSource(*seed))
 
-    logger, err := zap.NewDevelopment()
+	logger, err := zap.NewDevelopment()
 	must(err)
 
-    replicas := []Replica{}
-    pubs, privs, err := crypto.GenerateKeys(rng, n)
+	replicas := []Replica{}
+	pubs, privs, err := crypto.GenerateKeys(rng, n)
 	must(err)
 
-    verifier := crypto.NewBLS12381Verifier(2*len(pubs)/3+1, pubs)
-    for id, pub := range pubs {
-        replicas = append(replicas, Replica{ID: pub})
+	verifier := crypto.NewBLS12381Verifier(2*len(pubs)/3+1, pubs)
+	for id, pub := range pubs {
+		replicas = append(replicas, Replica{ID: pub})
 
-        signer := crypto.NewBLS12381Signer(privs[id])
-        sig := signer.Sign(nil, genesis.Header.Hash())
-        verifier.Merge(genesis.Cert.Sig, uint64(id), sig)
-    }
+		signer := crypto.NewBLS12381Signer(privs[id])
+		sig := signer.Sign(nil, genesis.Header.Hash())
+		verifier.Merge(genesis.Cert.Sig, uint64(id), sig)
+	}
 
 	okay := verifier.VerifyAggregated(genesis.Header.Hash(), genesis.Cert.Sig)
 	if !okay {
 		panic("verifier failed")
 	}
 
-    nodes := make([]*Node, n)
-    for i, priv := range privs {
-        db := NewMemDB()
-        store := NewBlockStore(db)
-        must(ImportGenesis(store, genesis))
+	nodes := make([]*Node, n)
+	for i, priv := range privs {
+		db := NewMemDB()
+		store := NewBlockStore(db)
+		must(ImportGenesis(store, genesis))
 
-        node := NewNode(logger, store, priv, Config{
-            Replicas: replicas,
-            ID:       replicas[i].ID,
-            Interval: interval,
-        })
-        nodes[i] = node
-    }
-    return nodes
+		node := NewNode(logger, store, priv, Config{
+			Replicas: replicas,
+			ID:       replicas[i].ID,
+			Interval: interval,
+		})
+		nodes[i] = node
+	}
+	return nodes
 }
 
 // func TestFull(t *testing.T) {
@@ -99,8 +98,6 @@ func must(err error) {
 	}
 }
 
-
-
 // func run_node(node *Node) {
 
 // 	node.Start()
@@ -112,7 +109,7 @@ func must(err error) {
 
 // 	// proposed := 0
 // 	// should be < 10
-// 	for  {	
+// 	for  {
 // 		// nprop := <- numProposed
 // 		// if nprop >= 1 {
 // 		// 	break
@@ -144,52 +141,48 @@ func must(err error) {
 // 	}
 // }
 
-
 func TestFull(t *testing.T) {
 	// create 4 nodes, where 4 = 4f+1 for f=1
 	numNodes := 4
-	nodes := createExampleNodes(numNodes, 100 * time.Millisecond)
+	nodes := createExampleNodes(numNodes, 100*time.Millisecond)
 	// TODO: modify this to work with all nodes created --> almost there
 
-	var totalProposals uint32
+	var totalProposals int
 	totalProposals = 10
-
-	// declare and initialize global counter to 0
-	var proposed uint32
-	proposed = 0
-
 	// wait group -- for concurrent goroutines
 	var wg sync.WaitGroup
 
-	i := 0
-	for i < numNodes {
-		wg.Add(1)
-		node := nodes[i]
-		i += 1
+	lock := &sync.Mutex{}
+	totalConfirmed := make([]int, numNodes)
 
-		go func() {
+	for idx := 0; idx < numNodes; idx++ {
+		wg.Add(1)
+		go func(i int) {
+			node := nodes[i]
 
 			defer wg.Done()
-			
+
 			node.Start()
 			// any message from the network
 			node.Step(context.Background(), &types.Message{})
 			// node.logger.Debug("entering for loop") // extra
 
-			for  {	
-
-				if atomic.LoadUint32(&proposed) >= totalProposals {
+			for {
+				lock.Lock()
+				canExit := true
+				for j := 0; j < numNodes; j++ {
+					if ! (totalConfirmed[j] >= totalProposals) {
+						canExit = false
+					}
+				}
+				lock.Unlock()
+				if canExit {
 					break
 				}
 
 				select {
 				case <-node.Ready():
 					node.logger.Debug("CASE <- READY") // extra
-					// increment global counter by 1
-					atomic.AddUint32(&proposed, 1)
-
-					node.logger.Debug("PROPOSED: " + strconv.Itoa(int(atomic.LoadUint32(&proposed)))) // extra
-
 					node.Send(context.Background(), Data{
 						State: []byte{},
 						Root:  []byte{},
@@ -200,25 +193,30 @@ func TestFull(t *testing.T) {
 					node.logger.Debug("CASE <- MESSAGES") // extra
 					// broadcast message or send it to a peer if specified
 					for _, m := range msgs {
-						for _, rx := range m.Recipients {
-							rxNode := nodes[int(rx)]
-							rxNode.Step(context.Background(), m.Message)
+						if len(m.Recipients) == 0 {
+							for rx := 0; rx < numNodes; rx++ {
+								rxNode := nodes[int(rx)]
+								rxNode.Step(context.Background(), m.Message)
+							}
+						} else {
+							for _, rx := range m.Recipients {
+								rxNode := nodes[int(rx)]
+								rxNode.Step(context.Background(), m.Message)
+							}
 						}
 					}
 				case blocks := <-node.Blocks():
 					node.logger.Debug("CASE <- BLOCKS") // extra
-					_ = blocks
-					// each block will appear up to two times
-					// first time non-finalized, for speculative execution
-					// second time finalized, execution can be persisted on disk
+					for _, b := range blocks {
+						if b.Finalized {
+							lock.Lock()
+							totalConfirmed[i] += 1
+							lock.Unlock()
+						}
+					}
 				}
 			}
-
-		}()
-		
+		}(idx)
 	}
-
 	wg.Wait()
-
-	
 }
