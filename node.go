@@ -3,7 +3,6 @@ package hotstuff
 import (
 	"context"
 	"errors"
-	"net"
 	"time"
 
 	"github.com/dshulyak/go-hotstuff/crypto"
@@ -24,7 +23,6 @@ type Data struct {
 
 type Replica struct {
 	ID crypto.PublicKey
-	IP net.IP
 }
 
 type Config struct {
