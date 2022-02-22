@@ -152,7 +152,7 @@ func TestFull(t *testing.T) {
 	// TODO: modify this to work with all nodes created --> almost there
 
 	var totalProposals uint32
-	totalProposals = 1
+	totalProposals = 10
 
 	// declare and initialize global counter to 0
 	var proposed uint32
@@ -198,8 +198,13 @@ func TestFull(t *testing.T) {
 
 				case msgs := <-node.Messages():
 					node.logger.Debug("CASE <- MESSAGES") // extra
-					_ = msgs
 					// broadcast message or send it to a peer if specified
+					for _, m := range msgs {
+						for _, rx := range m.Recipients {
+							rxNode := nodes[int(rx)]
+							rxNode.Step(context.Background(), m.Message)
+						}
+					}
 				case blocks := <-node.Blocks():
 					node.logger.Debug("CASE <- BLOCKS") // extra
 					_ = blocks
