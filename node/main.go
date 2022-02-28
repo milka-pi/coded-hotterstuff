@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"github.com/dshulyak/go-hotstuff"	// use it has "hotstuff", e.g., hotstuff.Node{}
 	"fmt"
 )
 
