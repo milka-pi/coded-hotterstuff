@@ -196,12 +196,21 @@ func TestFull(t *testing.T) {
 						if len(m.Recipients) == 0 {
 							for rx := 0; rx < numNodes; rx++ {
 								rxNode := nodes[int(rx)]
-								rxNode.Step(context.Background(), m.Message)
+								// sender:
+								bytes, _ := m.Message.Marshal()
+								// receiver:
+								rxMsg := &types.Message{}
+								rxMsg.Unmarshal(bytes)
+								// pretend network
+								rxNode.Step(context.Background(), rxMsg)
 							}
 						} else {
 							for _, rx := range m.Recipients {
 								rxNode := nodes[int(rx)]
-								rxNode.Step(context.Background(), m.Message)
+								bytes, _ := m.Message.Marshal()
+								rxMsg := &types.Message{}
+								rxMsg.Unmarshal(bytes)
+								rxNode.Step(context.Background(), rxMsg)
 							}
 						}
 					}
