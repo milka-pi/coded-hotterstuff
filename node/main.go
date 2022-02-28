@@ -25,14 +25,14 @@ func main() {
 
 	if nodeFlag == "server" {
 		fmt.Println("Running server code!")
-		tcpServerFunc(addrFlag)
+		go tcpServerFunc(addrFlag)
 
 	} else if nodeFlag == "client" {
 		fmt.Println("Running client code!")
-		tcpClientFunc(addrFlag, msgFlag)
+		go tcpClientFunc(addrFlag, msgFlag)
 
 	} else {
 		panic("nodeFlag argument only accepts values 'server' and 'client'");
 	}
-	
+	select{}
 }
