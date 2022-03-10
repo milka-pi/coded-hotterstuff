@@ -2,8 +2,9 @@ package main
 
 import (
 	"flag"
-	"github.com/dshulyak/go-hotstuff"	// use it has "hotstuff", e.g., hotstuff.Node{}
 	"fmt"
+	// "github.com/dshulyak/go-hotstuff"	// use it has "hotstuff", e.g., hotstuff.Node{}
+	// "fmt"
 )
 
 const (
@@ -12,28 +13,35 @@ const (
 	DEFAULT_MESSAGE = "hello"
 )
 
+
+// func checkFlags(mode string) {
+// 	if mode != "listen" && mode != "initiate" {
+// 		panic("nodeMode argument only accepts values 'listen' and 'initiate'");
+// 	}
+// 	if mode != "listen" && mode != "initiate" {
+// 		panic("nodeMode argument only accepts values 'listen' and 'initiate'");
+// 	}
+// }
+
 func main() {
 
-	// nodeFlag can take two values: "server" or "client"
-	var nodeFlag string
-	var addrFlag string
-	var msgFlag string
-	flag.StringVar(&nodeFlag, "node", "server", "server or client node")
-	flag.StringVar(&addrFlag, "addr", DEFAULT_ADDRESS, "port address")
-	flag.StringVar(&msgFlag, "msg", DEFAULT_MESSAGE, "message to send to the server")
+	// mode can take two values: "listen" or "initiate"
+	var mode string
+	var address string
+	var sendMsg bool
+	var msg string
+	flag.StringVar(&mode, "mode", "listen", "listen for connection or initiate connection (initially)")
+	flag.StringVar(&address, "addr", DEFAULT_ADDRESS, "port address")
+	flag.BoolVar(&sendMsg, "sendMsg", false, "send message or not")
+	flag.StringVar(&msg, "msg", DEFAULT_MESSAGE, "message to send. Ignored if sendMsg = False")
 
 	flag.Parse()
 
-	if nodeFlag == "server" {
-		fmt.Println("Running server code!")
-		go tcpServerFunc(addrFlag)
+	// checkFlags(mode)
 
-	} else if nodeFlag == "client" {
-		fmt.Println("Running client code!")
-		go tcpClientFunc(addrFlag, msgFlag)
-
-	} else {
-		panic("nodeFlag argument only accepts values 'server' and 'client'");
-	}
+	fmt.Println("bool sendMsg:", sendMsg)
+	go tcpNodeFunc(mode, address, sendMsg, msg)
 	select{}
 }
+
+
