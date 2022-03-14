@@ -14,14 +14,14 @@ const (
 )
 
 
-// func checkFlags(mode string) {
-// 	if mode != "listen" && mode != "initiate" {
-// 		panic("nodeMode argument only accepts values 'listen' and 'initiate'");
-// 	}
-// 	if mode != "listen" && mode != "initiate" {
-// 		panic("nodeMode argument only accepts values 'listen' and 'initiate'");
-// 	}
-// }
+func checkFlags(mode string) {
+	if mode != "listen" && mode != "initiate" {
+		panic("nodeMode argument only accepts values 'listen' and 'initiate'");
+	}
+	if mode != "listen" && mode != "initiate" {
+		panic("nodeMode argument only accepts values 'listen' and 'initiate'");
+	}
+}
 
 func main() {
 
@@ -36,8 +36,7 @@ func main() {
 	flag.StringVar(&msg, "msg", DEFAULT_MESSAGE, "message to send. Ignored if sendMsg = False")
 
 	flag.Parse()
-
-	// checkFlags(mode)
+	checkFlags(mode)
 
 	fmt.Println("bool sendMsg:", sendMsg)
 	go tcpNodeFunc(mode, address, sendMsg, msg)
