@@ -111,6 +111,19 @@ func acceptConnections(ln net.Listener, sendMsg bool, msg string) {
 	}
 }
 
+
+func listenForConnections(address string, sendMsg bool, msg string) {
+	ln, err := net.Listen(NETWORK_TYPE, address)
+	// error handling
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Listening for requests...")
+
+	go acceptConnections(ln, sendMsg, msg);
+
+}
+
 func initiateConnection(address string, sendMsg bool, msg string) {
 
 	// if connection is closed, try to Dial again.
@@ -131,38 +144,39 @@ func initiateConnection(address string, sendMsg bool, msg string) {
 
 }
 
+
 // problem: if listening, cannot listen from > 1 node
 // FIXED with 'acceptConnections' goroutine
-func tcpNodeFunc(mode string, address string, sendMsg bool, msg string) {
-	// var conn net.Conn // common for both listener and initiator
-	// var err_conn error
+// func tcpNodeFunc(mode string, address string, sendMsg bool, msg string) {
 
-	if mode == "listen" {
+// 	if mode == "listen" {
 
-		ln, err := net.Listen(NETWORK_TYPE, address)
-		// error handling
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println("Listening for requests...")
+// 		ln, err := net.Listen(NETWORK_TYPE, address)
+// 		// error handling
+// 		if err != nil {
+// 			log.Fatal(err)
+// 		}
+// 		fmt.Println("Listening for requests...")
 
-		go acceptConnections(ln, sendMsg, msg);
+// 		go acceptConnections(ln, sendMsg, msg);
 	
-	} else if mode == "initiate" {
+// 	} else if mode == "initiate" {
 
-		// for loop (list of addresses to connect to)
-		// go initiateConnection()
+// 		// for loop (list of addresses to connect to)
+// 		// go initiateConnection()
 
-		address_list := []string{address}
-		for i := 0; i < len(address_list); i++ {
-			address_i := address_list[i]
-			go initiateConnection(address_i, sendMsg, msg)
-		}
+// 		address_list := []string{address}
+// 		for i := 0; i < len(address_list); i++ {
+// 			address_i := address_list[i]
+// 			go initiateConnection(address_i, sendMsg, msg)
+// 		}
 
-		// TODO: for loop wrapping this, add wait group, and net.Dial again to re-establish connection. 
-	}
+// 		// TODO: for loop wrapping this, add wait group, and net.Dial again to re-establish connection. 
+// 	}
 
-}
+// }
+
+
 
 
 //-----------------------------------------------------------------------------------------------------------------
