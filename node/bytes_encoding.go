@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/binary"
+	"errors"
 	"fmt"
 	"io"
 )
@@ -31,14 +32,15 @@ func toString(msg_byte_arr []byte) string {
 	return string(msg_byte_arr)
 }
 
-func getMessageFromReader(reader *bufio.Reader) string {
+func getMessageFromReader(reader *bufio.Reader) (string, error) {
 	// 1st step: extract length of message to be read (number of bytes)
 	length_buf := make([]byte, BYTES_ARRAY_PREFIX_LENGTH)
 	_, readLengthBuf_err := io.ReadFull(reader, length_buf)
 	// error handling
 	if readLengthBuf_err != nil {
 		fmt.Println("Receiver: failed to read first 4 bytes from reader!")
-		panic(readLengthBuf_err)
+		return "", errors.New("Failed to read first 4 bytes from reader")
+		// panic(readLengthBuf_err)
 	}
 	msg_length := getMsgLength(length_buf)
 	fmt.Println("Receiver: message length = ", msg_length)
@@ -49,12 +51,13 @@ func getMessageFromReader(reader *bufio.Reader) string {
 	// error handling
 	if readMsg_err != nil {
 		fmt.Println("Receiver: failed to read message from reader!")
-		panic(readMsg_err)
+		return "", errors.New("Failed to read message from reader")
+		// panic(readMsg_err)
 	}
 	fmt.Println("Receiver: message buffer = ", msg_buf)
 	msg := toString(msg_buf)
 
-	return msg
+	return msg, nil
 }
 
 // ----------------------------------------------------------------------------------------------------------
