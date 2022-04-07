@@ -119,18 +119,18 @@ func (n *Node) Step(ctx context.Context, msg *types.Message) error {
 
 // Ready emit signals whenever node a leader and can make a proposal.
 func (n *Node) Ready() <-chan struct{} {
-	n.logger.Debug("n.Ready()") // extra
+	// n.logger.Debug("n.Ready()") // extra
 	return n.waitingData
 }
 
 // Blocks will emit headers of the commited blocks.
 func (n *Node) Blocks() <-chan []BlockEvent {
-	n.logger.Debug("n.Blocks()") // extra
+	// n.logger.Debug("n.Blocks()") // extra
 	return n.blocks
 }
 
 func (n *Node) Messages() <-chan []MsgTo {
-	n.logger.Debug("n.Messages()") // extra
+	// n.logger.Debug("n.Messages()") // extra
 	return n.deliver
 }
 
@@ -149,7 +149,7 @@ func (n *Node) Close() {
 }
 
 func (n *Node) run() {
-	n.logger.Debug("started event loop")
+	// n.logger.Debug("started event loop")
 	var (
 		ticker = time.NewTicker(n.conf.Interval)
 

@@ -60,6 +60,9 @@ func sendMessages(ctx context.Context, conn net.Conn, msg string) {
 
 	fmt.Println("Sender --> message byteArray: ", b)
 
+
+	// 
+
 	_, sendErr := conn.Write(b)
 	// error handling
 	if sendErr != nil {
