@@ -2,6 +2,7 @@ package hotstuff
 
 import (
 	"context"
+	"fmt"
 	"math/rand"
 	"sync"
 
@@ -149,7 +150,7 @@ func TestFull(t *testing.T) {
 	// TODO: modify this to work with all nodes created --> almost there
 
 	var totalProposals int
-	totalProposals = 10
+	totalProposals = 3
 	// wait group -- for concurrent goroutines
 	var wg sync.WaitGroup
 
@@ -221,6 +222,9 @@ func TestFull(t *testing.T) {
 						if b.Finalized {
 							lock.Lock()
 							totalConfirmed[i] += 1
+							fmt.Println("----------------------------------------")
+							fmt.Println(i, " TOTAL CONFIRMED: ", totalConfirmed[i])
+							fmt.Println("----------------------------------------")
 							lock.Unlock()
 						}
 					}

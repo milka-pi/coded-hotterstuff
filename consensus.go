@@ -238,6 +238,8 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		log.Debug("certificate is invalid")
 		return
 	}
+
+	fmt.Println("------------ msg.Header.Parent: ", msg.Header.Parent, "-------------------")	
 	parent, err := c.store.GetHeader(msg.Header.Parent)
 	if err != nil {
 		log.Debug("header for parent is not found", zap.Error(err))

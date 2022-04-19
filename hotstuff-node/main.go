@@ -107,7 +107,7 @@ func createExampleNode(idx int, n int, interval time.Duration) *hotstuff.Node {
 	must(hotstuff.ImportGenesis(store, genesis))
 
 	node := hotstuff.NewNode(logger, store, privs[idx], hotstuff.Config{
-		Replicas: replicas, // just empty array?
+		Replicas: replicas, // just empty array? no
 		ID:       replicas[idx].ID, 
 		Interval: interval,
 	})
@@ -156,14 +156,7 @@ func collectMessages(node *hotstuff.Node, inMsgsChan <-chan *types.Message) {
 }
 
 
-func main() {
-
-	var index int
-	var address string
-	flag.IntVar(&index, "index", 0, "node index")
-	flag.StringVar(&address, "addr", ":8080", "port address") // not used
-	flag.Parse()
-	fmt.Println("Node index:", index)
+func entryPoint(ctx context.Context, index int, confirmedChannel chan int) {
 
 	addressList := getAddressList()
 	arrayOfChannels := createArrayOfChannels()
@@ -212,7 +205,7 @@ func main() {
 			for _, b := range blocks {
 				if b.Finalized {
 					// lock.Lock()
-					// totalConfirmed[i] += 1
+					confirmedChannel <- 1
 					// lock.Unlock()
 					fmt.Println("+1 block finalized")
 				}
@@ -222,9 +215,32 @@ func main() {
 		case msg := <- inMsgsChan:
 			node.Step(context.Background(), msg)
 
+		// if cancelFunction() executes
+		case <- ctx.Done(): 
+			fmt.Println("entryPoint: Time to return")
+				return
+
 		}
 	}
+}
 
+
+func main() {
+
+	var index int
+	// var address string
+	flag.IntVar(&index, "index", 0, "node index")
+	// flag.StringVar(&address, "addr", ":8080", "port address") // not used
+	flag.Parse()
+	fmt.Println("Node index:", index)
+
+	totalConfirmed := make(chan int)
+
+	ctx := context.Background()
+	//Derive a context with cancel: NOT USED
+	// ctxWithCancel, _ := context.WithCancel(ctx)
+
+	entryPoint(ctx, index, totalConfirmed) 
 
 	//------------------------------------------------------------------------------------------
 
