@@ -25,7 +25,7 @@ func TestFull(t *testing.T) {
 	totalToAchieve := 1
 	totalConfirmed := 0
 
-	confirmedChannel := make(chan int)
+	confirmedChannel := make(chan int, 10)
 
 	// select {case totalConfirmed}
 	// if num confirmed > 10; exit

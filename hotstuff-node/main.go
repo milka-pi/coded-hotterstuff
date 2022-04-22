@@ -33,7 +33,7 @@ var (
 
 // indexed by node index
 func createInMsgsChannel() (inMsgsChan chan *types.Message){
-	return make(chan *types.Message)
+	return make(chan *types.Message, 100)
 }
 
 
@@ -41,7 +41,7 @@ func createInMsgsChannel() (inMsgsChan chan *types.Message){
 func createArrayOfChannels() (arrayOfChannels []chan *types.Message){
 	var _arrayOfChannels []chan *types.Message
 	for i := 0; i < NUMBER_OF_NODES; i++ {
-		_arrayOfChannels = append(_arrayOfChannels, make(chan *types.Message))
+		_arrayOfChannels = append(_arrayOfChannels, make(chan *types.Message, 100))
 	}
 	return _arrayOfChannels
 }
@@ -56,9 +56,9 @@ func getAddressList() [NUMBER_OF_NODES]string {
 }
 
 
-func randGenesis() *types.Block {
+func randGenesis(rng *rand.Rand) *types.Block {
 	header := &types.Header{
-		DataRoot: randRoot(),
+		DataRoot: randRoot(rng),
 	}
 	return &types.Block{
 		Header: header,
@@ -70,16 +70,16 @@ func randGenesis() *types.Block {
 	}
 }
 
-func randRoot() []byte {
+func randRoot(rng *rand.Rand) []byte {
 	root := make([]byte, 32)
-	rand.Read(root)
+	rng.Read(root)
 	return root
 }
 
 // creates one hotstuff node instance
 func createExampleNode(idx int, n int, interval time.Duration) *hotstuff.Node {
-	genesis := randGenesis()
 	rng := rand.New(rand.NewSource(seed))
+	genesis := randGenesis(rng)
 
 	logger, err := zap.NewDevelopment()
 	must(err)
@@ -234,7 +234,7 @@ func main() {
 	flag.Parse()
 	fmt.Println("Node index:", index)
 
-	totalConfirmed := make(chan int)
+	totalConfirmed := make(chan int, 100)
 
 	ctx := context.Background()
 	//Derive a context with cancel: NOT USED
