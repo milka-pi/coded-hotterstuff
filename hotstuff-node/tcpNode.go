@@ -103,7 +103,7 @@ func exchangeIDs(conn io.ReadWriter, myID int) (int, error) {
 
 // both listening for and sending messages/requests 
 func handleConnection(conn net.Conn, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
-	
+	fmt.Printf("node %v has new connection\n", idx)
 	//Make a background context
 	ctx := context.Background()
 	//Derive a context with cancel
@@ -180,15 +180,16 @@ func listenForConnections(address string, idx int, arrayOfChannels []chan *types
 }
 
 func initiateConnection(address string, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
+	fmt.Printf("node %v initiating connection to %v\n", idx, address)
 	// if connection is closed, try to Dial again.
 	for {
 		conn, err_conn := net.Dial(NETWORK_TYPE, address)
 		// error handling
 		if err_conn != nil {
-			fmt.Println("Error initiating connection: ", err_conn)
+			fmt.Printf("node %v initiating connection to %v: %v\n", idx, address, err_conn)
 			return
 		}
-		fmt.Println("Established connection")
+		fmt.Printf("node %v successfully initiated connection to %v\n", idx, address)
 
 		var wg sync.WaitGroup
 		wg.Add(1)

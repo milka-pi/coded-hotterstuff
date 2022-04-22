@@ -36,7 +36,6 @@ func createInMsgsChannel() (inMsgsChan chan *types.Message){
 	return make(chan *types.Message, 1000)
 }
 
-
 // indexed by node index
 func createArrayOfChannels() (arrayOfChannels []chan *types.Message){
 	var _arrayOfChannels []chan *types.Message
@@ -80,6 +79,7 @@ func randRoot(rng *rand.Rand) []byte {
 func createExampleNode(idx int, n int, interval time.Duration) *hotstuff.Node {
 	rng := rand.New(rand.NewSource(seed))
 	genesis := randGenesis(rng)
+	fmt.Println("node", idx, "genesis block hash", genesis.Header.Hash())
 
 	logger, err := zap.NewDevelopment()
 	must(err)
@@ -108,7 +108,7 @@ func createExampleNode(idx int, n int, interval time.Duration) *hotstuff.Node {
 
 	node := hotstuff.NewNode(logger, store, privs[idx], hotstuff.Config{
 		Replicas: replicas, // just empty array? no
-		ID:       replicas[idx].ID, 
+		ID:       replicas[idx].ID,
 		Interval: interval,
 	})
 
