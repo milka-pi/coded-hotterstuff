@@ -33,7 +33,7 @@ var (
 
 // indexed by node index
 func createInMsgsChannel() (inMsgsChan chan *types.Message){
-	return make(chan *types.Message, 100)
+	return make(chan *types.Message, 1000)
 }
 
 
@@ -41,7 +41,7 @@ func createInMsgsChannel() (inMsgsChan chan *types.Message){
 func createArrayOfChannels() (arrayOfChannels []chan *types.Message){
 	var _arrayOfChannels []chan *types.Message
 	for i := 0; i < NUMBER_OF_NODES; i++ {
-		_arrayOfChannels = append(_arrayOfChannels, make(chan *types.Message, 100))
+		_arrayOfChannels = append(_arrayOfChannels, make(chan *types.Message, 1000))
 	}
 	return _arrayOfChannels
 }
@@ -196,7 +196,7 @@ func entryPoint(ctx context.Context, index int, confirmedChannel chan int) {
 			// broadcast message to all nodes or send it to a node if specified
 			for _, m := range msgs {
 				// if need to broadcast to all nodes
-				dispatchMessage(node, index, m, arrayOfChannels)				
+				dispatchMessage(node, index, m, arrayOfChannels)
 			}
 
 		case blocks := <-node.Blocks():

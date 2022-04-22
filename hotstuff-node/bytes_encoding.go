@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"encoding/binary"
 	"errors"
 	"fmt"
@@ -41,7 +40,7 @@ func toString(msg_byte_arr []byte) string {
 	return string(msg_byte_arr)
 }
 
-func getMessageFromReader(reader *bufio.Reader) ([]byte, error) {
+func getMessageFromReader(reader io.Reader) ([]byte, error) {
 	// 1st step: extract length of message to be read (number of bytes)
 	length_buf := make([]byte, BYTES_ARRAY_PREFIX_LENGTH)
 	_, readLengthBuf_err := io.ReadFull(reader, length_buf)

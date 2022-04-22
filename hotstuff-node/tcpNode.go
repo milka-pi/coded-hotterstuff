@@ -1,13 +1,13 @@
 package main
 
 import (
-	"bufio"
 	"context"
 	"fmt"
 	"log"
 	"net"
 	"strconv"
 	"sync"
+	"io"
 
 	// use it as "hotstuff", e.g., hotstuff.Node{}
 	"github.com/dshulyak/go-hotstuff/types"
@@ -17,17 +17,16 @@ import (
 // DONE: Delegate waitgroup to parent method
 
 // inMsgsChan: channel for incoming messages, from all nodes
-func listenForMessages(ctx context.Context, idx int, conn net.Conn, inMsgsChan chan <- *types.Message) error {
+func listenForMessages(ctx context.Context, idx int, conn io.Reader, inMsgsChan chan <- *types.Message) error {
 
 	fmt.Println("Node ", idx, "--> ", "Listening for messages... ")
-	reader := bufio.NewReader(conn)
 	for {
 		select {
 			case <-ctx.Done():  // if cancelFunction() executes
 				fmt.Println("listenForMessages: Time to return")
 				return nil
 			default:
-				msg_bytes, readErr := getMessageFromReader(reader)
+				msg_bytes, readErr := getMessageFromReader(conn)
 				// error handling
 				if readErr != nil {
 					// conn is probably closed
@@ -60,7 +59,6 @@ func sendMessages(ctx context.Context, idx int, conn net.Conn, outMsgsChan <-cha
 			case <- ctx.Done(): // if cancelFunction() executes
 			fmt.Println("sendMessages: Time to return")
 				return nil
-				
 			case msg := <-outMsgsChan:
 				fmt.Println("Read msg from outMsgsChan...")
 				bytes, _ := msg.Marshal()
@@ -77,7 +75,7 @@ func sendMessages(ctx context.Context, idx int, conn net.Conn, outMsgsChan <-cha
 	}
 }
 
-func exchangeIDs(conn net.Conn, myID int) (int, error) {
+func exchangeIDs(conn io.ReadWriter, myID int) (int, error) {
 	// send myID
 	initMsg := toByteArray(strconv.Itoa(myID))
 	_, sendErr := conn.Write(initMsg)
@@ -87,8 +85,7 @@ func exchangeIDs(conn net.Conn, myID int) (int, error) {
 	}
 
 	// receive yourID
-	reader := bufio.NewReader(conn) // Q: what happens when reader is discarded?
-	msg_bytes, readErr := getMessageFromReader(reader) // will only read first message
+	msg_bytes, readErr := getMessageFromReader(conn) // will only read first message
 	if readErr != nil {
 		// conn is probably closed
 		fmt.Println("initExchange: Failed to read your ID!")
@@ -117,11 +114,11 @@ func handleConnection(conn net.Conn, idx int, arrayOfChannels []chan *types.Mess
 	myID := idx
 	yourID, initError := exchangeIDs(conn, myID)
 	if initError != nil {
-		fmt.Println("Node ", idx, "--> ", "handleConnection: initError, closing connection and returning")
+		fmt.Println("error exchanging ID:", initError)
 		conn.Close()
-		return 
+		return
 	}
-	fmt.Println("Node ", idx, "--> ", "handleConnection: yourID = ", yourID)
+	fmt.Printf("connection established %v - %v\n", idx, yourID)
 
 	// index into array of channels at index yourID
 	outMsgsChan := arrayOfChannels[yourID]
@@ -183,13 +180,12 @@ func listenForConnections(address string, idx int, arrayOfChannels []chan *types
 }
 
 func initiateConnection(address string, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
-
 	// if connection is closed, try to Dial again.
 	for {
 		conn, err_conn := net.Dial(NETWORK_TYPE, address)
 		// error handling
 		if err_conn != nil {
-			fmt.Println("Error initiating connection: ", err_conn.Error())
+			fmt.Println("Error initiating connection: ", err_conn)
 			return
 		}
 		fmt.Println("Established connection")
