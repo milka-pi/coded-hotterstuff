@@ -22,7 +22,7 @@ func TestFull(t *testing.T) {
 
 	var wg sync.WaitGroup
 
-	totalToAchieve := 1
+	totalToAchieve := 10
 	totalConfirmed := 0
 
 	confirmedChannel := make(chan int, 10)
@@ -39,7 +39,7 @@ func TestFull(t *testing.T) {
 		}(idx)
 	}
 
-	for totalConfirmed < totalToAchieve{
+	for totalConfirmed < totalToAchieve * 4 {
 		select{
 		case signal := <-confirmedChannel:
 			if signal == 1 {

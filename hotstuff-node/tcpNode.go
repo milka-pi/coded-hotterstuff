@@ -1,6 +1,7 @@
 package main
 
 import (
+	"time"
 	"context"
 	"fmt"
 	"log"
@@ -187,14 +188,15 @@ func initiateConnection(address string, idx int, arrayOfChannels []chan *types.M
 		// error handling
 		if err_conn != nil {
 			fmt.Printf("node %v initiating connection to %v: %v\n", idx, address, err_conn)
-			return
-		}
-		fmt.Printf("node %v successfully initiated connection to %v\n", idx, address)
+			time.Sleep(time.Duration(100) * time.Millisecond)
+		} else {
+			fmt.Printf("node %v successfully initiated connection to %v\n", idx, address)
 
-		var wg sync.WaitGroup
-		wg.Add(1)
-		go handleConnection(conn, idx, arrayOfChannels, inMsgsChan)
-		wg.Wait()
+			var wg sync.WaitGroup
+			wg.Add(1)
+			go handleConnection(conn, idx, arrayOfChannels, inMsgsChan)
+			wg.Wait()
+		}
 	}
 
 }
