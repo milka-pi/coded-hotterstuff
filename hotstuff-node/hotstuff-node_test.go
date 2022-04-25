@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"sync"
 
 	//"sync/atomic"
@@ -23,9 +22,9 @@ func TestFull(t *testing.T) {
 	var wg sync.WaitGroup
 
 	totalToAchieve := 10
-	totalConfirmed := 0
 
-	confirmedChannel := make(chan int, 10)
+	confirmed := make([]int, numNodes)
+	confirmedChannel := make(chan int, 1000)
 
 	// select {case totalConfirmed}
 	// if num confirmed > 10; exit
@@ -39,15 +38,19 @@ func TestFull(t *testing.T) {
 		}(idx)
 	}
 
-	for totalConfirmed < totalToAchieve * 4 {
+	for {
 		select{
 		case signal := <-confirmedChannel:
-			if signal == 1 {
-				totalConfirmed ++
-				fmt.Println("----------------------------------------")
-				fmt.Println("Total Confirmed: ", totalConfirmed)
-				fmt.Println("----------------------------------------")
+			confirmed[signal] += 1
+		}
+		allSet := true
+		for i := 0; i < numNodes; i++ {
+			if confirmed[i] < totalToAchieve {
+				allSet = false
 			}
+		}
+		if allSet {
+			break
 		}
 	}
 	cancelFunction()

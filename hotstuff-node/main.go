@@ -182,8 +182,6 @@ func entryPoint(ctx context.Context, index int, confirmedChannel chan int) {
 	for {
 		select {
 		case <-node.Ready():
-			// node.logger.Debug("CASE <- READY") // extra
-			fmt.Println("Node ", index, "--> ", "CASE <- READY")
 			node.Send(context.Background(), hotstuff.Data{
 				State: []byte{},
 				Root:  []byte{},
@@ -191,8 +189,6 @@ func entryPoint(ctx context.Context, index int, confirmedChannel chan int) {
 			})
 
 		case msgs := <-node.Messages():
-			// node.logger.Debug("CASE <- MESSAGES") // extra
-			fmt.Println("Node ", index, "--> ", "CASE <- MESSAGES")
 			// broadcast message to all nodes or send it to a node if specified
 			for _, m := range msgs {
 				// if need to broadcast to all nodes
@@ -200,14 +196,14 @@ func entryPoint(ctx context.Context, index int, confirmedChannel chan int) {
 			}
 
 		case blocks := <-node.Blocks():
-			// node.logger.Debug("CASE <- BLOCKS") // extra
-			fmt.Println("Node ", index, "--> ", "CASE <- BLOCKS")
 			for _, b := range blocks {
 				if b.Finalized {
 					// lock.Lock()
-					confirmedChannel <- 1
+					if confirmedChannel != nil {
+						confirmedChannel <- index
+					}
 					// lock.Unlock()
-					fmt.Println("+1 block finalized")
+					fmt.Printf("node %v finalized block %v\n", index, b.Header.Hash())
 				}
 			}
 		
