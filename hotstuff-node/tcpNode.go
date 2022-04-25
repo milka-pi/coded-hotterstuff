@@ -1,14 +1,14 @@
 package main
 
 import (
-	"time"
 	"context"
 	"fmt"
+	"io"
 	"log"
 	"net"
 	"strconv"
 	"sync"
-	"io"
+	"time"
 
 	// use it as "hotstuff", e.g., hotstuff.Node{}
 	"github.com/dshulyak/go-hotstuff/types"
@@ -168,8 +168,8 @@ func acceptConnections(ln net.Listener, idx int, arrayOfChannels []chan *types.M
 }
 
 
-func listenForConnections(address string, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
-	ln, err := net.Listen(NETWORK_TYPE, address)
+func listenForConnections(ipAddress string, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
+	ln, err := net.Listen(NETWORK_TYPE_LISTEN, ipAddress) // DONE: change NETWORK_TYPE to "tcp4"
 	// error handling
 	if err != nil {
 		log.Fatal(err)
@@ -180,17 +180,17 @@ func listenForConnections(address string, idx int, arrayOfChannels []chan *types
 
 }
 
-func initiateConnection(address string, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
-	fmt.Printf("node %v initiating connection to %v\n", idx, address)
+func initiateConnection(ipAddress string, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
+	fmt.Printf("node %v initiating connection to %v\n", idx, ipAddress)
 	// if connection is closed, try to Dial again.
 	for {
-		conn, err_conn := net.Dial(NETWORK_TYPE, address)
+		conn, err_conn := net.Dial(NETWORK_TYPE_DIAL, ipAddress)
 		// error handling
 		if err_conn != nil {
-			fmt.Printf("node %v initiating connection to %v: %v\n", idx, address, err_conn)
+			fmt.Printf("node %v initiating connection to %v: %v\n", idx, ipAddress, err_conn)
 			time.Sleep(time.Duration(100) * time.Millisecond)
 		} else {
-			fmt.Printf("node %v successfully initiated connection to %v\n", idx, address)
+			fmt.Printf("node %v successfully initiated connection to %v\n", idx, ipAddress)
 
 			var wg sync.WaitGroup
 			wg.Add(1)

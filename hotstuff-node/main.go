@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math/rand"
 	"strconv"
+	"strings"
 
 	//"sync/atomic"
 
@@ -19,7 +20,8 @@ import (
 )
 
 const (
-	NETWORK_TYPE = "tcp"
+	NETWORK_TYPE_LISTEN = "tcp4" // changed to support IPv4
+	NETWORK_TYPE_DIAL = "ip4" // changed to support IPv4
 	DEFAULT_ADDRESS_NUMBER = 9000
 	DEFAULT_MESSAGE = "hello"
 	NUMBER_OF_NODES = 4
@@ -156,19 +158,21 @@ func collectMessages(node *hotstuff.Node, inMsgsChan <-chan *types.Message) {
 }
 
 
-func entryPoint(ctx context.Context, index int, confirmedChannel chan int) {
+func entryPoint(ctx context.Context, index int, ipAddressList []string, confirmedChannel chan int) {
 
-	addressList := getAddressList()
+	// addressList := getAddressList()
 	arrayOfChannels := createArrayOfChannels()
 	inMsgsChan := createInMsgsChannel()
 
-	nodeAddress := addressList[index]
-	go listenForConnections(nodeAddress, index, arrayOfChannels, inMsgsChan)
+	// nodeAddress := addressList[index]
+	myIpAddress := ipAddressList[index]
+
+	go listenForConnections(myIpAddress, index, arrayOfChannels, inMsgsChan)
  
 	for i := 0; i < index; i++ {
 		fmt.Println("initiating connection to node with index:", i)
-		address_i := addressList[i]
-		go initiateConnection(address_i, index, arrayOfChannels, inMsgsChan)
+		ipAddress_i := ipAddressList[i]
+		go initiateConnection(ipAddress_i, index, arrayOfChannels, inMsgsChan)
 	}
 
 	//------------------------------------------------------------------------------------------
@@ -228,11 +232,12 @@ func entryPoint(ctx context.Context, index int, confirmedChannel chan int) {
 func main() {
 
 	var index int
-	// var address string
+	var ipAddresses string
 	flag.IntVar(&index, "index", 0, "node index")
-	// flag.StringVar(&address, "addr", ":8080", "port address") // not used
+	flag.StringVar(&ipAddresses, "ipAddresses", "", "List of IP addresses of all nodes") // TODO: use in ECE2 instance
 	flag.Parse()
 	fmt.Println("Node index:", index)
+	ipAddressesList := strings.Split(ipAddresses, ",")
 
 	totalConfirmed := make(chan int, 100)
 
@@ -240,7 +245,7 @@ func main() {
 	//Derive a context with cancel: NOT USED
 	// ctxWithCancel, _ := context.WithCancel(ctx)
 
-	entryPoint(ctx, index, totalConfirmed) 
+	entryPoint(ctx, index, ipAddressesList, totalConfirmed) 
 
 	//------------------------------------------------------------------------------------------
 
