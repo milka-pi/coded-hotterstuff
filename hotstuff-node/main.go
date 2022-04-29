@@ -20,8 +20,8 @@ import (
 )
 
 const (
-	NETWORK_TYPE_LISTEN = "tcp4" // changed to support IPv4
-	NETWORK_TYPE_DIAL = "ip4" // changed to support IPv4
+	NETWORK_TYPE_LISTEN = "tcp" // changed to support IPv4
+	NETWORK_TYPE_DIAL = "tcp" // changed to support IPv4
 	DEFAULT_ADDRESS_NUMBER = 9000
 	DEFAULT_MESSAGE = "hello"
 	NUMBER_OF_NODES = 4
@@ -52,6 +52,15 @@ func getAddressList() [NUMBER_OF_NODES]string {
 	addressList := [NUMBER_OF_NODES]string{}
 	for i := 0; i < NUMBER_OF_NODES; i++ {
 		addressList[i] = ":" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
+	}
+	return addressList
+}
+
+// indexed by node index
+func getIPAddressList() [NUMBER_OF_NODES]string {
+	addressList := [NUMBER_OF_NODES]string{}
+	for i := 0; i < NUMBER_OF_NODES; i++ {
+		addressList[i] = "127.0.0.1:" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
 	}
 	return addressList
 }
@@ -158,7 +167,7 @@ func collectMessages(node *hotstuff.Node, inMsgsChan <-chan *types.Message) {
 }
 
 
-func entryPoint(ctx context.Context, index int, ipAddressList []string, confirmedChannel chan int) {
+func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]string, confirmedChannel chan int) {
 
 	// addressList := getAddressList()
 	arrayOfChannels := createArrayOfChannels()
@@ -237,7 +246,17 @@ func main() {
 	flag.StringVar(&ipAddresses, "ipAddresses", "", "List of IP addresses of all nodes") // TODO: use in ECE2 instance
 	flag.Parse()
 	fmt.Println("Node index:", index)
-	ipAddressesList := strings.Split(ipAddresses, ",")
+	ipAddressList := strings.Split(ipAddresses, ",")
+
+	if (len(ipAddressList) != NUMBER_OF_NODES) {
+		panic("IP address list does not have correct size!")
+	}
+
+	// this piece of code is to go arounfd the []string vs [4]string mismatch
+	IPaddressList := [NUMBER_OF_NODES]string{}
+	for i := 0; i < NUMBER_OF_NODES; i++ {
+		IPaddressList[i] = ipAddressList[i]
+	}
 
 	totalConfirmed := make(chan int, 100)
 
@@ -245,7 +264,7 @@ func main() {
 	//Derive a context with cancel: NOT USED
 	// ctxWithCancel, _ := context.WithCancel(ctx)
 
-	entryPoint(ctx, index, ipAddressesList, totalConfirmed) 
+	entryPoint(ctx, index, IPaddressList, totalConfirmed) 
 
 	//------------------------------------------------------------------------------------------
 

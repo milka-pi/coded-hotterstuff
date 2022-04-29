@@ -22,7 +22,7 @@ func TestFull(t *testing.T) {
 
 	var wg sync.WaitGroup
 
-	totalToAchieve := 10
+	totalToAchieve := 5
 	totalConfirmed := 0
 
 	confirmedChannel := make(chan int, 10)
@@ -31,11 +31,13 @@ func TestFull(t *testing.T) {
 	// if num confirmed > 10; exit
 	// pass context for graceful exit
 
+	IPaddressList := getIPAddressList()
+
 	for idx := 0; idx < numNodes; idx++ {
 		wg.Add(1)
 		go func(idx int) {
 			defer wg.Done()
-			entryPoint(ctxWithCancel, idx, confirmedChannel)
+			entryPoint(ctxWithCancel, idx, IPaddressList, confirmedChannel) // doesn't work now! // change to localhost + port number
 		}(idx)
 	}
 
