@@ -34,7 +34,6 @@ func listenForMessages(ctx context.Context, idx int, conn io.Reader, inMsgsChan 
 					fmt.Println("Error: failed to read data!")
 					return readErr
 				}
-				fmt.Println("Node ", idx, "--> ", "Received message from buffer: ", msg_bytes) 
 				msg := &types.Message{}
 				msg.Unmarshal(msg_bytes)
 				inMsgsChan <- msg
@@ -64,7 +63,6 @@ func sendMessages(ctx context.Context, idx int, conn net.Conn, outMsgsChan <-cha
 				fmt.Println("Read msg from outMsgsChan...")
 				bytes, _ := msg.Marshal()
 				augBytes := augmentByteArrayWithLength(bytes)
-				fmt.Println("Node ", idx, "--> ", "Sender --> message byteArray: ", augBytes)
 				_, sendErr := conn.Write(augBytes)
 				// error handling
 				if sendErr != nil {
@@ -97,7 +95,6 @@ func exchangeIDs(conn io.ReadWriter, myID int) (int, error) {
 		fmt.Println("initExchange: Failed to convert string ID to int!")
 		return -1, convertError
 	}
-	fmt.Println("Node ", myID, "--> ", "Received your ID from buffer: ", yourID)
 
 	return yourID, nil
 }

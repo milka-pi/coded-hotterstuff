@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-#killall -hotstuff-node
+killall hotstuff-node
 bash ../../nanonet/script.sh stop
