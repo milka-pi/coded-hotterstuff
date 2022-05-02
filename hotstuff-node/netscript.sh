@@ -28,7 +28,7 @@ echo "List of IP addresses: $ipAddresses"
 # 2nd Step: Run hotstuff-node for each node, passing the full list of IP addresses as an argument
 
 for (( index=0; index<numberOfNodes; index++ ))
-   do ./hotstuff-node -index=$index -ipAddresses=$ipAddresses & done
+   do ip netns exec ramjet-s1-n$index ./hotstuff-node -index=$index -ipAddresses=$ipAddresses > ~/hotstuff-$index.log & done
 
 
 

@@ -255,7 +255,7 @@ func main() {
 	// this piece of code is to go arounfd the []string vs [4]string mismatch
 	IPaddressList := [NUMBER_OF_NODES]string{}
 	for i := 0; i < NUMBER_OF_NODES; i++ {
-		IPaddressList[i] = ipAddressList[i]
+		IPaddressList[i] = ipAddressList[i] + ":" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
 	}
 
 	totalConfirmed := make(chan int, 100)
