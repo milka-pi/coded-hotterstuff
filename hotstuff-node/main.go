@@ -170,9 +170,9 @@ func collectMessages(node *hotstuff.Node, inMsgsChan <-chan *types.Message) {
 func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]string, confirmedChannel chan int) {
 	dummyData := make([]byte, 10000000)
 	rand.Read(dummyData)
-	randTx := []*types.Transaction{&types.Transaction{
-		Data: dummyData,
-	}}
+	// randTx := []*types.Transaction{{
+	// 	Data: dummyData,
+	// }}
 
 
 	// addressList := getAddressList()
@@ -206,7 +206,7 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 			node.Send(context.Background(), hotstuff.Data{
 				State: []byte{},
 				Root:  []byte{},
-				Data:  &types.Data{randTx},
+				Data:  &types.Data{dummyData},
 			})
 
 		case msgs := <-node.Messages():

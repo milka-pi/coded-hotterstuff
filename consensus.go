@@ -2,10 +2,13 @@ package hotstuff
 
 import (
 	"bytes"
+	"crypto/rand"
 	"fmt"
 
 	"github.com/dshulyak/go-hotstuff/types"
 	"go.uber.org/zap"
+
+	"github.com/vivint/infectious"
 )
 
 type Signer interface {
@@ -17,6 +20,7 @@ type Verifier interface {
 	Verify(uint64, []byte, []byte) bool
 	Merge(*types.AggregatedSignature, uint64, []byte)
 }
+
 
 func newConsensus(
 	logger *zap.Logger,
@@ -66,6 +70,8 @@ func newConsensus(
 		prepareCert: prepareCert,
 		view:        view,
 		voted:       voted,
+		// new
+		viewToChunks: make(map[uint64]codedChunks),
 	}
 }
 
@@ -101,6 +107,11 @@ type consensus struct {
 	Progress Progress
 
 	waitingData bool // if waitingData true then node must create a proposal when it receives data
+
+	//----------------------------------------------------------------------------------------------
+	// new field: for Coded Broadcast
+	// TODO: cannot store all chunks, when should I delete? after confirming a block?
+	viewToChunks map[uint64]codedChunks
 }
 
 func (c *consensus) Tick() {
@@ -109,6 +120,51 @@ func (c *consensus) Tick() {
 		c.onTimeout()
 	}
 }
+
+
+const(
+	required = 3
+	oversampled = 1
+	total = 4
+)
+
+type codedChunks struct{
+	view uint64
+	chunksList []infectious.Share
+}
+
+func getDataShares(data_bytes []byte) []infectious.Share {
+	// Create a *FEC, which will require required pieces for reconstruction at
+	// minimum, and generate total total pieces.
+	f, err := infectious.NewFEC(required, total)
+	if err != nil {
+		panic(err)
+	}
+
+	// Prepare to receive the shares of encoded data.
+	shares := make([]infectious.Share, total)
+	output := func(s infectious.Share) {
+		// the memory in s gets reused, so we need to make a deep copy
+		shares[s.Number] = s.DeepCopy()
+	}
+
+	// prepend length in un-encoded data and pad to make it multiple of `required`
+	// slice of slice of bytes ([][] bytes): encoded data
+	data_bytes = augmentByteArrayWithLength(data_bytes)
+	data_bytes = pad(data_bytes, required)
+	if len(data_bytes) % required != 0 {
+		panic("Error: impoper padding!")
+	}
+
+	// encode data
+	err = f.Encode(data_bytes, output)
+	if err != nil {
+		panic(err)
+	}
+
+	return shares
+}
+
 
 func (c *consensus) Send(state, root []byte, data *types.Data) {
 	if c.waitingData {
@@ -132,14 +188,122 @@ func (c *consensus) Send(state, root []byte, data *types.Data) {
 			zap.Binary("parent", header.Parent),
 			zap.Uint64("signer", c.id))
 
-		c.sendMsg(NewProposalMsg(proposal))
+
+		// Round 1 (Leader): Encode proposal into chunks and send one chunk per replica
+
+		// TODO: encode proposal into chunks and sendMsg with specific recipient
+
+		// type data []byte instead of Transaction type -- need to change types.proto -- how to compile types.proto?
+		data_bytes := make([]byte, 1000)
+		rand.Read(data_bytes)
+
+		shares := getDataShares(data_bytes)
+		// we now have total shares.
+		for _, share := range shares {
+			fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
+			// fmt.Println(share.Data)
+		}
+
+
+		proposals := make([]types.Proposal, total)
+		for i := 0; i < total; i++ {
+			proposals[i] = types.Proposal{
+					Header:     proposal.GetHeader(),
+					// TODO: replace with 'Data: shares[i].Data'
+					Data:       data,
+					ParentCert: proposal.GetParentCert(),
+					Timeout:    proposal.GetTimeout(),
+					Sig:        proposal.GetSig(),
+			}
+
+		}
+
+
+		for i := 0; i < total; i++ {
+			// FIX: send all shares but one
+			if c.replicas[i] != c.id {
+				// TODO: What is the correct way to index into the replicas?
+				c.sendMsg(NewProposalMsg(&proposals[i]), c.replicas[i])
+			}
+		}
+
+
+		// c.sendMsg(NewProposalMsg(proposal))
 	}
+}
+
+// onCodedChunk() 
+// - borrow functionality from onVote etc. to count up to 2f+1 received chunks
+
+func (c *consensus) onCodedChunk(msg *types.Proposal){
+	// Round 2: broadcast received chunk
+	for i := 0; i < total; i++ {
+		// FIX: send all shares but one
+		if c.replicas[i] != c.id {
+			// TODO: What is the correct way to index into the replicas?
+			c.sendMsg(NewProposalMsg(msg), c.replicas[i])
+		}
+	}
+}
+
+
+// use chunks/shares to decode and reconstruct the proposal
+func (c *consensus) decodeProposal(view uint64) []byte {
+
+	shares := c.viewToChunks[view].chunksList
+
+	f, err := infectious.NewFEC(required, total)
+	if err != nil {
+		panic(err)
+	}
+
+	result, err := f.Decode(nil, shares)
+	if err != nil {
+		panic(err)
+	}
+
+	// we have the original data!
+	// fmt.Printf("got: %#v\n", string(result))
+	padded_bytes := result
+
+	original_bytes := getBytesFromAugmented(padded_bytes)
+	// original_msg := string(original_bytes)
+	// fmt.Println("Original data bytes:", original_msg)
+	return original_bytes
 }
 
 func (c *consensus) Step(msg *types.Message) {
 	switch m := msg.GetType().(type) {
 	case *types.Message_Proposal:
-		c.onProposal(m.Proposal)
+		// change logic
+		
+		// check sender? if leader, then call onCodedChunk()
+		// store received proposals in dictionary indexed by viewNumber?
+
+		// TODO: fetch view number of proposal
+		view := uint64(1)
+
+		if chunks, ok := c.viewToChunks[view]; ok {
+            // already received some chunk for this view
+
+			// TODO: fix Data type issue 
+			chunks.chunksList = append(chunks.chunksList, m.Proposal.Data)			
+        } else {
+			// this is the first chunk received for this view
+			c.viewToChunks[view] = codedChunks{
+										view: view,
+										chunksList: []infectious.Share{m.Proposal.Data},			
+									}
+        }
+
+		// check if have received enough chunks. If so, attempt decoding the proposal
+		if len(c.viewToChunks[view].chunksList) >= required {
+			proposalData := c.decodeProposal(view)
+		}
+
+
+		// c.onProposal(m.Proposal)
+
 	case *types.Message_Vote:
 		c.onVote(m.Vote)
 	case *types.Message_Newview:
