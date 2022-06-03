@@ -183,7 +183,7 @@ func prependShare(share infectious.Share, leaderBit byte) infectious.Share{
 }
 
 
-func (c *consensus) Send(state, root []byte, data *types.Data) {
+func (c *consensus) Send(state, root []byte, data []byte) {
 	if c.waitingData {
 		c.waitingData = false
 		header := &types.Header{
