@@ -18,7 +18,7 @@ message SyncRequest {
 // Proposal carries header and data of the new proposal and certificate of the parent.
 message Proposal {
         Header header = 1;
-        Data data = 2;
+        bytes data = 2;
         bytes sig = 3;
         Certificate parentCert = 4;
         // any time view change happens by timeout - there must be a timeout certificate
@@ -36,7 +36,7 @@ message NewView {
 // Block will be used mostly for synchronization of the replicas that lag behind.
 message Block {
         Header header = 1;
-        Data data = 2;
+        bytes data = 2;
         Certificate cert = 3;
 }
 
