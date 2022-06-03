@@ -109,6 +109,18 @@ func split(buf []byte, lim int) [][]byte {
 
 
 
+// leaderBit supposed to be 0/1
+func prependShare(share infectious.Share, leaderBit byte) infectious.Share{
+	// is this the proper way?
+	token := make([]byte, 32)
+	rand.Read(token)
+	token = append([]byte{leaderBit}, token...)
+	share.Data = append(token, share.Data...)
+	return share
+}
+
+
+
 func main() {
 
 	required := 8
@@ -147,9 +159,15 @@ func main() {
 	}
 
 	// we now have total shares.
-	for _, share := range shares {
-		fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
-		fmt.Println(share.Data)
+	leaderBit := 1
+	for i, share := range shares {
+		// fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
+		// fmt.Println(share.Number, share.Data)
+
+		// prepend share with leader bit and random id number
+		share = prependShare(share, byte(leaderBit))
+		// fmt.Println(share.Number, share.Data)
+		shares[i] = share
 	}
 
 	// shuffling the shares should not affect the reconstruction process
@@ -158,10 +176,18 @@ func main() {
         shares[i], shares[j] = shares[j], shares[i]
     })
 
+	rand.Shuffle(len(shares), func(i, j int) {
+        shares[i].Number, shares[j].Number = shares[j].Number, shares[i].Number
+    })
+
+	for _, share := range shares {
+		// fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
+		fmt.Println(share.Number, share.Data)
+	}
+
 	// Let's reconstitute with two pieces missing and one piece corrupted.
 	shares = shares[1:]     // drop the first two pieces
 	// shares[2].Data[1] = '!' // mutate some data
-
 
 	// SOS Note: can construct new FEC object when decoding
 	// This is crucial when decoding and encoding are performed by different parties
@@ -170,6 +196,18 @@ func main() {
 		panic(err)
 	}
 
+	for i, share := range shares {
+		// fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
+		// fmt.Println(share.Data)
+
+		// strip share from leader bit random id
+		// leaderBit = int(share.Data[0])
+		// randomID := int(binary.BigEndian.Uint32(share.Data[1:33]))
+		share.Data = share.Data[33:]
+		shares[i] = share
+	}
+
+	
 
 	result, err := f1.Decode(nil, shares)
 	if err != nil {
