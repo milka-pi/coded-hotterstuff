@@ -74,7 +74,8 @@ func newConsensus(
 		view:        view,
 		voted:       voted,
 		// new
-		viewToChunks: make(map[uint64]codedChunks),
+		randomIDToChunks: make(map[uint64]codedChunks),
+		outdatedRandomIDs: make(map[uint64]bool),
 	}
 }
 
@@ -113,8 +114,9 @@ type consensus struct {
 
 	//----------------------------------------------------------------------------------------------
 	// new field: for Coded Broadcast
-	// TODO: cannot store all chunks, when should I delete? after confirming a block? after decoding
-	viewToChunks map[uint64]codedChunks
+	// TODO: cannot store all chunks, when should I delete? after confirming a block? after decoding. OK
+	randomIDToChunks map[uint64]codedChunks
+	outdatedRandomIDs map[uint64]bool
 }
 
 func (c *consensus) Tick() {
@@ -171,14 +173,13 @@ func getDataShares(data_bytes []byte) []infectious.Share {
 }
 
 // leaderBit supposed to be 0/1
-func prependShare(share infectious.Share, leaderBit byte) infectious.Share{
-	// is this the proper way?
-	token := make([]byte, 8)
-	rand.Read(token)
-	// fmt.Println(token)
-	token = append([]byte{leaderBit}, token...)
+func prependShare(share infectious.Share, leaderBit byte, randomID []byte) infectious.Share{
+	numberFieldBytes := make([]byte, 4)
+	binary.BigEndian.PutUint32(numberFieldBytes[0 : 4], uint32(share.Number))
+	
+	token := append([]byte{leaderBit}, randomID...)
+	token = append(token, numberFieldBytes...)
 	share.Data = append(token, share.Data...)
-
 	return share
 }
 
@@ -214,15 +215,20 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 		data_bytes := make([]byte, 1000)
 		rand.Read(data_bytes)
 
+
+		// DONE 6/3: generate random id outside for loop
 		shares := getDataShares(data_bytes)
 		// we now have total shares.
+		// generate random ID number
+		randomID := make([]byte, 8)
+		rand.Read(randomID)
 		for i, share := range shares {
 			// fmt.Println(share.Number, share.Data)
-			share = prependShare(share, byte(1))
+			share = prependShare(share, byte(1), randomID)
 			shares[i] = share			
 		}
 
-		// format : [0/1 leader bit: 4 bytes] | [random id: 32 bytes] | [share : custom?]
+		// format : [0/1 leader bit: 1 byte] | [random id: 8 bytes] | [number Field: 4 bytes] | [share : custom?]
 
 
 		// prepend shares[i].Data with random id (32 bytes)
@@ -232,7 +238,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 		for i := 0; i < total; i++ {
 			proposals[i] = types.Proposal{
 					Header:     proposal.GetHeader(),
-					// TODO: replace with 'Data: shares[i].Data'
+					// DONE: replace with 'Data: shares[i].Data'
 					Data:       data,
 					ParentCert: proposal.GetParentCert(),
 					Timeout:    proposal.GetTimeout(),
@@ -240,6 +246,9 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 			}
 
 		}
+
+		// DONE 6/3: prepend data bytes array also with Number field.
+		// try this on simple reed-solomon
 
 
 		for i := 0; i < total; i++ {
@@ -274,7 +283,7 @@ func (c *consensus) onCodedChunk(msg *types.Proposal){
 func (c *consensus) decodeProposal(randomID uint64) []byte {
 
 	// shares should be trimmed at this point
-	shares := c.viewToChunks[randomID].chunksList
+	shares := c.randomIDToChunks[randomID].chunksList
 
 	f, err := infectious.NewFEC(required, total)
 	if err != nil {
@@ -307,66 +316,77 @@ func (c *consensus) Step(msg *types.Message) {
 		// DONE: fetch view number of proposal
 		// answer: will use random id
 
-		share := m.Proposal.Data
+		shareData := m.Proposal.Data
 
 		// strip share from leader bit random id
-		leaderBit := int(share.Data[0])
-		randomID := uint64(binary.BigEndian.Uint32(share.Data[1:9]))
+		leaderBit := int(shareData[0])
+		randomID := uint64(binary.BigEndian.Uint32(shareData[1:9]))
+		shareNumberField := int(binary.BigEndian.Uint32(shareData[9:13]))
 		// share.Data = share.Data[9:]
 
 
 		// check if leading bit is 0/1 to decide whether to broadcast
 		// also save other fields (header, ..)
 		if leaderBit == 1 {
-			modifiedShare := infectious.Share{Number: share.Number,
-											Data: append([]byte{0}, share.Data[1:]...)}
+			modifiedShareData := append([]byte{0}, shareData[1:]...)
 			modifiedProposal := types.Proposal{
 									Header:     m.Proposal.GetHeader(),
 									// might need fixing
-									Data:       modifiedShare,
+									Data:       modifiedShareData,
 									ParentCert: m.Proposal.GetParentCert(),
 									Timeout:    m.Proposal.GetTimeout(),
 									Sig:        m.Proposal.GetSig(),
 								}
 			c.onCodedChunk(&modifiedProposal)
+			c.outdatedRandomIDs[randomID] = false
 		}
 
 		// TODO: check if header and other info is the same as the one sent by the leader
 		// for now: assume everyone is honest
-		trimmedShare := infectious.Share{Number: share.Number,
-										Data: share.Data[9:]}
+		// ANSWER: can filter out when using Merkle trees to authenticate
+		trimmedShare := infectious.Share{Number: shareNumberField,
+										Data: shareData[13:]}
 
-		if chunks, ok := c.viewToChunks[randomID]; ok {
-            // already received some chunk for this random id
+		outdated, ok1 := c.outdatedRandomIDs[randomID]
+		// Update chunksList only if randomID is not outdated
+		if !(ok1 && outdated) {
 
-			// TODO: fix Data type issue 
-			chunks.chunksList = append(chunks.chunksList, trimmedShare)			
-        } else {
-			// this is the first chunk received for this random id
-			c.viewToChunks[randomID] = codedChunks{
-										randomID: randomID,
-										originalProposal: m.Proposal,
-										chunksList: []infectious.Share{trimmedShare},			
-									}
-        }
+			if chunks, ok2 := c.randomIDToChunks[randomID]; ok2 {
+				// already received some chunk for this random id
+	
+				// TODO: fix Data type issue 
+				chunks.chunksList = append(chunks.chunksList, trimmedShare)			
+			} else {
+				// this is the first chunk received for this random id
+				c.randomIDToChunks[randomID] = codedChunks{
+											randomID: randomID,
+											originalProposal: m.Proposal,
+											// TODO: only if leader (okay for now)
+											chunksList: []infectious.Share{trimmedShare},			
+										}
+			}
 
-		// check if have received enough chunks. If so, attempt decoding the proposal
-		if len(c.viewToChunks[randomID].chunksList) >= required {
-			// TODO: add error handling
-			proposalData := c.decodeProposal(randomID)
-			origProp := c.viewToChunks[randomID].originalProposal
-			fullProposal := types.Proposal{
-								Header:     origProp.GetHeader(),
-								// might need fixing
-								Data:       proposalData,
-								ParentCert: origProp.GetParentCert(),
-								Timeout:    origProp.GetTimeout(),
-								Sig:        origProp.GetSig(),
-							}
-			// c.onProposal(fullProposal)
-			
-			// discard saved chunks
-			delete(c.viewToChunks, randomID)
+			// check if have received enough chunks. If so, attempt decoding the proposal
+			if len(c.randomIDToChunks[randomID].chunksList) >= required {
+				// TODO 6/3: add error handling --> don't call onProposal
+				proposalData := c.decodeProposal(randomID)
+				origProp := c.randomIDToChunks[randomID].originalProposal
+				fullProposal := types.Proposal{
+									Header:     origProp.GetHeader(),
+									// might need fixing
+									Data:       proposalData,
+									ParentCert: origProp.GetParentCert(),
+									Timeout:    origProp.GetTimeout(),
+									Sig:        origProp.GetSig(),
+								}
+				c.onProposal(&fullProposal)
+				
+				// discard saved chunks
+				delete(c.randomIDToChunks, randomID)
+				c.outdatedRandomIDs[randomID] = true
+
+				// DONE? 6/3: implementation level issue: create outdated randomIDs map. 
+			}
 		}
 
 

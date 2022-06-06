@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/binary"
 	"fmt"
 	"math/rand"
 	"strings"
@@ -110,11 +111,13 @@ func split(buf []byte, lim int) [][]byte {
 
 
 // leaderBit supposed to be 0/1
-func prependShare(share infectious.Share, leaderBit byte) infectious.Share{
-	// is this the proper way?
-	token := make([]byte, 32)
-	rand.Read(token)
-	token = append([]byte{leaderBit}, token...)
+func prependShare(share infectious.Share, leaderBit byte, randomID []byte) infectious.Share{
+
+	numberFieldBytes := make([]byte, 4)
+	binary.BigEndian.PutUint32(numberFieldBytes[0 : 4], uint32(share.Number))
+	
+	token := append([]byte{leaderBit}, randomID...)
+	token = append(token, numberFieldBytes...)
 	share.Data = append(token, share.Data...)
 	return share
 }
@@ -160,12 +163,14 @@ func main() {
 
 	// we now have total shares.
 	leaderBit := 1
+	randomID := make([]byte, 8)
+	rand.Read(randomID)
 	for i, share := range shares {
 		// fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
 		// fmt.Println(share.Number, share.Data)
 
 		// prepend share with leader bit and random id number
-		share = prependShare(share, byte(leaderBit))
+		share = prependShare(share, byte(leaderBit), randomID)
 		// fmt.Println(share.Number, share.Data)
 		shares[i] = share
 	}
@@ -176,14 +181,15 @@ func main() {
         shares[i], shares[j] = shares[j], shares[i]
     })
 
+	// shuffling the Number field makes decoding fail, as expected
 	rand.Shuffle(len(shares), func(i, j int) {
         shares[i].Number, shares[j].Number = shares[j].Number, shares[i].Number
     })
 
-	for _, share := range shares {
-		// fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
-		fmt.Println(share.Number, share.Data)
-	}
+	// for _, share := range shares {
+	// 	// fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
+	// 	fmt.Println(share.Number, share.Data)
+	// }
 
 	// Let's reconstitute with two pieces missing and one piece corrupted.
 	shares = shares[1:]     // drop the first two pieces
@@ -197,13 +203,16 @@ func main() {
 	}
 
 	for i, share := range shares {
-		// fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
+		fmt.Printf("%d: %#v\n", share.Number, string(share.Data))
 		// fmt.Println(share.Data)
 
 		// strip share from leader bit random id
 		// leaderBit = int(share.Data[0])
-		// randomID := int(binary.BigEndian.Uint32(share.Data[1:33]))
-		share.Data = share.Data[33:]
+		// randomID := int(binary.BigEndian.Uint32(share.Data[1:9]))
+		shareNumberField := int(binary.BigEndian.Uint32(share.Data[9:13]))
+		share.Data = share.Data[13:]
+		share.Number = shareNumberField
+		fmt.Println(share.Number, share.Data)
 		shares[i] = share
 	}
 
