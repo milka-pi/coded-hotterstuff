@@ -8,6 +8,7 @@ import (
 	"github.com/dshulyak/go-hotstuff/crypto"
 	"github.com/dshulyak/go-hotstuff/types"
 	"go.uber.org/zap"
+	"fmt"
 )
 
 var (
@@ -174,6 +175,9 @@ func (n *Node) run() {
 			if len(progress.Messages) > 0 {
 				// n.logger.Debug("n.run() -> for loop -> if stmt -> len(progress.Messages) > 0") // extra
 				toSend = progress.Messages
+				for _, msg := range toSend {
+					fmt.Println("replica", n.consensus.id, "sending to replica", msg.Recipients)
+				}
 				messages = n.deliver
 			}
 			if len(progress.Events) > 0 {

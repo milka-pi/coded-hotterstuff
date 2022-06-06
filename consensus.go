@@ -74,8 +74,8 @@ func newConsensus(
 		view:        view,
 		voted:       voted,
 		// new
-		randomIDToChunks: make(map[uint64]codedChunks),
-		outdatedRandomIDs: make(map[uint64]bool),
+		randomIDToChunks: make(map[uint64]*codedChunks),
+		outdatedRandomIDs: make(map[uint64]struct{}),
 	}
 }
 
@@ -115,8 +115,8 @@ type consensus struct {
 	//----------------------------------------------------------------------------------------------
 	// new field: for Coded Broadcast
 	// TODO: cannot store all chunks, when should I delete? after confirming a block? after decoding. OK
-	randomIDToChunks map[uint64]codedChunks
-	outdatedRandomIDs map[uint64]bool
+	randomIDToChunks map[uint64]*codedChunks
+	outdatedRandomIDs map[uint64]struct{}
 }
 
 func (c *consensus) Tick() {
@@ -277,6 +277,7 @@ func (c *consensus) onCodedChunk(msg *types.Proposal){
 		if uint64(i) != c.id {
 			// TODO: What is the correct way to index into the replicas?
 			c.sendMsg(NewProposalMsg(msg), uint64(i))
+			fmt.Println("replica", c.id, "is forwarding chunk to replica", i)
 		}
 	}
 }
@@ -332,7 +333,7 @@ func (c *consensus) Step(msg *types.Message) {
 		// check if leading bit is 0/1 to decide whether to broadcast
 		// also save other fields (header, ..)
 		if leaderBit == 1 {
-			fmt.Println(c.id, "  received coded chunk from leader")
+			fmt.Println("replica", c.id, "received coded chunk from leader")
 			modifiedShareData := append([]byte{0}, shareData[1:]...)
 			modifiedProposal := types.Proposal{
 									Header:     m.Proposal.GetHeader(),
@@ -343,7 +344,6 @@ func (c *consensus) Step(msg *types.Message) {
 									Sig:        m.Proposal.GetSig(),
 								}
 			c.onCodedChunk(&modifiedProposal)
-			c.outdatedRandomIDs[randomID] = false
 		}
 
 		// TODO: check if header and other info is the same as the one sent by the leader
@@ -352,10 +352,9 @@ func (c *consensus) Step(msg *types.Message) {
 		trimmedShare := infectious.Share{Number: shareNumberField,
 										Data: shareData[13:]}
 
-		outdated, ok1 := c.outdatedRandomIDs[randomID]
+		_, ok1 := c.outdatedRandomIDs[randomID]
 		// Update chunksList only if randomID is not outdated
-		if !(ok1 && outdated) {
-
+		if !ok1 {
 			if chunks, ok2 := c.randomIDToChunks[randomID]; ok2 {
 				// already received some chunk for this random id
 	
@@ -363,13 +362,15 @@ func (c *consensus) Step(msg *types.Message) {
 				chunks.chunksList = append(chunks.chunksList, trimmedShare)			
 			} else {
 				// this is the first chunk received for this random id
-				c.randomIDToChunks[randomID] = codedChunks{
+				c.randomIDToChunks[randomID] = &codedChunks{
 											randomID: randomID,
 											originalProposal: m.Proposal,
 											// TODO: only if leader (okay for now)
 											chunksList: []infectious.Share{trimmedShare},			
 										}
 			}
+			fmt.Println("replica", c.id, "has received", len(c.randomIDToChunks[randomID].chunksList), "chunks")
+
 
 			// check if have received enough chunks. If so, attempt decoding the proposal
 			if len(c.randomIDToChunks[randomID].chunksList) >= required {
@@ -388,7 +389,7 @@ func (c *consensus) Step(msg *types.Message) {
 				
 				// discard saved chunks
 				delete(c.randomIDToChunks, randomID)
-				c.outdatedRandomIDs[randomID] = true
+				c.outdatedRandomIDs[randomID] = struct{}{}
 
 				// DONE? 6/3: implementation level issue: create outdated randomIDs map. 
 			}
