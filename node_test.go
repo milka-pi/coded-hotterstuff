@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/dshulyak/go-hotstuff/crypto"
-	"github.com/dshulyak/go-hotstuff/types"
+	// "github.com/dshulyak/go-hotstuff/types"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 )
@@ -93,7 +93,7 @@ func nodeEventLoop(ctx context.Context, n *Node, networkC chan<- []MsgTo, header
 		case <-n.Ready():
 			n.Send(ctx, Data{
 				Root: randRoot(),
-				Data: &types.Data{},
+				Data: []byte{},
 			})
 		}
 

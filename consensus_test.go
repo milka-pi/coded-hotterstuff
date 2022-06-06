@@ -20,7 +20,7 @@ func randGenesis() *types.Block {
 			Block: header.Hash(),
 			Sig:   &types.AggregatedSignature{},
 		},
-		Data: &types.Data{},
+		Data: []byte{},
 	}
 }
 
@@ -90,7 +90,7 @@ func TestConsensusErrorFreeQuorumProgress(t *testing.T) {
 		n.Progress.Reset()
 	}
 	root := randRoot()
-	nodes[waiting].Send(nil, root, &types.Data{})
+	nodes[waiting].Send(nil, root, []byte{})
 
 	// it should prepare one proposal to be broadcasted
 	msgs := nodes[waiting].Progress.Messages
@@ -157,7 +157,7 @@ func TestConsensusTimeoutsProgress(t *testing.T) {
 			waiting = uint64(i)
 		}
 	}
-	nodes[waiting].Send(nil, randRoot(), &types.Data{})
+	nodes[waiting].Send(nil, randRoot(), []byte{})
 }
 
 func propagateOneBlock(nodes []*testNode) {
@@ -166,7 +166,7 @@ func propagateOneBlock(nodes []*testNode) {
 	)
 	for _, n := range nodes {
 		if n.Progress.WaitingData {
-			n.Send(nil, randRoot(), &types.Data{})
+			n.Send(nil, randRoot(), []byte{})
 			for _, msg := range n.Progress.Messages {
 				stack1 = append(stack1, msg)
 			}

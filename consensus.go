@@ -209,11 +209,13 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 
 		// Round 1 (Leader): Encode proposal into chunks and send one chunk per replica
 
-		// TODO: encode proposal into chunks and sendMsg with specific recipient
+		// DONE: encode proposal into chunks and sendMsg with specific recipient
 
 		// type data []byte instead of Transaction type -- need to change types.proto -- how to compile types.proto?
-		data_bytes := make([]byte, 1000)
-		rand.Read(data_bytes)
+
+		// data_bytes := make([]byte, 1000)
+		// rand.Read(data_bytes)
+		data_bytes := data
 
 
 		// DONE 6/3: generate random id outside for loop
@@ -225,6 +227,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 		for i, share := range shares {
 			// fmt.Println(share.Number, share.Data)
 			share = prependShare(share, byte(1), randomID)
+			// fmt.Println("prepended share: ", share.Data)
 			shares[i] = share			
 		}
 
@@ -239,7 +242,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 			proposals[i] = types.Proposal{
 					Header:     proposal.GetHeader(),
 					// DONE: replace with 'Data: shares[i].Data'
-					Data:       data,
+					Data:       shares[i].Data,
 					ParentCert: proposal.GetParentCert(),
 					Timeout:    proposal.GetTimeout(),
 					Sig:        proposal.GetSig(),
@@ -317,6 +320,7 @@ func (c *consensus) Step(msg *types.Message) {
 		// answer: will use random id
 
 		shareData := m.Proposal.Data
+		// fmt.Println(c.id, "shareData: ", shareData)
 
 		// strip share from leader bit random id
 		leaderBit := int(shareData[0])
