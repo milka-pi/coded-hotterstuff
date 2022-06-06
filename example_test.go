@@ -188,7 +188,7 @@ func TestFull(t *testing.T) {
 					node.Send(context.Background(), Data{
 						State: []byte{},
 						Root:  []byte{},
-						Data:  &types.Data{},
+						Data:  []byte{123},
 					})
 
 				case msgs := <-node.Messages():
