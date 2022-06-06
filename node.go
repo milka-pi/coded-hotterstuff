@@ -18,7 +18,8 @@ var (
 type Data struct {
 	State []byte
 	Root  []byte
-	Data  *types.Data
+	// Data  *types.Data
+	Data  []byte
 }
 
 type Replica struct {

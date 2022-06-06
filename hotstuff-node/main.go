@@ -76,7 +76,7 @@ func randGenesis(rng *rand.Rand) *types.Block {
 			Block: header.Hash(),
 			Sig:   &types.AggregatedSignature{},
 		},
-		Data: &types.Data{},
+		Data: []byte{},
 	}
 }
 
@@ -206,7 +206,7 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 			node.Send(context.Background(), hotstuff.Data{
 				State: []byte{},
 				Root:  []byte{},
-				Data:  &types.Data{dummyData},
+				Data:  dummyData,
 			})
 
 		case msgs := <-node.Messages():

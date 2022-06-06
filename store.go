@@ -93,23 +93,25 @@ func (s *BlockStore) SaveCertificate(cert *types.Certificate) error {
 	return s.db.Put(certKey(cert.Block), buf, nil)
 }
 
-func (s *BlockStore) SaveData(hash []byte, data *types.Data) error {
-	buf, err := data.Marshal()
-	if err != nil {
-		return err
-	}
+func (s *BlockStore) SaveData(hash []byte, data []byte) error {
+	// buf, err := data.Marshal()
+	// if err != nil {
+	// 	return err
+	// }
+	buf := data
 	return s.db.Put(dataKey(hash), buf, nil)
 }
 
-func (s *BlockStore) GetData(hash []byte) (*types.Data, error) {
-	data := &types.Data{}
+func (s *BlockStore) GetData(hash []byte) ([]byte, error) {
+	// data := &types.Data{}
 	buf, err := s.db.Get(dataKey(hash), nil)
 	if err != nil {
 		return nil, err
 	}
-	if err := data.Unmarshal(buf); err != nil {
-		return nil, err
-	}
+	data := buf
+	// if err := data.Unmarshal(buf); err != nil {
+	// 	return nil, err
+	// }
 	return data, nil
 }
 
@@ -220,7 +222,8 @@ type ChainIterator struct {
 
 	header      *types.Header
 	certificate *types.Certificate
-	data        *types.Data
+	// data        *types.Data
+	data []byte
 }
 
 func (ci *ChainIterator) Err() error {
@@ -248,7 +251,7 @@ func (ci *ChainIterator) Ceritificate() *types.Certificate {
 	return ci.certificate
 }
 
-func (ci *ChainIterator) Data() *types.Data {
+func (ci *ChainIterator) Data() []byte {
 	if ci.data == nil {
 		ci.data, ci.err = ci.store.GetData(ci.header.Hash())
 	}

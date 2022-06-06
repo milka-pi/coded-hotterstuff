@@ -271,9 +271,9 @@ func (c *consensus) onCodedChunk(msg *types.Proposal){
 	// Round 2: broadcast received chunk
 	for i := 0; i < total; i++ {
 		// FIX: send all shares but one
-		if c.replicas[i] != c.id {
+		if uint64(i) != c.id {
 			// TODO: What is the correct way to index into the replicas?
-			c.sendMsg(NewProposalMsg(msg), c.replicas[i])
+			c.sendMsg(NewProposalMsg(msg), uint64(i))
 		}
 	}
 }
@@ -328,6 +328,7 @@ func (c *consensus) Step(msg *types.Message) {
 		// check if leading bit is 0/1 to decide whether to broadcast
 		// also save other fields (header, ..)
 		if leaderBit == 1 {
+			fmt.Println(c.id, "  received coded chunk from leader")
 			modifiedShareData := append([]byte{0}, shareData[1:]...)
 			modifiedProposal := types.Proposal{
 									Header:     m.Proposal.GetHeader(),
