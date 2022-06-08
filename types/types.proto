@@ -6,6 +6,7 @@ message Message {
                 NewView newview = 2;
                 Vote vote = 3;
                 Sync sync = 4;
+                SyncRequest syncreq = 5;
         }
 }
 
