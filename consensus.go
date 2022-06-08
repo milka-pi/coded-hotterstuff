@@ -503,7 +503,7 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		log.Debug("header for parent is not found", zap.Error(err))
 		// TODO if certified block is not found we need to sync with another node
 		c.Progress.AddNotFound(msg.Header.ParentView, msg.Header.Parent)
-		return
+		//return
 	}
 
 	if msg.Timeout != nil {
