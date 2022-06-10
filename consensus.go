@@ -5,6 +5,7 @@ import (
 	"crypto/rand"
 	"encoding/binary"
 	"fmt"
+	"sort"
 
 	// "math/rand"
 
@@ -77,8 +78,8 @@ func newConsensus(
 		randomIDToChunks: make(map[uint64]*codedChunks),
 		outdatedRandomIDs: make(map[uint64]struct{}),
 		// new
-		proposalsNoParent: make(map[*[]byte]*types.Proposal), 
-		nonFinalizedBlocks: make(map[*[]byte]*types.Block),
+		// proposalsToRevisit: make(map[*[]byte]*types.Proposal), 
+		proposalsToRevisit: []*types.Proposal{},
 	}
 }
 
@@ -122,9 +123,7 @@ type consensus struct {
 	outdatedRandomIDs map[uint64]struct{}
 
 	// TODO 6/6: new map to track blocks which could not be matched with parent block
-	proposalsNoParent map[*[]byte]*types.Proposal
-
-	nonFinalizedBlocks map[*[]byte]*types.Block
+	proposalsToRevisit []*types.Proposal
 }
 
 func (c *consensus) Tick() {
@@ -490,16 +489,30 @@ func (c *consensus) waitForParent() {
 	
 }
 
-func (c *consensus) getMostRecentFinHeader() (*types.Header, bool)  {
-	blockEvents := c.Progress.Events
-	length := len(blockEvents)
-	for i:=length-1; i>=0; i-- {
-		if blockEvents[i].Finalized {
-			return blockEvents[i].Header, true
+// // replace
+// func (c *consensus) getMostRecentFinHeader() (*types.Header, bool)  {
+// 	blockEvents := c.Progress.Events
+// 	length := len(blockEvents)
+// 	for i:=length-1; i>=0; i-- {
+// 		if blockEvents[i].Finalized {
+// 			return blockEvents[i].Header, true
+// 		}
+// 	}
+// 	return &types.Header{}, false
+// }
+
+
+// simple check that should pass on proposalsToRevisit
+// proposals should be sorted according to view number
+func (c *consensus) checkProposalsToRevisit() bool {
+	for i:=0; i<=len(c.proposalsToRevisit)-2; i++ {
+		if c.proposalsToRevisit[i].Header.View > c.proposalsToRevisit[i+1].Header.View {
+			return false
 		}
 	}
-	return &types.Header{}, false
+	return true
 }
+
 
 func (c *consensus) onProposal(msg *types.Proposal) {
 	log := c.vlog.With(
@@ -530,32 +543,31 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		log.Debug("header for parent is not found", zap.Error(err))
 		// TODO if certified block is not found we need to sync with another node
 		c.Progress.AddNotFound(msg.Header.ParentView, msg.Header.Parent)
-		
-		// return
 
 		// 6/6 new code
-		c.proposalsNoParent[&msg.Header.Parent] = msg
-
-		// save any type of message that cannot be processed at the moment
-
-		// new idea: handle it here, send sync request
 
 		// add an attribute to consensus - what msg caused the sync event
 		// call onProposal on msg that caused this
+		// reason: proposal gets dropped, you will not be able to participate in future proposals
 
-		// 6/8 Question: how to get most recent finalized block?  How to use block store?
-		mostRecentHeader, found := c.getMostRecentFinHeader()
-		if found {
-			syncReq := types.SyncRequest{
-				From: mostRecentHeader,
-				Limit: uint64(0),
-			}
-			c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
+		// save any type of message that cannot be processed at the moment
+		c.proposalsToRevisit = append(c.proposalsToRevisit, msg)
+
+		// sort array if not sorted
+		if c.checkProposalsToRevisit() == false {
+			sort.Slice(c.proposalsToRevisit, func(i, j int) bool {
+				return c.proposalsToRevisit[i].Header.View < c.proposalsToRevisit[j].Header.View
+			  })
 		}
 
-
-		// mostRecentView, err1 := c.store.GetView()
-		// mostRecentHeader, err := Header{}
+		// 6/8 Question: how to get most recent finalized block?  How to use block store? 
+		// 6/10 answer: just use c.commit -- contains most recently commited header
+		mostRecentHeader := c.commit
+		syncReq := types.SyncRequest{
+			From: mostRecentHeader,
+			Limit: uint64(0),
+		}
+		c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
 
 		return
 
@@ -725,16 +737,22 @@ func (c *consensus) syncView(header *types.Header, cert *types.Certificate, tcer
 
 func (c *consensus) getBlocksToReturn(from *types.Header) []*types.Block {
 	blocksToReturn := []*types.Block{}
+	// backtrack from c.commit to from
+	lastFinHeader := c.commit
+	lastFinBlock, err := c.store.GetBlock(lastFinHeader.Hash())
+	if err != nil {
+		blocksToReturn = append([]*types.Block{lastFinBlock}, blocksToReturn...)
+	}
 	for {
-		lastFinHeader, err1 := c.store.GetHeader(from.GetParent())
-		lastFinBlock, err2 := c.store.GetBlock(from.GetParent())
-		if err1 != nil && err2 != nil {
-			blocksToReturn = append(blocksToReturn, lastFinBlock)
+		lastFinHeader, err1 := c.store.GetHeader(lastFinHeader.GetParent())
+		lastFinBlock, err2 := c.store.GetBlock(lastFinHeader.GetParent())
+
+		if err1 != nil && err2 != nil && bytes.Compare(from.Hash(), lastFinHeader.Hash()) != 0 {
+			blocksToReturn = append([]*types.Block{lastFinBlock}, blocksToReturn...)
 		} else {
 			break
 		}
 		// is this correct? should I check view number?
-		from = lastFinHeader
 	}
 	return blocksToReturn
 }
@@ -747,6 +765,7 @@ func (c *consensus) onSyncReq(syncReq *types.SyncRequest) {
 	c.sendMsg(NewSyncMsg(blocksToReturn...), )
 	
 	// TODO 6/10: add sender id/index as an extra syncRequest field.
+	// answer: pass c.id
 
 }
 
@@ -756,6 +775,8 @@ func (c *consensus) onSync(sync *types.Sync) {
 			return
 		}
 	}
+	// call onProposal() on all proposals that caused you to sync
+	// optimization: don't ask for everything, check chain of proposals that caused you to sync
 }
 
 // syncBlock returns false if block is invalid.
