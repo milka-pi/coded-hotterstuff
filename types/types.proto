@@ -14,6 +14,7 @@ message SyncRequest {
         Header from = 1;
         // zero limit sends all
         uint64 limit = 2;
+        uint64 id = 3;
 }
 
 // Proposal carries header and data of the new proposal and certificate of the parent.
