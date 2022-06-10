@@ -71,3 +71,7 @@ func NewViewMsg(newview *types.NewView) *types.Message {
 func NewSyncMsg(blocks ...*types.Block) *types.Message {
 	return &types.Message{Type: &types.Message_Sync{Sync: &types.Sync{Blocks: blocks}}}
 }
+
+func NewSyncReqMsg(syncReq *types.SyncRequest) *types.Message {
+	return &types.Message{Type: &types.Message_Syncreq{Syncreq: syncReq}}
+}

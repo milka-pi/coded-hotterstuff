@@ -76,6 +76,9 @@ func newConsensus(
 		// new
 		randomIDToChunks: make(map[uint64]*codedChunks),
 		outdatedRandomIDs: make(map[uint64]struct{}),
+		// new
+		proposalsNoParent: make(map[*[]byte]*types.Proposal), 
+		nonFinalizedBlocks: make(map[*[]byte]*types.Block),
 	}
 }
 
@@ -114,9 +117,14 @@ type consensus struct {
 
 	//----------------------------------------------------------------------------------------------
 	// new field: for Coded Broadcast
-	// TODO: cannot store all chunks, when should I delete? after confirming a block? after decoding. OK
+	// DONE: cannot store all chunks, when should I delete? after confirming a block? after decoding. OK
 	randomIDToChunks map[uint64]*codedChunks
 	outdatedRandomIDs map[uint64]struct{}
+
+	// TODO 6/6: new map to track blocks which could not be matched with parent block
+	proposalsNoParent map[*[]byte]*types.Proposal
+
+	nonFinalizedBlocks map[*[]byte]*types.Block
 }
 
 func (c *consensus) Tick() {
@@ -257,7 +265,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 		for i := 0; i < total; i++ {
 			// FIX: send all shares but one
 			if uint64(i) != c.id {
-				// TODO: What is the correct way to index into the replicas?
+				// DONE: What is the correct way to index into the replicas?
 				c.sendMsg(NewProposalMsg(&proposals[i]), uint64(i))
 			}
 		}
@@ -275,7 +283,7 @@ func (c *consensus) onCodedChunk(msg *types.Proposal){
 	for i := 0; i < total; i++ {
 		// FIX: send all shares but one
 		if uint64(i) != c.id {
-			// TODO: What is the correct way to index into the replicas?
+			// DONE: What is the correct way to index into the replicas?
 			c.sendMsg(NewProposalMsg(msg), uint64(i))
 			fmt.Println("replica", c.id, "is forwarding chunk to replica", i)
 		}
@@ -358,7 +366,7 @@ func (c *consensus) Step(msg *types.Message) {
 			if chunks, ok2 := c.randomIDToChunks[randomID]; ok2 {
 				// already received some chunk for this random id
 	
-				// TODO: fix Data type issue 
+				// DONE: fix Data type issue 
 				chunks.chunksList = append(chunks.chunksList, trimmedShare)			
 			} else {
 				// this is the first chunk received for this random id
@@ -404,7 +412,10 @@ func (c *consensus) Step(msg *types.Message) {
 		c.onNewView(m.Newview)
 	case *types.Message_Sync:
 		c.onSync(m.Sync)
+	case *types.Message_Syncreq:
+		c.onSyncReq(m.Syncreq)
 	}
+	
 }
 
 func (c *consensus) sendMsg(msg *types.Message, ids ...uint64) {
@@ -474,6 +485,22 @@ func (c *consensus) nextRound(timedout bool) {
 	}
 }
 
+// TODO 6/6: wait to receive parent block if lagging
+func (c *consensus) waitForParent() {
+	
+}
+
+func (c *consensus) getMostRecentFinHeader() (*types.Header, bool)  {
+	blockEvents := c.Progress.Events
+	length := len(blockEvents)
+	for i:=length-1; i>=0; i-- {
+		if blockEvents[i].Finalized {
+			return blockEvents[i].Header, true
+		}
+	}
+	return &types.Header{}, false
+}
+
 func (c *consensus) onProposal(msg *types.Proposal) {
 	log := c.vlog.With(
 		zap.String("msg", "proposal"),
@@ -503,7 +530,35 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		log.Debug("header for parent is not found", zap.Error(err))
 		// TODO if certified block is not found we need to sync with another node
 		c.Progress.AddNotFound(msg.Header.ParentView, msg.Header.Parent)
+		
+		// return
+
+		// 6/6 new code
+		c.proposalsNoParent[&msg.Header.Parent] = msg
+
+		// save any type of message that cannot be processed at the moment
+
+		// new idea: handle it here, send sync request
+
+		// add an attribute to consensus - what msg caused the sync event
+		// call onProposal on msg that caused this
+
+		// 6/8 Question: how to get most recent finalized block?  How to use block store?
+		mostRecentHeader, found := c.getMostRecentFinHeader()
+		if found {
+			syncReq := types.SyncRequest{
+				From: mostRecentHeader,
+				Limit: uint64(0),
+			}
+			c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
+		}
+
+
+		// mostRecentView, err1 := c.store.GetView()
+		// mostRecentHeader, err := Header{}
+
 		return
+
 	}
 
 	if msg.Timeout != nil {
@@ -527,6 +582,8 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		return
 	}
 
+	// IK question 6/6: is this an application-specific todo? yes
+
 	// TODO after basic validation, state machine needs to validate Data included in the proposal
 	// add Data to Progress and wait for a validation from state machine
 	// everything after this comment should be done after receiving ack from app state machine
@@ -539,10 +596,14 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 
 func (c *consensus) persistProposal(msg *types.Proposal) {
 	hash := msg.Header.Hash()
+
+	// IK question 6/6: Is this similar to the above todo
+
 	// TODO header and data for proposal must be tracked, as they can be pruned from store
 	// e.g. add a separate bucket for tracking non-finalized blocks
 	// remove from that bucket when block is commited
 	// in background run a thread that will clear blocks that are in that bucket with a height <= commited height
+
 	err := c.store.SaveHeader(msg.Header)
 	if err != nil {
 		c.vlog.Fatal("can't save a header", zap.Error(err))
@@ -660,6 +721,33 @@ func (c *consensus) syncView(header *types.Header, cert *types.Certificate, tcer
 		}
 		c.nextRound(false)
 	}
+}
+
+func (c *consensus) getBlocksToReturn(from *types.Header) []*types.Block {
+	blocksToReturn := []*types.Block{}
+	for {
+		lastFinHeader, err1 := c.store.GetHeader(from.GetParent())
+		lastFinBlock, err2 := c.store.GetBlock(from.GetParent())
+		if err1 != nil && err2 != nil {
+			blocksToReturn = append(blocksToReturn, lastFinBlock)
+		} else {
+			break
+		}
+		// is this correct? should I check view number?
+		from = lastFinHeader
+	}
+	return blocksToReturn
+}
+
+// 6/9 NEW
+func (c *consensus) onSyncReq(syncReq *types.SyncRequest) {
+	from := syncReq.GetFrom()
+	// limit := syncReq.GetLimit()
+	blocksToReturn := c.getBlocksToReturn(from)
+	c.sendMsg(NewSyncMsg(blocksToReturn...), )
+	
+	// TODO 6/10: add sender id/index as an extra syncRequest field.
+
 }
 
 func (c *consensus) onSync(sync *types.Sync) {
