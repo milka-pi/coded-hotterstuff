@@ -484,23 +484,11 @@ func (c *consensus) nextRound(timedout bool) {
 	}
 }
 
-// TODO 6/6: wait to receive parent block if lagging
-func (c *consensus) waitForParent() {
-	
+func removeIndex(s []*types.Proposal, index int) []*types.Proposal {
+	ret := make([]*types.Proposal, 0)
+	ret = append(ret, s[:index]...)
+	return append(ret, s[index+1:]...)
 }
-
-// // replace
-// func (c *consensus) getMostRecentFinHeader() (*types.Header, bool)  {
-// 	blockEvents := c.Progress.Events
-// 	length := len(blockEvents)
-// 	for i:=length-1; i>=0; i-- {
-// 		if blockEvents[i].Finalized {
-// 			return blockEvents[i].Header, true
-// 		}
-// 	}
-// 	return &types.Header{}, false
-// }
-
 
 // simple check that should pass on proposalsToRevisit
 // proposals should be sorted according to view number
@@ -544,8 +532,6 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		// TODO if certified block is not found we need to sync with another node
 		c.Progress.AddNotFound(msg.Header.ParentView, msg.Header.Parent)
 
-		// 6/6 new code
-
 		// add an attribute to consensus - what msg caused the sync event
 		// call onProposal on msg that caused this
 		// reason: proposal gets dropped, you will not be able to participate in future proposals
@@ -553,25 +539,47 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		// save any type of message that cannot be processed at the moment
 		c.proposalsToRevisit = append(c.proposalsToRevisit, msg)
 
-		// sort array if not sorted
+		// sort array if not sorted (may be redundant)
 		if c.checkProposalsToRevisit() == false {
 			sort.Slice(c.proposalsToRevisit, func(i, j int) bool {
 				return c.proposalsToRevisit[i].Header.View < c.proposalsToRevisit[j].Header.View
 			  })
 		}
 
-		// 6/8 Question: how to get most recent finalized block?  How to use block store? 
-		// 6/10 answer: just use c.commit -- contains most recently commited header
-		mostRecentHeader := c.commit
-		syncReq := types.SyncRequest{
-			From: mostRecentHeader,
-			Limit: uint64(0),
-		}
-		c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
+		// DONE?? 6/10 - Optimization: if the proposal's parent is already in `proposalsToRevisit`, do not make syncRequest 
+		// 								but def append to `proposalsToRevisit`.
+		// idea: only check most recent one for parent?
 
+		// TODO 6/13: check for error due to aliasing (need to deepcopy)
+
+		if len(c.proposalsToRevisit) > 0 {
+			// check if parent is already in `proposalsToRevisit`. If not, issue sync request.
+			if bytes.Compare(msg.Header.Parent, c.proposalsToRevisit[len(c.proposalsToRevisit) - 1].Header.Hash()) != 1 {
+				// 6/8 Question: how to get most recent finalized block?  How to use block store? 
+				// 6/10 answer: just use c.commit -- contains most recently commited header
+				mostRecentHeader := c.commit
+				syncReq := types.SyncRequest{
+					From: mostRecentHeader,
+					Limit: uint64(0),
+					Id: c.id,
+				}
+				c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
+				fmt.Println("node ", c.id, " made sync request for view ", c.view)
+			}
+		}
 		return
 
 	}
+
+	// 6/13: remove proposal from `proposalsToRevisit` if needed, since the parent check passed
+	for i:=0; i<= len(c.proposalsToRevisit)-1; i++ {
+		if bytes.Compare(c.proposalsToRevisit[i].Header.Hash(), msg.Header.Hash()) == 0 {
+			c.proposalsToRevisit = removeIndex(c.proposalsToRevisit, i)
+		}
+	}
+
+	//--------------------------------------------------------------------------------------------------------------
+	// old code below
 
 	if msg.Timeout != nil {
 		if !c.verifier.VerifyAggregated(HashSum(EncodeUint64(msg.Header.View-1)), msg.Timeout.Sig) {
@@ -761,12 +769,13 @@ func (c *consensus) getBlocksToReturn(from *types.Header) []*types.Block {
 func (c *consensus) onSyncReq(syncReq *types.SyncRequest) {
 	from := syncReq.GetFrom()
 	// limit := syncReq.GetLimit()
+	id := syncReq.GetId()
 	blocksToReturn := c.getBlocksToReturn(from)
-	c.sendMsg(NewSyncMsg(blocksToReturn...), )
+	c.sendMsg(NewSyncMsg(blocksToReturn...), id)
+	fmt.Println("node ", c.id, " received sync request from node ", id, " for views since ", syncReq.From.View)
 	
-	// TODO 6/10: add sender id/index as an extra syncRequest field.
+	// DONE 6/10: add sender id/index as an extra syncRequest field.
 	// answer: pass c.id
-
 }
 
 func (c *consensus) onSync(sync *types.Sync) {
@@ -777,6 +786,12 @@ func (c *consensus) onSync(sync *types.Sync) {
 	}
 	// call onProposal() on all proposals that caused you to sync
 	// optimization: don't ask for everything, check chain of proposals that caused you to sync
+
+	for i:=0; i<= len(c.proposalsToRevisit)-1; i++ {
+		c.onProposal(c.proposalsToRevisit[i])
+	}
+	// TODO 6/13: remove proposal from array when onProposal succeeds
+	// Idea: delete if passed the if statement inside `onProposal()`
 }
 
 // syncBlock returns false if block is invalid.
