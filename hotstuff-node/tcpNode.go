@@ -60,7 +60,7 @@ func sendMessages(ctx context.Context, idx int, conn net.Conn, outMsgsChan <-cha
 			fmt.Println("sendMessages: Time to return")
 				return nil
 			case msg := <-outMsgsChan:
-				fmt.Println("Read msg from outMsgsChan...")
+				// fmt.Println("Read msg from outMsgsChan...")
 				bytes, _ := msg.Marshal()
 				augBytes := augmentByteArrayWithLength(bytes)
 				_, sendErr := conn.Write(augBytes)
@@ -101,7 +101,8 @@ func exchangeIDs(conn io.ReadWriter, myID int) (int, error) {
 
 // both listening for and sending messages/requests 
 func handleConnection(conn net.Conn, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
-	fmt.Printf("node %v has new connection\n", idx)
+	// fmt.Printf("node %v has new connection\n", idx)
+
 	//Make a background context
 	ctx := context.Background()
 	//Derive a context with cancel
@@ -158,7 +159,7 @@ func acceptConnections(ln net.Listener, idx int, arrayOfChannels []chan *types.M
 		if err_conn != nil {
 			fmt.Println("Error accepting: ", err_conn.Error())
 		}
-		fmt.Println("Established connection")
+		// fmt.Println("Established connection")
 
 		go handleConnection(conn, idx, arrayOfChannels, inMsgsChan)
 	}
@@ -171,7 +172,7 @@ func listenForConnections(ipAddress string, idx int, arrayOfChannels []chan *typ
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Listening for requests...")
+	// fmt.Println("Listening for requests...")
 
 	go acceptConnections(ln, idx, arrayOfChannels, inMsgsChan);
 

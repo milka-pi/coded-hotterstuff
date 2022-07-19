@@ -12,7 +12,7 @@ import (
 
 
 func TestFull(t *testing.T) {
-	// create 4 nodes, where 4 = 4f+1 for f=1
+	// create 4 nodes, where 4 = 3f+1 for f=1
 	numNodes := NUMBER_OF_NODES
 
 
@@ -22,7 +22,7 @@ func TestFull(t *testing.T) {
 
 	var wg sync.WaitGroup
 
-	totalToAchieve := 5
+	totalToAchieve := 3
 	totalConfirmed := 0
 
 	confirmedChannel := make(chan int, 10)

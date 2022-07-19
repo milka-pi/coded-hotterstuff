@@ -59,13 +59,17 @@ func newConsensus(
 	if err != nil {
 		logger.Fatal("failed to load prepare certificate", zap.Error(err))
 	}
+
+	// new: calculate erasure code configuration
+	maxNumFaulty := (len(replicas) - 1) / 3
+
 	return &consensus{
 		log:         logger,
 		store:       store,
 		signer:      signer,
 		verifier:    verifier,
 		id:          id,
-		replicas:    replicas,
+		replicas:    replicas, // array of public keys
 		timeouts:    NewTimeouts(verifier, 2*len(replicas)/3+1),
 		votes:       NewVotes(verifier, 2*len(replicas)/3+1),
 		prepare:     prepare,
@@ -77,6 +81,14 @@ func newConsensus(
 		// new
 		randomIDToChunks: make(map[uint64]*codedChunks),
 		outdatedRandomIDs: make(map[uint64]struct{}),
+
+		errCodeConfig: erasureCodeConfig{
+			required: len(replicas) - 1 - maxNumFaulty,
+			// required: 2,
+			// oversampled: ,
+			total: len(replicas) - 1, 
+			// total: 3,
+		},
 		// new
 		// proposalsToRevisit: make(map[*[]byte]*types.Proposal), 
 		proposalsToRevisit: []*types.Proposal{},
@@ -122,6 +134,8 @@ type consensus struct {
 	randomIDToChunks map[uint64]*codedChunks
 	outdatedRandomIDs map[uint64]struct{}
 
+	errCodeConfig erasureCodeConfig
+
 	// TODO 6/6: new map to track blocks which could not be matched with parent block
 	proposalsToRevisit []*types.Proposal
 }
@@ -133,30 +147,35 @@ func (c *consensus) Tick() {
 	}
 }
 
+type erasureCodeConfig struct{
+	required int
+	// oversampled int
+	total int
+}
 
-const(
-	required = 3
-	oversampled = 1
-	total = 4
-)
+// const(
+// 	required = 2
+// 	oversampled = 1
+// 	total = 3
+// )
 
 type codedChunks struct{
 	randomID uint64
-	originalProposal *types.Proposal
+	originalChunk *types.Proposal
 	chunksList []infectious.Share
 }
 
 
-func getDataShares(data_bytes []byte) []infectious.Share {
+func (c *consensus) getDataShares(data_bytes []byte) []infectious.Share {
 	// Create a *FEC, which will require required pieces for reconstruction at
 	// minimum, and generate total total pieces.
-	f, err := infectious.NewFEC(required, total)
+	f, err := infectious.NewFEC(c.errCodeConfig.required , c.errCodeConfig.total)
 	if err != nil {
 		panic(err)
 	}
 
 	// Prepare to receive the shares of encoded data.
-	shares := make([]infectious.Share, total)
+	shares := make([]infectious.Share, c.errCodeConfig.total)
 	output := func(s infectious.Share) {
 		// the memory in s gets reused, so we need to make a deep copy
 		shares[s.Number] = s.DeepCopy()
@@ -165,8 +184,8 @@ func getDataShares(data_bytes []byte) []infectious.Share {
 	// prepend length in un-encoded data and pad to make it multiple of `required`
 	// slice of slice of bytes ([][] bytes): encoded data
 	data_bytes = augmentByteArrayWithLength(data_bytes)
-	data_bytes = pad(data_bytes, required)
-	if len(data_bytes) % required != 0 {
+	data_bytes = pad(data_bytes, c.errCodeConfig.required)
+	if len(data_bytes) % c.errCodeConfig.required != 0 {
 		panic("Error: impoper padding!")
 	}
 
@@ -226,7 +245,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 
 
 		// DONE 6/3: generate random id outside for loop
-		shares := getDataShares(data_bytes)
+		shares := c.getDataShares(data_bytes)
 		// we now have total shares.
 		// generate random ID number
 		randomID := make([]byte, 8)
@@ -244,31 +263,36 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 		// prepend shares[i].Data with random id (32 bytes)
 		// also prepend with 0/1 leader or not? (original/forwarded)
 
-		proposals := make([]types.Proposal, total)
-		for i := 0; i < total; i++ {
-			proposals[i] = types.Proposal{
+		// proposals := make([]types.Proposal, total)
+		
+		// sharesWrapped: map: id -> data share, for all ids except for the leader id 
+		wrappedShares := make(map[int]*types.Proposal, c.errCodeConfig.total)
+		j := 0
+		for i := 0; i < len(c.replicas); i++ {
+			if uint64(i) != c.id {
+
+				wrappedShares[i] = &types.Proposal{
 					Header:     proposal.GetHeader(),
 					// DONE: replace with 'Data: shares[i].Data'
-					Data:       shares[i].Data,
+					Data:       shares[j].Data,
 					ParentCert: proposal.GetParentCert(),
 					Timeout:    proposal.GetTimeout(),
 					Sig:        proposal.GetSig(),
+				}
+				j += 1
 			}
-
 		}
 
 		// DONE 6/3: prepend data bytes array also with Number field.
 		// try this on simple reed-solomon
 
-
-		for i := 0; i < total; i++ {
-			// FIX: send all shares but one
-			if uint64(i) != c.id {
-				// DONE: What is the correct way to index into the replicas?
-				c.sendMsg(NewProposalMsg(&proposals[i]), uint64(i))
-			}
+		for peerID, wrappedShare := range wrappedShares  {
+			// FIXED: send all 3f shares. No share associated with the leader.
+			c.sendMsg(NewProposalMsg(wrappedShare), uint64(peerID))
 		}
 
+		// [SOS] FIXED 7/18: Leader needs to invoke onProposal() directly (for himself!) to make progress and vote.. 
+		// c.onProposal(proposal) 
 
 		// c.sendMsg(NewProposalMsg(proposal))
 	}
@@ -277,33 +301,36 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 // onCodedChunk() 
 // - borrow functionality from onVote etc. to count up to 2f+1 received chunks
 
-func (c *consensus) onCodedChunk(msg *types.Proposal){
+func (c *consensus) broadcastCodedChunk(msg *types.Proposal){
 	// Round 2: broadcast received chunk
-	for i := 0; i < total; i++ {
-		// FIX: send all shares but one
+	for i := 0; i < len(c.replicas); i++ {
+		// FIXED: broadcast chunk to all nodes except myself (and the leader?)
 		if uint64(i) != c.id {
 			// DONE: What is the correct way to index into the replicas?
 			c.sendMsg(NewProposalMsg(msg), uint64(i))
 			fmt.Println("replica", c.id, "is forwarding chunk to replica", i)
 		}
 	}
+
+	// && uint64(i) != c.getLeader(c.view)
 }
 
 
 // use chunks/shares to decode and reconstruct the proposal
-func (c *consensus) decodeProposal(randomID uint64) []byte {
+func (c *consensus) decodeProposal(randomID uint64) ([]byte, error) {
 
 	// shares should be trimmed at this point
 	shares := c.randomIDToChunks[randomID].chunksList
 
-	f, err := infectious.NewFEC(required, total)
+	f, err := infectious.NewFEC(c.errCodeConfig.required, c.errCodeConfig.total)
 	if err != nil {
 		panic(err)
 	}
 
 	result, err := f.Decode(nil, shares)
 	if err != nil {
-		panic(err)
+		return []byte{}, err
+		// panic(err)
 	}
 
 	// we have the original data!
@@ -313,14 +340,19 @@ func (c *consensus) decodeProposal(randomID uint64) []byte {
 	original_bytes := getBytesFromAugmented(padded_bytes)
 	// original_msg := string(original_bytes)
 	// fmt.Println("Original data bytes:", original_msg)
-	return original_bytes
+	return original_bytes, nil
 }
 
 func (c *consensus) Step(msg *types.Message) {
 	switch m := msg.GetType().(type) {
+
 	case *types.Message_Proposal:
 		// change logic
-		
+
+		// if c.id == c.getLeader(c.view) {
+		// 	fmt.Println("LEADER ENTERED Step -> types.Message_Proposal !")
+		// } else {
+
 		// check sender? if leader, then call onCodedChunk()
 		// store received proposals in dictionary indexed by viewNumber? -- indexed by random id
 
@@ -340,7 +372,7 @@ func (c *consensus) Step(msg *types.Message) {
 		// check if leading bit is 0/1 to decide whether to broadcast
 		// also save other fields (header, ..)
 		if leaderBit == 1 {
-			fmt.Println("replica", c.id, "received coded chunk from leader")
+			fmt.Println("replica", c.id, "received coded chunk from leader", c.getLeader(c.view))
 			modifiedShareData := append([]byte{0}, shareData[1:]...)
 			modifiedProposal := types.Proposal{
 									Header:     m.Proposal.GetHeader(),
@@ -350,7 +382,7 @@ func (c *consensus) Step(msg *types.Message) {
 									Timeout:    m.Proposal.GetTimeout(),
 									Sig:        m.Proposal.GetSig(),
 								}
-			c.onCodedChunk(&modifiedProposal)
+			c.broadcastCodedChunk(&modifiedProposal)
 		}
 
 		// TODO: check if header and other info is the same as the one sent by the leader
@@ -371,7 +403,7 @@ func (c *consensus) Step(msg *types.Message) {
 				// this is the first chunk received for this random id
 				c.randomIDToChunks[randomID] = &codedChunks{
 											randomID: randomID,
-											originalProposal: m.Proposal,
+											originalChunk: m.Proposal,
 											// TODO: only if leader (okay for now)
 											chunksList: []infectious.Share{trimmedShare},			
 										}
@@ -380,27 +412,33 @@ func (c *consensus) Step(msg *types.Message) {
 
 
 			// check if have received enough chunks. If so, attempt decoding the proposal
-			if len(c.randomIDToChunks[randomID].chunksList) >= required {
+			if len(c.randomIDToChunks[randomID].chunksList) >= c.errCodeConfig.required {
 				// TODO 6/3: add error handling --> don't call onProposal
-				proposalData := c.decodeProposal(randomID)
-				origProp := c.randomIDToChunks[randomID].originalProposal
-				fullProposal := types.Proposal{
-									Header:     origProp.GetHeader(),
-									// might need fixing
-									Data:       proposalData,
-									ParentCert: origProp.GetParentCert(),
-									Timeout:    origProp.GetTimeout(),
-									Sig:        origProp.GetSig(),
-								}
-				c.onProposal(&fullProposal)
-				
-				// discard saved chunks
-				delete(c.randomIDToChunks, randomID)
-				c.outdatedRandomIDs[randomID] = struct{}{}
+				proposalData, errDecode := c.decodeProposal(randomID)
+				if errDecode != nil {
+					c.vlog.Debug("Could not decode original proposal")
+				} else {
+					c.vlog.Debug("Decoded original proposal")
+					originalChunk := c.randomIDToChunks[randomID].originalChunk
+					fullProposal := types.Proposal{
+										Header:     originalChunk.GetHeader(),
+										// might need fixing
+										Data:       proposalData,
+										ParentCert: originalChunk.GetParentCert(),
+										Timeout:    originalChunk.GetTimeout(),
+										Sig:        originalChunk.GetSig(),
+									}
+					c.onProposal(&fullProposal)
+					
+					// discard saved chunks
+					delete(c.randomIDToChunks, randomID)
+					c.outdatedRandomIDs[randomID] = struct{}{}
 
-				// DONE? 6/3: implementation level issue: create outdated randomIDs map. 
+					// DONE? 6/3: implementation level issue: create outdated randomIDs map. 
+				}
 			}
 		}
+		// }
 
 
 		// c.onProposal(m.Proposal)
@@ -525,7 +563,7 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		return
 	}
 
-	fmt.Println("------------ msg.Header.Parent: ", msg.Header.Parent, "-------------------")	
+	// fmt.Println("------------ msg.Header.Parent: ", msg.Header.Parent, "-------------------")	
 	parent, err := c.store.GetHeader(msg.Header.Parent)
 	if err != nil {
 		log.Debug("header for parent is not found", zap.Error(err))

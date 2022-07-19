@@ -26,6 +26,7 @@ const (
 	DEFAULT_MESSAGE = "hello"
 	NUMBER_OF_NODES = 4
 	SEED = 0
+	BLOCK_SIZE = 10_000_000 // 10 MBytes
 )
 
 var (
@@ -90,7 +91,7 @@ func randRoot(rng *rand.Rand) []byte {
 func createExampleNode(idx int, n int, interval time.Duration) *hotstuff.Node {
 	rng := rand.New(rand.NewSource(seed))
 	genesis := randGenesis(rng)
-	fmt.Println("node", idx, "genesis block hash", genesis.Header.Hash())
+	// fmt.Println("node", idx, "genesis block hash", genesis.Header.Hash())
 
 	logger, err := zap.NewDevelopment()
 	must(err)
@@ -168,7 +169,7 @@ func collectMessages(node *hotstuff.Node, inMsgsChan <-chan *types.Message) {
 
 
 func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]string, confirmedChannel chan int) {
-	dummyData := make([]byte, 10000000)
+	dummyData := make([]byte, BLOCK_SIZE)
 	rand.Read(dummyData)
 	// randTx := []*types.Transaction{{
 	// 	Data: dummyData,
