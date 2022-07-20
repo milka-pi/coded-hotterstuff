@@ -186,7 +186,7 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 	go listenForConnections(myIpAddress, index, arrayOfChannels, inMsgsChan)
  
 	for i := 0; i < index; i++ {
-		fmt.Println("initiating connection to node with index:", i)
+		// fmt.Println("initiating connection to node with index:", i)
 		ipAddress_i := ipAddressList[i]
 		go initiateConnection(ipAddress_i, index, arrayOfChannels, inMsgsChan)
 	}
@@ -212,7 +212,7 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 
 		case msgs := <-node.Messages():
 			// node.logger.Debug("CASE <- MESSAGES") // extra
-			fmt.Println("Node ", index, "--> ", "CASE <- MESSAGES")
+			// fmt.Println("Node ", index, "--> ", "CASE <- MESSAGES")
 			// broadcast message to all nodes or send it to a node if specified
 			for _, m := range msgs {
 				// if need to broadcast to all nodes
@@ -221,13 +221,13 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 
 		case blocks := <-node.Blocks():
 			// node.logger.Debug("CASE <- BLOCKS") // extra
-			fmt.Println("Node ", index, "--> ", "CASE <- BLOCKS")
+			// fmt.Println("Node ", index, "--> ", "CASE <- BLOCKS")
 			for _, b := range blocks {
 				if b.Finalized {
 					// lock.Lock()
 					confirmedChannel <- 1
 					// lock.Unlock()
-					fmt.Println("+1 block finalized")
+					fmt.Println("Node ", index, "+1 block finalized")
 				}
 			}
 		
@@ -237,7 +237,7 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 
 		// if cancelFunction() executes
 		case <- ctx.Done(): 
-			fmt.Println("entryPoint: Time to return")
+			fmt.Println("Node ", index, " entryPoint: Time to return")
 				return
 
 		}

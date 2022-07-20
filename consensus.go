@@ -292,7 +292,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 		}
 
 		// [SOS] FIXED 7/18: Leader needs to invoke onProposal() directly (for himself!) to make progress and vote.. 
-		// c.onProposal(proposal) 
+		c.onProposal(proposal) 
 
 		// c.sendMsg(NewProposalMsg(proposal))
 	}
@@ -305,10 +305,22 @@ func (c *consensus) broadcastCodedChunk(msg *types.Proposal){
 	// Round 2: broadcast received chunk
 	for i := 0; i < len(c.replicas); i++ {
 		// FIXED: broadcast chunk to all nodes except myself (and the leader?)
-		if uint64(i) != c.id {
+		if uint64(i) != c.id && uint64(i) != c.getLeader(msg.Header.View) {
 			// DONE: What is the correct way to index into the replicas?
 			c.sendMsg(NewProposalMsg(msg), uint64(i))
 			fmt.Println("replica", c.id, "is forwarding chunk to replica", i)
+
+			if uint64(i) == c.getLeader(msg.Header.View) {
+				log := c.vlog.With(
+					zap.String("msg", "chunk"),
+					zap.Uint64("header view", msg.Header.View),
+					zap.Uint64("prepare view", c.prepare.View),
+					zap.Binary("hash", msg.Header.Hash()),
+					zap.Binary("parent", msg.Header.Parent))
+			
+				log.Debug("forwarding chunk to leader " + fmt.Sprint(i))
+
+			}
 		}
 	}
 
@@ -349,96 +361,96 @@ func (c *consensus) Step(msg *types.Message) {
 	case *types.Message_Proposal:
 		// change logic
 
-		// if c.id == c.getLeader(c.view) {
-		// 	fmt.Println("LEADER ENTERED Step -> types.Message_Proposal !")
-		// } else {
+		if c.id == c.getLeader(m.Proposal.Header.View) {
+			fmt.Println("LEADER ENTERED Step -> types.Message_Proposal !")
+		} else {
 
-		// check sender? if leader, then call onCodedChunk()
-		// store received proposals in dictionary indexed by viewNumber? -- indexed by random id
+			// check sender? if leader, then call onCodedChunk()
+			// store received proposals in dictionary indexed by viewNumber? -- indexed by random id
 
-		// DONE: fetch view number of proposal
-		// answer: will use random id
+			// DONE: fetch view number of proposal
+			// answer: will use random id
 
-		shareData := m.Proposal.Data
-		// fmt.Println(c.id, "shareData: ", shareData)
+			shareData := m.Proposal.Data
+			// fmt.Println(c.id, "shareData: ", shareData)
 
-		// strip share from leader bit random id
-		leaderBit := int(shareData[0])
-		randomID := uint64(binary.BigEndian.Uint32(shareData[1:9]))
-		shareNumberField := int(binary.BigEndian.Uint32(shareData[9:13]))
-		// share.Data = share.Data[9:]
-
-
-		// check if leading bit is 0/1 to decide whether to broadcast
-		// also save other fields (header, ..)
-		if leaderBit == 1 {
-			fmt.Println("replica", c.id, "received coded chunk from leader", c.getLeader(c.view))
-			modifiedShareData := append([]byte{0}, shareData[1:]...)
-			modifiedProposal := types.Proposal{
-									Header:     m.Proposal.GetHeader(),
-									// might need fixing
-									Data:       modifiedShareData,
-									ParentCert: m.Proposal.GetParentCert(),
-									Timeout:    m.Proposal.GetTimeout(),
-									Sig:        m.Proposal.GetSig(),
-								}
-			c.broadcastCodedChunk(&modifiedProposal)
-		}
-
-		// TODO: check if header and other info is the same as the one sent by the leader
-		// for now: assume everyone is honest
-		// ANSWER: can filter out when using Merkle trees to authenticate
-		trimmedShare := infectious.Share{Number: shareNumberField,
-										Data: shareData[13:]}
-
-		_, ok1 := c.outdatedRandomIDs[randomID]
-		// Update chunksList only if randomID is not outdated
-		if !ok1 {
-			if chunks, ok2 := c.randomIDToChunks[randomID]; ok2 {
-				// already received some chunk for this random id
-	
-				// DONE: fix Data type issue 
-				chunks.chunksList = append(chunks.chunksList, trimmedShare)			
-			} else {
-				// this is the first chunk received for this random id
-				c.randomIDToChunks[randomID] = &codedChunks{
-											randomID: randomID,
-											originalChunk: m.Proposal,
-											// TODO: only if leader (okay for now)
-											chunksList: []infectious.Share{trimmedShare},			
-										}
-			}
-			fmt.Println("replica", c.id, "has received", len(c.randomIDToChunks[randomID].chunksList), "chunks")
+			// strip share from leader bit random id
+			leaderBit := int(shareData[0])
+			randomID := uint64(binary.BigEndian.Uint32(shareData[1:9]))
+			shareNumberField := int(binary.BigEndian.Uint32(shareData[9:13]))
+			// share.Data = share.Data[9:]
 
 
-			// check if have received enough chunks. If so, attempt decoding the proposal
-			if len(c.randomIDToChunks[randomID].chunksList) >= c.errCodeConfig.required {
-				// TODO 6/3: add error handling --> don't call onProposal
-				proposalData, errDecode := c.decodeProposal(randomID)
-				if errDecode != nil {
-					c.vlog.Debug("Could not decode original proposal")
-				} else {
-					c.vlog.Debug("Decoded original proposal")
-					originalChunk := c.randomIDToChunks[randomID].originalChunk
-					fullProposal := types.Proposal{
-										Header:     originalChunk.GetHeader(),
+			// check if leading bit is 0/1 to decide whether to broadcast
+			// also save other fields (header, ..)
+			if leaderBit == 1 {
+				// fmt.Println("replica", c.id, "received coded chunk from leader", c.getLeader(m.Proposal.Header.View))
+				modifiedShareData := append([]byte{0}, shareData[1:]...)
+				modifiedProposal := types.Proposal{
+										Header:     m.Proposal.GetHeader(),
 										// might need fixing
-										Data:       proposalData,
-										ParentCert: originalChunk.GetParentCert(),
-										Timeout:    originalChunk.GetTimeout(),
-										Sig:        originalChunk.GetSig(),
+										Data:       modifiedShareData,
+										ParentCert: m.Proposal.GetParentCert(),
+										Timeout:    m.Proposal.GetTimeout(),
+										Sig:        m.Proposal.GetSig(),
 									}
-					c.onProposal(&fullProposal)
-					
-					// discard saved chunks
-					delete(c.randomIDToChunks, randomID)
-					c.outdatedRandomIDs[randomID] = struct{}{}
+				c.broadcastCodedChunk(&modifiedProposal)
+			}
 
-					// DONE? 6/3: implementation level issue: create outdated randomIDs map. 
+			// TODO: check if header and other info is the same as the one sent by the leader
+			// for now: assume everyone is honest
+			// ANSWER: can filter out when using Merkle trees to authenticate
+			trimmedShare := infectious.Share{Number: shareNumberField,
+											Data: shareData[13:]}
+
+			_, ok1 := c.outdatedRandomIDs[randomID]
+			// Update chunksList only if randomID is not outdated
+			if !ok1 {
+				if chunks, ok2 := c.randomIDToChunks[randomID]; ok2 {
+					// already received some chunk for this random id
+		
+					// DONE: fix Data type issue 
+					chunks.chunksList = append(chunks.chunksList, trimmedShare)			
+				} else {
+					// this is the first chunk received for this random id
+					c.randomIDToChunks[randomID] = &codedChunks{
+												randomID: randomID,
+												originalChunk: m.Proposal,
+												// TODO: only if leader (okay for now)
+												chunksList: []infectious.Share{trimmedShare},			
+											}
+				}
+				// fmt.Println("replica", c.id, "has received", len(c.randomIDToChunks[randomID].chunksList), "chunks")
+
+
+				// check if have received enough chunks. If so, attempt decoding the proposal
+				if len(c.randomIDToChunks[randomID].chunksList) >= c.errCodeConfig.required {
+					// TODO 6/3: add error handling --> don't call onProposal
+					proposalData, errDecode := c.decodeProposal(randomID)
+					if errDecode != nil {
+						c.vlog.Debug("Could not decode original proposal")
+					} else {
+						c.vlog.Debug("Decoded original proposal")
+						originalChunk := c.randomIDToChunks[randomID].originalChunk
+						fullProposal := types.Proposal{
+											Header:     originalChunk.GetHeader(),
+											// might need fixing
+											Data:       proposalData,
+											ParentCert: originalChunk.GetParentCert(),
+											Timeout:    originalChunk.GetTimeout(),
+											Sig:        originalChunk.GetSig(),
+										}
+						c.onProposal(&fullProposal)
+						
+						// discard saved chunks
+						delete(c.randomIDToChunks, randomID)
+						c.outdatedRandomIDs[randomID] = struct{}{}
+
+						// DONE? 6/3: implementation level issue: create outdated randomIDs map. 
+					}
 				}
 			}
 		}
-		// }
 
 
 		// c.onProposal(m.Proposal)

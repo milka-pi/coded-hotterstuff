@@ -126,8 +126,8 @@ func prependShare(share infectious.Share, leaderBit byte, randomID []byte) infec
 
 func main() {
 
-	required := 8
-	oversampled := 6
+	required := 6
+	oversampled := 3
 	total := required + oversampled
 
 	// Create a *FEC, which will require required pieces for reconstruction at
@@ -192,8 +192,8 @@ func main() {
 	// }
 
 	// Let's reconstitute with two pieces missing and one piece corrupted.
-	shares = shares[1:]     // drop the first two pieces
-	// shares[2].Data[1] = '!' // mutate some data
+	shares = shares[1:]     // drop the first piece
+	// shares[0].Data[1] = '!' // mutate some data
 
 	// SOS Note: can construct new FEC object when decoding
 	// This is crucial when decoding and encoding are performed by different parties
