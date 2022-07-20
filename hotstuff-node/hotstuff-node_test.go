@@ -22,7 +22,7 @@ func TestFull(t *testing.T) {
 
 	var wg sync.WaitGroup
 
-	totalToAchieve := 5
+	totalToAchieve := NUMBER_OF_NODES
 	totalConfirmed := 0
 
 	confirmedChannel := make(chan int, 10)
