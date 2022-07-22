@@ -3,6 +3,7 @@ package hotstuff
 import (
 	"bytes"
 	"fmt"
+	"sort"
 
 	// "math/rand"
 
@@ -70,6 +71,10 @@ func newConsensus(
 		prepareCert: prepareCert,
 		view:        view,
 		voted:       voted,
+
+		// new
+		// proposalsToRevisit: make(map[*[]byte]*types.Proposal), 
+		proposalsToRevisit: []*types.Proposal{},
 	}
 }
 
@@ -105,6 +110,8 @@ type consensus struct {
 	Progress Progress
 
 	waitingData bool // if waitingData true then node must create a proposal when it receives data
+
+	proposalsToRevisit []*types.Proposal
 }
 
 func (c *consensus) Tick() {
@@ -152,10 +159,10 @@ func (c *consensus) Step(msg *types.Message) {
 		c.onVote(m.Vote)
 	case *types.Message_Newview:
 		c.onNewView(m.Newview)
-	// case *types.Message_Sync:
-	// 	c.onSync(m.Sync)
-	// case *types.Message_Syncreq:
-	// 	c.onSyncReq(m.Syncreq)
+	case *types.Message_Sync:
+		c.onSync(m.Sync)
+	case *types.Message_Syncreq:
+		c.onSyncReq(m.Syncreq)
 	}
 	
 }
@@ -233,6 +240,17 @@ func removeIndex(s []*types.Proposal, index int) []*types.Proposal {
 	return append(ret, s[index+1:]...)
 }
 
+// simple check that should pass on proposalsToRevisit
+// proposals should be sorted according to view number
+func (c *consensus) checkProposalsToRevisit() bool {
+	for i:=0; i<=len(c.proposalsToRevisit)-2; i++ {
+		if c.proposalsToRevisit[i].Header.View > c.proposalsToRevisit[i+1].Header.View {
+			return false
+		}
+	}
+	return true
+}
+
 func (c *consensus) onProposal(msg *types.Proposal) {
 	log := c.vlog.With(
 		zap.String("msg", "proposal"),
@@ -262,6 +280,51 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		log.Debug("header for parent is not found", zap.Error(err))
 		// TODO if certified block is not found we need to sync with another node
 		c.Progress.AddNotFound(msg.Header.ParentView, msg.Header.Parent)
+
+		// add an attribute to consensus - what msg caused the sync event
+		// call onProposal on msg that caused this
+		// reason: proposal gets dropped, you will not be able to participate in future proposals
+
+		// save any type of message that cannot be processed at the moment
+		c.proposalsToRevisit = append(c.proposalsToRevisit, msg)
+
+		// sort array if not sorted (may be redundant)
+		if c.checkProposalsToRevisit() == false {
+			sort.Slice(c.proposalsToRevisit, func(i, j int) bool {
+				return c.proposalsToRevisit[i].Header.View < c.proposalsToRevisit[j].Header.View
+			  })
+		}
+
+		// DONE?? 6/10 - Optimization: if the proposal's parent is already in `proposalsToRevisit`, do not make syncRequest 
+		// 								but def append to `proposalsToRevisit`.
+		// idea: only check most recent one for parent?
+
+		// TODO 6/13: check for error due to aliasing (need to deepcopy)
+
+		if len(c.proposalsToRevisit) > 0 {
+			// check if parent is already in `proposalsToRevisit`. If not, issue sync request.
+			if bytes.Compare(msg.Header.Parent, c.proposalsToRevisit[len(c.proposalsToRevisit) - 1].Header.Hash()) != 1 {
+				// 6/8 Question: how to get most recent finalized block?  How to use block store? 
+				// 6/10 answer: just use c.commit -- contains most recently commited header
+				mostRecentHeader := c.commit
+				syncReq := types.SyncRequest{
+					From: mostRecentHeader,
+					Limit: uint64(0),
+					Id: c.id,
+				}
+				c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
+				fmt.Println("node ", c.id, " made sync request for view ", c.view)
+			}
+		}
+		return
+
+	}
+
+	// 6/13: remove proposal from `proposalsToRevisit` if needed, since the parent check passed
+	for i:=0; i<= len(c.proposalsToRevisit)-1; i++ {
+		if bytes.Compare(c.proposalsToRevisit[i].Header.Hash(), msg.Header.Hash()) == 0 {
+			c.proposalsToRevisit = removeIndex(c.proposalsToRevisit, i)
+		}
 	}
 
 	//--------------------------------------------------------------------------------------------------------------
@@ -406,21 +469,6 @@ func (c *consensus) updatePrepare(header *types.Header, cert *types.Certificate)
 	}
 }
 
-func (c *consensus) syncView(header *types.Header, cert *types.Certificate, tcert *types.TimeoutCertificate) {
-	if tcert == nil && header.View >= c.view {
-		c.view = header.View + 1
-		if err := c.store.SaveView(c.view); err != nil {
-			c.vlog.Fatal("failed to store view", zap.Error(err))
-		}
-		c.nextRound(false)
-	} else if tcert != nil && tcert.View >= c.view {
-		c.view = tcert.View + 1
-		if err := c.store.SaveView(c.view); err != nil {
-			c.vlog.Fatal("failed to store view", zap.Error(err))
-		}
-		c.nextRound(false)
-	}
-}
 
 func (c *consensus) getBlocksToReturn(from *types.Header) []*types.Block {
 	blocksToReturn := []*types.Block{}
@@ -442,6 +490,52 @@ func (c *consensus) getBlocksToReturn(from *types.Header) []*types.Block {
 		// is this correct? should I check view number?
 	}
 	return blocksToReturn
+}
+
+// 6/9 NEW
+func (c *consensus) onSyncReq(syncReq *types.SyncRequest) {
+	from := syncReq.GetFrom()
+	// limit := syncReq.GetLimit()
+	id := syncReq.GetId()
+	blocksToReturn := c.getBlocksToReturn(from)
+	c.sendMsg(NewSyncMsg(blocksToReturn...), id)
+	fmt.Println("node ", c.id, " received sync request from node ", id, " for views since ", syncReq.From.View)
+	
+	// DONE 6/10: add sender id/index as an extra syncRequest field.
+	// answer: pass c.id
+}
+
+func (c *consensus) onSync(sync *types.Sync) {
+	for _, block := range sync.Blocks {
+		if !c.syncBlock(block) {
+			return
+		}
+	}
+	// call onProposal() on all proposals that caused you to sync
+	// optimization: don't ask for everything, check chain of proposals that caused you to sync
+
+	for i:=0; i<= len(c.proposalsToRevisit)-1; i++ {
+		c.onProposal(c.proposalsToRevisit[i])
+	}
+	// TODO 6/13: remove proposal from array when onProposal succeeds
+	// Idea: delete if passed the if statement inside `onProposal()`
+}
+
+
+func (c *consensus) syncView(header *types.Header, cert *types.Certificate, tcert *types.TimeoutCertificate) {
+	if tcert == nil && header.View >= c.view {
+		c.view = header.View + 1
+		if err := c.store.SaveView(c.view); err != nil {
+			c.vlog.Fatal("failed to store view", zap.Error(err))
+		}
+		c.nextRound(false)
+	} else if tcert != nil && tcert.View >= c.view {
+		c.view = tcert.View + 1
+		if err := c.store.SaveView(c.view); err != nil {
+			c.vlog.Fatal("failed to store view", zap.Error(err))
+		}
+		c.nextRound(false)
+	}
 }
 
 
