@@ -180,6 +180,13 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 	// nodeAddress := addressList[index]
 	myIpAddress := ipAddressList[index]
 
+	//if index == 3 {
+	//	fmt.Println("Node ", index, " going to sleep...")
+	//	time.Sleep(120*time.Second)
+	//	fmt.Println("Node ", index, " woke up!")
+	//}
+
+
 	go listenForConnections(myIpAddress, index, arrayOfChannels, inMsgsChan)
  
 	for i := 0; i < index; i++ {
