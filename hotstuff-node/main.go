@@ -24,7 +24,7 @@ const (
 	NETWORK_TYPE_DIAL = "tcp" // changed to support IPv4
 	DEFAULT_ADDRESS_NUMBER = 9000
 	DEFAULT_MESSAGE = "hello"
-	NUMBER_OF_NODES = 10
+	NUMBER_OF_NODES = 4
 	SEED = 0
 	BLOCK_SIZE = 10_000_000 // 10 MBytes
 )
@@ -263,6 +263,7 @@ func main() {
 	for i := 0; i < numNodes; i++ {
 		ipAddressList[i] = ipAddressList[i] + ":" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
 	}
+
 
 	totalConfirmed := make(chan int, 100)
 
