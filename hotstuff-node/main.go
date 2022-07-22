@@ -252,6 +252,8 @@ func main() {
 	flag.StringVar(&ipAddresses, "ipAddresses", "", "List of IP addresses of all nodes") // TODO: use in EC2 instance
 	flag.Parse()
 	fmt.Println("Node index:", index)
+
+	// ipAddressList := getIPAddressList(numNodes)
 	ipAddressList := strings.Split(ipAddresses, ",")
 
 	if (len(ipAddressList) != numNodes) {
