@@ -209,7 +209,7 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 
 		case msgs := <-node.Messages():
 			// node.logger.Debug("CASE <- MESSAGES") // extra
-			// fmt.Println("Node ", index, "--> ", "CASE <- MESSAGES")
+			fmt.Println("Node ", index, "--> ", "CASE <- MESSAGES")
 			// broadcast message to all nodes or send it to a node if specified
 			for _, m := range msgs {
 				// if need to broadcast to all nodes
@@ -218,13 +218,13 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 
 		case blocks := <-node.Blocks():
 			// node.logger.Debug("CASE <- BLOCKS") // extra
-			// fmt.Println("Node ", index, "--> ", "CASE <- BLOCKS")
+			fmt.Println(  "Node ", index, "--> ", "CASE <- BLOCKS")
 			for _, b := range blocks {
 				if b.Finalized {
 					// lock.Lock()
 					confirmedChannel <- 1
 					// lock.Unlock()
-					fmt.Println("Node ", index, "+1 block finalized")
+					fmt.Println("Node ", index, "+1 block finalized at time: ", time.Now().String())
 				}
 			}
 		
@@ -263,6 +263,8 @@ func main() {
 	for i := 0; i < numNodes; i++ {
 		ipAddressList[i] = ipAddressList[i] + ":" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
 	}
+
+	fmt.Println(ipAddressList)
 
 	totalConfirmed := make(chan int, 100)
 
