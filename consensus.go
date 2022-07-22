@@ -6,6 +6,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"sort"
+	"time"
 
 	// "math/rand"
 
@@ -431,6 +432,7 @@ func (c *consensus) Step(msg *types.Message) {
 						c.vlog.Debug("Could not decode original proposal")
 					} else {
 						c.vlog.Debug("Decoded original proposal")
+						fmt.Println("Decoded original proposal, time:", time.Now().String())
 						originalChunk := c.randomIDToChunks[randomID].originalChunk
 						fullProposal := types.Proposal{
 											Header:     originalChunk.GetHeader(),
@@ -445,6 +447,12 @@ func (c *consensus) Step(msg *types.Message) {
 						// discard saved chunks
 						delete(c.randomIDToChunks, randomID)
 						c.outdatedRandomIDs[randomID] = struct{}{}
+
+						for i:=0; i<= len(c.proposalsToRevisit)-1; i++ {
+							if bytes.Compare(c.proposalsToRevisit[i].Header.Hash(), m.Proposal.Header.Hash()) == 0 {
+								c.proposalsToRevisit = removeIndex(c.proposalsToRevisit, i)
+							}
+						}
 
 						// DONE? 6/3: implementation level issue: create outdated randomIDs map. 
 					}
@@ -829,7 +837,9 @@ func (c *consensus) onSyncReq(syncReq *types.SyncRequest) {
 }
 
 func (c *consensus) onSync(sync *types.Sync) {
+
 	for _, block := range sync.Blocks {
+		fmt.Println("node ", c.id, " received block from view ", block.Header.View)
 		if !c.syncBlock(block) {
 			return
 		}
@@ -838,7 +848,9 @@ func (c *consensus) onSync(sync *types.Sync) {
 	// optimization: don't ask for everything, check chain of proposals that caused you to sync
 
 	for i:=0; i<= len(c.proposalsToRevisit)-1; i++ {
-		c.onProposal(c.proposalsToRevisit[i])
+		// c.onProposal(c.proposalsToRevisit[i])
+		fmt.Println("node ", c.id, " revisiting coded chunks")
+		c.Step(NewProposalMsg(c.proposalsToRevisit[i]))
 	}
 	// TODO 6/13: remove proposal from array when onProposal succeeds
 	// Idea: delete if passed the if statement inside `onProposal()`
