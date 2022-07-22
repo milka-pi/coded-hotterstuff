@@ -24,7 +24,7 @@ const (
 	NETWORK_TYPE_DIAL = "tcp" // changed to support IPv4
 	DEFAULT_ADDRESS_NUMBER = 9000
 	DEFAULT_MESSAGE = "hello"
-	NUMBER_OF_NODES = 4
+	NUMBER_OF_NODES = 10
 	SEED = 0
 	BLOCK_SIZE = 10_000_000 // 10 MBytes
 )
@@ -40,28 +40,28 @@ func createInMsgsChannel() (inMsgsChan chan *types.Message){
 }
 
 // indexed by node index
-func createArrayOfChannels() (arrayOfChannels []chan *types.Message){
+func createArrayOfChannels(numNodes int) (arrayOfChannels []chan *types.Message){
 	var _arrayOfChannels []chan *types.Message
-	for i := 0; i < NUMBER_OF_NODES; i++ {
+	for i := 0; i < numNodes; i++ {
 		_arrayOfChannels = append(_arrayOfChannels, make(chan *types.Message, 1000))
 	}
 	return _arrayOfChannels
 }
 
-// indexed by node index
-func getAddressList() [NUMBER_OF_NODES]string {
-	addressList := [NUMBER_OF_NODES]string{}
-	for i := 0; i < NUMBER_OF_NODES; i++ {
-		addressList[i] = ":" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
-	}
-	return addressList
-}
+// // indexed by node index
+// func getAddressList() [NUMBER_OF_NODES]string {
+// 	addressList := [NUMBER_OF_NODES]string{}
+// 	for i := 0; i < NUMBER_OF_NODES; i++ {
+// 		addressList[i] = ":" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
+// 	}
+// 	return addressList
+// }
 
 // indexed by node index
-func getIPAddressList() [NUMBER_OF_NODES]string {
-	addressList := [NUMBER_OF_NODES]string{}
-	for i := 0; i < NUMBER_OF_NODES; i++ {
-		addressList[i] = "127.0.0.1:" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
+func getIPAddressList(numNodes int) []string {
+	addressList := []string{}
+	for i := 0; i < numNodes; i++ {
+		addressList = append(addressList, "127.0.0.1:" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i))
 	}
 	return addressList
 }
@@ -135,10 +135,10 @@ func must(err error) {
 }
 
 // interim layer
-func dispatchMessage(node *hotstuff.Node, idx int, m hotstuff.MsgTo, arrayOfChannels []chan *types.Message) {
+func dispatchMessage(node *hotstuff.Node, numNodes int, idx int, m hotstuff.MsgTo, arrayOfChannels []chan *types.Message) {
 	// if need to broadcast to all nodes
 	if len(m.Recipients) == 0 {
-		for rx := 0; rx < NUMBER_OF_NODES; rx++ {
+		for rx := 0; rx < numNodes; rx++ {
 			if (rx == idx) {
 				node.Step(context.Background(), m.Message)
 			} else {
@@ -168,16 +168,13 @@ func collectMessages(node *hotstuff.Node, inMsgsChan <-chan *types.Message) {
 }
 
 
-func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]string, confirmedChannel chan int) {
+func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []string, confirmedChannel chan int) {
 	dummyData := make([]byte, BLOCK_SIZE)
 	rand.Read(dummyData)
-	// randTx := []*types.Transaction{{
-	// 	Data: dummyData,
-	// }}
 
 
 	// addressList := getAddressList()
-	arrayOfChannels := createArrayOfChannels()
+	arrayOfChannels := createArrayOfChannels(numNodes)
 	inMsgsChan := createInMsgsChannel()
 
 	// nodeAddress := addressList[index]
@@ -194,7 +191,7 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 	//------------------------------------------------------------------------------------------
 
 	// ATTENTION: use same genesis and seed
-	node := createExampleNode(index, NUMBER_OF_NODES, 30*time.Second)
+	node := createExampleNode(index, numNodes, 30*time.Second)
 	node.Start()
 	// any message from the network
 	node.Step(context.Background(), &types.Message{})
@@ -216,7 +213,7 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 			// broadcast message to all nodes or send it to a node if specified
 			for _, m := range msgs {
 				// if need to broadcast to all nodes
-				dispatchMessage(node, index, m, arrayOfChannels)
+				dispatchMessage(node, numNodes, index, m, arrayOfChannels)
 			}
 
 		case blocks := <-node.Blocks():
@@ -247,22 +244,24 @@ func entryPoint(ctx context.Context, index int, ipAddressList [NUMBER_OF_NODES]s
 
 func main() {
 
+	var numNodes int
 	var index int
 	var ipAddresses string
+	flag.IntVar(&numNodes, "numNodes", NUMBER_OF_NODES, "number of nodes")
 	flag.IntVar(&index, "index", 0, "node index")
-	flag.StringVar(&ipAddresses, "ipAddresses", "", "List of IP addresses of all nodes") // TODO: use in ECE2 instance
+	flag.StringVar(&ipAddresses, "ipAddresses", "", "List of IP addresses of all nodes") // TODO: use in EC2 instance
 	flag.Parse()
 	fmt.Println("Node index:", index)
 	ipAddressList := strings.Split(ipAddresses, ",")
 
-	if (len(ipAddressList) != NUMBER_OF_NODES) {
-		panic("IP address list does not have correct size!")
+	if (len(ipAddressList) != numNodes) {
+		panic("IP address list does not match the number of nodes!")
 	}
 
 	// this piece of code is to go arounfd the []string vs [4]string mismatch
-	IPaddressList := [NUMBER_OF_NODES]string{}
-	for i := 0; i < NUMBER_OF_NODES; i++ {
-		IPaddressList[i] = ipAddressList[i] + ":" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
+	// IPaddressList := []string{}
+	for i := 0; i < numNodes; i++ {
+		ipAddressList[i] = ipAddressList[i] + ":" + strconv.Itoa(DEFAULT_ADDRESS_NUMBER + i)
 	}
 
 	totalConfirmed := make(chan int, 100)
@@ -271,7 +270,7 @@ func main() {
 	//Derive a context with cancel: NOT USED
 	// ctxWithCancel, _ := context.WithCancel(ctx)
 
-	entryPoint(ctx, index, IPaddressList, totalConfirmed) 
+	entryPoint(ctx, numNodes, index, ipAddressList, totalConfirmed) 
 
 	//------------------------------------------------------------------------------------------
 
