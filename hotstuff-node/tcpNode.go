@@ -61,7 +61,13 @@ func sendMessages(ctx context.Context, idx int, conn net.Conn, outMsgsChan <-cha
 				return nil
 			case msg := <-outMsgsChan:
 				// fmt.Println("Read msg from outMsgsChan...")
-				bytes, _ := msg.Marshal()
+				// fmt.Println("node index: ", idx, "Message size: ", msg.Size())
+				bytes, errMarshal := msg.Marshal()
+				if errMarshal != nil {
+					fmt.Println("Error attempting to marshall message: ", msg)
+					// outMsgsChan <-msg
+					// return errMarshal
+				}
 				augBytes := augmentByteArrayWithLength(bytes)
 				_, sendErr := conn.Write(augBytes)
 				// error handling

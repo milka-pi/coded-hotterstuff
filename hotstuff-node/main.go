@@ -24,7 +24,7 @@ const (
 	NETWORK_TYPE_DIAL = "tcp" // changed to support IPv4
 	DEFAULT_ADDRESS_NUMBER = 9000
 	DEFAULT_MESSAGE = "hello"
-	NUMBER_OF_NODES = 4
+	NUMBER_OF_NODES = 10
 	SEED = 0
 	BLOCK_SIZE = 10_000_000 // 10 MBytes
 )
@@ -188,6 +188,10 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 		go initiateConnection(ipAddress_i, index, arrayOfChannels, inMsgsChan)
 	}
 
+	// fmt.Println("node ", index, " going to sleep..")
+	// time.Sleep(10*time.Second)
+	// fmt.Println("node ", index, "waking up..")
+
 	//------------------------------------------------------------------------------------------
 
 	// ATTENTION: use same genesis and seed
@@ -200,7 +204,7 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 		select {
 		case <-node.Ready():
 			// node.logger.Debug("CASE <- READY") // extra
-			fmt.Println("Node ", index, "--> ", "CASE <- READY")
+			// fmt.Println("Node ", index, "--> ", "CASE <- READY")
 			node.Send(context.Background(), hotstuff.Data{
 				State: []byte{},
 				Root:  []byte{},
@@ -209,7 +213,7 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 
 		case msgs := <-node.Messages():
 			// node.logger.Debug("CASE <- MESSAGES") // extra
-			fmt.Println("Node ", index, "--> ", "CASE <- MESSAGES")
+			// fmt.Println("Node ", index, "--> ", "CASE <- MESSAGES")
 			// broadcast message to all nodes or send it to a node if specified
 			for _, m := range msgs {
 				// if need to broadcast to all nodes
@@ -218,7 +222,7 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 
 		case blocks := <-node.Blocks():
 			// node.logger.Debug("CASE <- BLOCKS") // extra
-			fmt.Println("Node ", index, "--> ", "CASE <- BLOCKS")
+			// fmt.Println("Node ", index, "--> ", "CASE <- BLOCKS")
 			for _, b := range blocks {
 				if b.Finalized {
 					// lock.Lock()

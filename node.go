@@ -5,8 +5,6 @@ import (
 	"errors"
 	"time"
 
-	"fmt"
-
 	"github.com/dshulyak/go-hotstuff/crypto"
 	"github.com/dshulyak/go-hotstuff/types"
 	"go.uber.org/zap"
@@ -200,21 +198,21 @@ func (n *Node) run() {
 
 		select {
 		case <-n.start:
-			n.logger.Debug("Case: n.start") // extra
+			// n.logger.Debug("Case: n.start") // extra
 			n.start = nil
 			n.consensus.Start()
 		case msg := <-n.received:
-			n.logger.Debug("Case: n.received") // extra
+			// n.logger.Debug("Case: n.received") // extra
 			n.consensus.Step(msg)
 		case data := <-n.send:
-			n.logger.Debug("Case: n.send") // extra
-			fmt.Println("Case: n.send")
+			// n.logger.Debug("Case: n.send") // extra
+			// fmt.Println("Case: n.send")
 			n.consensus.Send(data.State, data.Root, data.Data)
 		case <-ticker.C:
-			n.logger.Debug("Case: ticker.C") // extra
+			// n.logger.Debug("Case: ticker.C") // extra
 			n.consensus.Tick()
 		case waitingData <- struct{}{}:
-			n.logger.Debug("Case: waitingData") // extra
+			// n.logger.Debug("Case: waitingData") // extra
 			waitingData = nil
 		case missing <- toSync:
 			missing = nil
