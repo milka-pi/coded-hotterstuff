@@ -24,9 +24,9 @@ const (
 	NETWORK_TYPE_DIAL = "tcp" // changed to support IPv4
 	DEFAULT_ADDRESS_NUMBER = 9000
 	DEFAULT_MESSAGE = "hello"
-	NUMBER_OF_NODES = 10
+	NUMBER_OF_NODES = 4
 	SEED = 0
-	BLOCK_SIZE = 10_000_000 // 10 MBytes
+	BLOCK_SIZE = 10_000_000  // 10 MBytes
 )
 
 var (
@@ -188,14 +188,13 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 		go initiateConnection(ipAddress_i, index, arrayOfChannels, inMsgsChan)
 	}
 
-	// fmt.Println("node ", index, " going to sleep..")
-	// time.Sleep(10*time.Second)
-	// fmt.Println("node ", index, "waking up..")
-
 	//------------------------------------------------------------------------------------------
 
 	// ATTENTION: use same genesis and seed
-	node := createExampleNode(index, numNodes, 30*time.Second)
+	node := createExampleNode(index, numNodes, 60*time.Second)
+
+	//time.Sleep(5 * time.Second)
+
 	node.Start()
 	// any message from the network
 	node.Step(context.Background(), &types.Message{})

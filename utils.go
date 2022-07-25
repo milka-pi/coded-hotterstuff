@@ -2,6 +2,7 @@ package hotstuff
 
 import (
 	"bytes"
+	"fmt"
 
 	"github.com/dshulyak/go-hotstuff/types"
 	"golang.org/x/crypto/blake2s"
@@ -107,6 +108,7 @@ func (v *Votes) Collect(vote *types.Vote) bool {
 	// new: no need for this comparison?
 	if bytes.Compare(v.Cert.Block, vote.Block) != 0 {
 		// vote for a block not from a valid leader
+		fmt.Println("wrong proposal")
 		return false
 	}
 	_, exist := v.votes[vote.Voter]

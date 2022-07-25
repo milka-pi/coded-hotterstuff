@@ -192,6 +192,7 @@ func (c *consensus) Start() {
 }
 
 func (c *consensus) onTimeout() {
+	fmt.Println("timed out")
 	c.view++
 	err := c.store.SaveView(c.view)
 	if err != nil {
