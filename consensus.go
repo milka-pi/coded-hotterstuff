@@ -26,6 +26,11 @@ type Verifier interface {
 	Merge(*types.AggregatedSignature, uint64, []byte)
 }
 
+type AllVotes struct{
+	votes *Votes
+	pendingVotes []*types.Vote
+}
+
 
 func newConsensus(
 	logger *zap.Logger,
@@ -73,6 +78,7 @@ func newConsensus(
 		replicas:    replicas, // array of public keys
 		timeouts:    NewTimeouts(verifier, 2*len(replicas)/3+1),
 		votes:       NewVotes(verifier, 2*len(replicas)/3+1),
+		hashToVotes: make(map[uint64]*AllVotes), // new
 		prepare:     prepare,
 		locked:      locked,
 		commit:      commit,
@@ -115,6 +121,7 @@ type consensus struct {
 	replicas []uint64 // all replicas, including current
 
 	votes    *Votes
+	hashToVotes map[uint64]*AllVotes // new
 	timeouts *Timeouts
 
 	view                    uint64 // current view.
@@ -299,7 +306,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 	}
 }
 
-// onCodedChunk() 
+
 // - borrow functionality from onVote etc. to count up to 2f+1 received chunks
 
 func (c *consensus) broadcastCodedChunk(msg *types.Proposal){
@@ -324,8 +331,6 @@ func (c *consensus) broadcastCodedChunk(msg *types.Proposal){
 			}
 		}
 	}
-
-	// && uint64(i) != c.getLeader(c.view)
 }
 
 
@@ -510,7 +515,7 @@ func (c *consensus) nextRound(timedout bool) {
 
 	c.resetTimeout()
 	c.waitingData = false
-	c.votes.Reset()
+	// c.votes.Reset()
 
 	c.vlog.Debug("entered new view",
 		zap.Int("view timeout", c.timeout),
@@ -615,14 +620,15 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 			if bytes.Compare(msg.Header.Parent, c.proposalsToRevisit[len(c.proposalsToRevisit) - 1].Header.Hash()) != 1 {
 				// 6/8 Question: how to get most recent finalized block?  How to use block store? 
 				// 6/10 answer: just use c.commit -- contains most recently commited header
-				mostRecentHeader := c.commit
-				syncReq := types.SyncRequest{
-					From: mostRecentHeader,
-					Limit: uint64(0),
-					Id: c.id,
-				}
-				c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
-				fmt.Println("node ", c.id, " made sync request for view ", c.view)
+
+				// mostRecentHeader := c.commit
+				// syncReq := types.SyncRequest{
+				// 	From: mostRecentHeader,
+				// 	Limit: uint64(0),
+				// 	Id: c.id,
+				// }
+				// c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
+				// fmt.Println("node ", c.id, " made sync request for view ", c.view)
 			}
 		}
 		return
@@ -725,7 +731,32 @@ func (c *consensus) sendVote(header *types.Header) {
 		c.vlog.Fatal("can't save voted", zap.Error(err))
 	}
 
-	c.votes.Start(header)
+	// 	DONE: use string(hash) to be safer, and then string(vote.Block) in onVote method
+
+	// new: need to check membership
+	if _, ok := c.hashToVotes[header.View]; !ok {
+		// fmt.Println("Node ", c.id, " received proposal before votes, hash is ", hash, " and key is, ", string(hash))
+		// c.vlog.Debug("Node " + fmt.Sprint(c.id) + " received proposal before votes, key is, " + string(hash))
+		c.hashToVotes[header.View] = &AllVotes{
+			votes: NewVotes(c.verifier, 2*len(c.replicas)/3+1),
+			pendingVotes: []*types.Vote{},
+		}
+	}
+
+	keys := make([]uint64, 0, len(c.hashToVotes))
+	for k := range c.hashToVotes {
+		keys = append(keys, k)
+	}
+	// fmt.Println("Node ", c.id, " allVotes keys: ", keys)
+
+	c.hashToVotes[header.View].votes.Start(header)
+
+	// TODO: take care of any pending votes
+	for _, vote := range c.hashToVotes[header.View].pendingVotes {
+		c.vlog.Debug("Taking care of pending vote " + fmt.Sprint(vote.View))
+		c.onVote(vote)
+	}
+	c.hashToVotes[header.View].pendingVotes = []*types.Vote{}
 
 	vote := &types.Vote{
 		Block: hash,
@@ -926,18 +957,46 @@ func (c *consensus) onVote(vote *types.Vote) {
 		return
 	}
 	log.Debug("received vote")
-	if !c.votes.Collect(vote) {
+
+	// New: if received vote before proposal, need to to save vote in pending votes (part I)
+	if _, ok := c.hashToVotes[vote.View]; !ok {
+		fmt.Println("Node ", c.id, " received vote before proposal, saving vote in pending votes, hash is ", vote.Block, " and string is, ", vote.View)
+		c.vlog.Debug("Received vote before proposal, key is, " + fmt.Sprint(vote.View))
+		c.hashToVotes[vote.View] = &AllVotes{
+			votes: NewVotes(c.verifier, 2*len(c.replicas)/3+1),
+			pendingVotes: []*types.Vote{},
+		}
+	}
+
+	keys := make([]uint64, 0, len(c.hashToVotes))
+	for k := range c.hashToVotes {
+		keys = append(keys, k)
+	}
+	// fmt.Println("Node ", c.id, " allVotes keys: ", keys)
+
+	allVotes := c.hashToVotes[vote.View]
+
+	// New: if received vote before proposal, need to to save vote in pending votes (part II)
+	if allVotes.votes.Cert == nil {
+		// received vote before proposal from a valid leader
+		allVotes.pendingVotes = append(allVotes.pendingVotes, vote)
+		return
+	}
+
+	// new
+	if !allVotes.votes.Collect(vote) {
 		// do nothing if there is no majority
 		return
 	}
+
 	// update leaf and certificate to collected and prepare for proposal
-	if err := c.store.SaveCertificate(c.votes.Cert); err != nil {
+	if err := c.store.SaveCertificate(allVotes.votes.Cert); err != nil {
 		c.log.Fatal("can't save new certificate",
-			zap.Binary("cert for block", c.votes.Cert.Block),
+			zap.Binary("cert for block", allVotes.votes.Cert.Block),
 		)
 	}
-	c.updatePrepare(c.votes.Header, c.votes.Cert)
-	c.syncView(c.votes.Header, c.votes.Cert, nil)
+	c.updatePrepare(allVotes.votes.Header, allVotes.votes.Cert)
+	c.syncView(allVotes.votes.Header, allVotes.votes.Cert, nil)
 	c.nextRound(false)
 }
 
