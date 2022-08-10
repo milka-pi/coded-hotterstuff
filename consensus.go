@@ -436,8 +436,6 @@ func (c *consensus) Step(msg *types.Message) {
 					if errDecode != nil {
 						c.vlog.Debug("Could not decode original proposal")
 					} else {
-						c.vlog.Debug("Decoded original proposal")
-						fmt.Println("Decoded original proposal, time:", time.Now().String())
 						originalChunk := c.randomIDToChunks[randomID].originalChunk
 						fullProposal := types.Proposal{
 											Header:     originalChunk.GetHeader(),
@@ -447,6 +445,8 @@ func (c *consensus) Step(msg *types.Message) {
 											Timeout:    originalChunk.GetTimeout(),
 											Sig:        originalChunk.GetSig(),
 										}
+						// c.vlog.Debug("Decoded original proposal" + fmt.Sprint(fullProposal.Header.Hash()))
+						fmt.Println("Decoded original proposal, time:", time.Now().String(), "header hash:", fmt.Sprint(fullProposal.Header.Hash()))
 						c.onProposal(&fullProposal)
 						
 						// discard saved chunks
