@@ -35,6 +35,6 @@ echo "List of IP addresses: $ipAddresses"
 # 2nd Step: Run hotstuff-node for each node, passing the full list of IP addresses as an argument
 
 for (( index=0; index<numNodes; index++ )); do
-	ip netns exec ramjet-s1-n$index ./hotstuff-node -numNodes=$numNodes -index=$index -ipAddresses=$ipAddresses > hotstuff-$index.log &
+	ip netns exec ramjet-s1-n$index ./hotstuff-node -numNodes=$numNodes -index=$index -ipAddresses=$ipAddresses &> hotstuff-$index.log &
 	ip netns exec ramjet-s1-n$index bmon -o format:fmt='$(element:name) rxbytes=$(attr:rx:bytes) txbytes=$(attr:tx:bytes)\n' -p 'veth0' &> node-$index-traffic.log &
 done

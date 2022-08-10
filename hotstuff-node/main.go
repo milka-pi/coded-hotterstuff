@@ -198,7 +198,7 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 	//------------------------------------------------------------------------------------------
 
 	// ATTENTION: use same genesis and seed
-	node := createExampleNode(index, numNodes, 30*time.Second)
+	node := createExampleNode(index, numNodes, 45*time.Second)
 	node.Start()
 	// any message from the network
 	node.Step(context.Background(), &types.Message{})
