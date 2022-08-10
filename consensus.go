@@ -81,6 +81,7 @@ func newConsensus(
 		// new
 		// proposalsToRevisit: make(map[*[]byte]*types.Proposal), 
 		proposalsToRevisit: []*types.Proposal{},
+		cachedProposals: []*types.Proposal{},
 	}
 }
 
@@ -119,6 +120,7 @@ type consensus struct {
 	waitingData bool // if waitingData true then node must create a proposal when it receives data
 
 	proposalsToRevisit []*types.Proposal
+	cachedProposals []*types.Proposal
 }
 
 func (c *consensus) Tick() {
@@ -243,6 +245,16 @@ func (c *consensus) nextRound(timedout bool) {
 		c.waitingData = true
 		c.Progress.WaitingData = true
 	}
+
+	// TODO: try cached proposals here
+	for _, propMsg := range c.cachedProposals {
+		if propMsg.Header.View == c.view {
+			c.vlog.Debug("replica is calling onProposal for a cached proposal, after going to new view")
+			c.onProposal(propMsg);
+		}
+	}
+
+
 }
 
 func removeIndex(s []*types.Proposal, index int) []*types.Proposal {
@@ -270,7 +282,7 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		zap.Binary("hash", msg.Header.Hash()),
 		zap.Binary("parent", msg.Header.Parent))
 
-	log.Debug("received proposal")
+	log.Debug("received proposal, called onProposal")
 
 	if msg.ParentCert == nil {
 		return
@@ -318,14 +330,16 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 				// 6/8 Question: how to get most recent finalized block?  How to use block store? 
 				// 6/10 answer: just use c.commit -- contains most recently commited header
 
-				// mostRecentHeader := c.commit
-				// syncReq := types.SyncRequest{
-				// 	From: mostRecentHeader,
-				// 	Limit: uint64(0),
-				// 	Id: c.id,
-				// }
-				// c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
-				// fmt.Println("node ", c.id, " made sync request for view ", c.view)
+				mostRecentHeader := c.commit
+				syncReq := types.SyncRequest{
+					From: mostRecentHeader,
+					Limit: uint64(0),
+					Id: c.id,
+				}
+				c.sendMsg(NewSyncReqMsg(&syncReq), c.getLeader(c.view))
+				c.vlog.Debug("made sync request for view " + fmt.Sprint(c.view) + ", missing parent: " + fmt.Sprint(msg.Header.Parent))
+			} else {
+				c.vlog.Debug("parent is already in proposalsToRevisit")
 			}
 		}
 		return
@@ -335,6 +349,7 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 	// 6/13: remove proposal from `proposalsToRevisit` if needed, since the parent check passed
 	for i:=0; i<= len(c.proposalsToRevisit)-1; i++ {
 		if bytes.Compare(c.proposalsToRevisit[i].Header.Hash(), msg.Header.Hash()) == 0 {
+			c.vlog.Debug("removing proposal from proposalsToRevisit")
 			c.proposalsToRevisit = removeIndex(c.proposalsToRevisit, i)
 		}
 	}
@@ -360,6 +375,10 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 
 	if msg.Header.View != c.view {
 		log.Debug("proposal view doesn't match local view")
+
+		// TODO: 8/5/2022: store proposal, fetch it when increasing the view
+		c.cachedProposals = append(c.cachedProposals, msg);
+		
 		return
 	}
 
@@ -372,6 +391,8 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 	if msg.Header.View > c.voted && c.safeNode(msg.Header, msg.ParentCert) {
 		log.Debug("proposal is safe to vote on")
 		c.sendVote(msg.Header)
+
+		// TODO 8/5: try re-sending message to yourself
 	}
 }
 
@@ -463,10 +484,12 @@ func (c *consensus) update(parent *types.Header, cert *types.Certificate) {
 	// TODO if any node is missing in the chain we should switch to sync mode
 	gparent, err := c.store.GetHeader(parent.Parent)
 	if err != nil {
+		c.vlog.Debug("could not find gparent header", zap.Uint64("view", parent.View), zap.Binary("hash", parent.Hash()))
 		return
 	}
 	ggparent, err := c.store.GetHeader(gparent.Parent)
 	if err != nil {
+		c.vlog.Debug("could not find ggparent header", zap.Uint64("view", gparent.View), zap.Binary("hash", gparent.Hash()))
 		return
 	}
 
@@ -535,17 +558,21 @@ func (c *consensus) onSyncReq(syncReq *types.SyncRequest) {
 	from := syncReq.GetFrom()
 	// limit := syncReq.GetLimit()
 	id := syncReq.GetId()
+	c.vlog.Debug("received sync request from node " + fmt.Sprint(id) + " for views since " + fmt.Sprint(syncReq.From.View))
 	blocksToReturn := c.getBlocksToReturn(from)
+	c.vlog.Debug("sending sync message with this many blocks: " + fmt.Sprint(len(blocksToReturn)))
 	c.sendMsg(NewSyncMsg(blocksToReturn...), id)
-	fmt.Println("node ", c.id, " received sync request from node ", id, " for views since ", syncReq.From.View)
+	
 	
 	// DONE 6/10: add sender id/index as an extra syncRequest field.
 	// answer: pass c.id
 }
 
 func (c *consensus) onSync(sync *types.Sync) {
+	c.vlog.Debug("received sync message with this many blocks: " + fmt.Sprint(len(sync.Blocks)))
 	for _, block := range sync.Blocks {
 		if !c.syncBlock(block) {
+			c.vlog.Debug("failed syncBlock, header: " + fmt.Sprint(block.Header))
 			return
 		}
 	}

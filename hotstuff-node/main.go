@@ -24,7 +24,7 @@ const (
 	NETWORK_TYPE_DIAL = "tcp" // changed to support IPv4
 	DEFAULT_ADDRESS_NUMBER = 9000
 	DEFAULT_MESSAGE = "hello"
-	NUMBER_OF_NODES = 4
+	NUMBER_OF_NODES = 7
 	SEED = 0
 	BLOCK_SIZE = 10_000_000  // 10 MBytes
 )
@@ -270,7 +270,7 @@ func main() {
 	}
 
 
-	totalConfirmed := make(chan int, 100)
+	totalConfirmed := make(chan int, 200)
 
 	ctx := context.Background()
 	//Derive a context with cancel: NOT USED
