@@ -29,8 +29,18 @@ do
    ipAddresses+=",$ip"   
 done
 
-echo "List of IP addresses: $ipAddresses"
+## delay the network
+for (( i=0; i<numNodes; i++ ))
+do
+	for (( j=0; j<numNodes; j++ ))
+	do
+		if [[ $i -ne $j ]]; then
+			bash ../../nanonet/script.sh delay 1 $i 1 $j 50
+		fi
+	done
+done
 
+echo "List of IP addresses: $ipAddresses"
 
 # 2nd Step: Run hotstuff-node for each node, passing the full list of IP addresses as an argument
 

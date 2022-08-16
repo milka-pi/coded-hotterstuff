@@ -1,2 +1,3 @@
 hotstuff-node
 *.log
+*.dat
