@@ -46,7 +46,7 @@ func getMessageFromReader(reader io.Reader) ([]byte, error) {
 	_, readLengthBuf_err := io.ReadFull(reader, length_buf)
 	// error handling
 	if readLengthBuf_err != nil {
-		fmt.Println("Receiver: failed to read first 4 bytes from reader!")
+		fmt.Println("Receiver: failed to read first 4 bytes from reader,", readLengthBuf_err)
 		return []byte{}, errors.New("Failed to read first 4 bytes from reader")
 		// panic(readLengthBuf_err)
 	}

@@ -26,7 +26,7 @@ const (
 	DEFAULT_MESSAGE = "hello"
 	NUMBER_OF_NODES = 4
 	SEED = 0
-	BLOCK_SIZE = 10_000_000 // 10 MBytes
+	BLOCK_SIZE = 1_000_000  // 1 MBytes
 )
 
 var (
@@ -36,14 +36,14 @@ var (
 
 // indexed by node index
 func createInMsgsChannel() (inMsgsChan chan *types.Message){
-	return make(chan *types.Message, 1000)
+	return make(chan *types.Message, 10000)
 }
 
 // indexed by node index
 func createArrayOfChannels(numNodes int) (arrayOfChannels []chan *types.Message){
 	var _arrayOfChannels []chan *types.Message
 	for i := 0; i < numNodes; i++ {
-		_arrayOfChannels = append(_arrayOfChannels, make(chan *types.Message, 1000))
+		_arrayOfChannels = append(_arrayOfChannels, make(chan *types.Message, 10000))
 	}
 	return _arrayOfChannels
 }
@@ -169,10 +169,6 @@ func collectMessages(node *hotstuff.Node, inMsgsChan <-chan *types.Message) {
 
 
 func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []string, confirmedChannel chan int) {
-	dummyData := make([]byte, BLOCK_SIZE)
-	rand.Read(dummyData)
-
-
 	// addressList := getAddressList()
 	arrayOfChannels := createArrayOfChannels(numNodes)
 	inMsgsChan := createInMsgsChannel()
@@ -206,6 +202,8 @@ func entryPoint(ctx context.Context, numNodes int, index int, ipAddressList []st
 	for {
 		select {
 		case <-node.Ready():
+			dummyData := make([]byte, BLOCK_SIZE)
+			rand.Read(dummyData)
 			// node.logger.Debug("CASE <- READY") // extra
 			// fmt.Println("Node ", index, "--> ", "CASE <- READY")
 			node.Send(context.Background(), hotstuff.Data{
@@ -273,7 +271,7 @@ func main() {
 
 	fmt.Println(ipAddressList)
 
-	totalConfirmed := make(chan int, 100)
+	totalConfirmed := make(chan int, 10000)
 
 	ctx := context.Background()
 	//Derive a context with cancel: NOT USED
