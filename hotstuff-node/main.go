@@ -140,7 +140,7 @@ func dispatchMessage(node *hotstuff.Node, numNodes int, idx int, m hotstuff.MsgT
 	if len(m.Recipients) == 0 {
 		for rx := 0; rx < numNodes; rx++ {
 			if (rx == idx) {
-				node.Step(context.Background(), m.Message)
+				// node.Step(context.Background(), m.Message)
 			} else {
 				arrayOfChannels[rx] <- m.Message
 			}
@@ -149,7 +149,7 @@ func dispatchMessage(node *hotstuff.Node, numNodes int, idx int, m hotstuff.MsgT
 	} else {
 		for _, rx := range m.Recipients {
 			if (int(rx) == idx) {
-				node.Step(context.Background(), m.Message)
+				// node.Step(context.Background(), m.Message)
 			} else {
 				arrayOfChannels[int(rx)] <- m.Message
 			}
