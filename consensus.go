@@ -148,7 +148,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 			Timeout:    c.timeoutCert,
 			Sig:        c.signer.Sign(nil, header.Hash()),
 		}
-		fmt.Println("sending proposal")
+		// fmt.Println("sending proposal")
 		c.vlog.Debug("sending proposal",
 			zap.Binary("hash", header.Hash()),
 			zap.Binary("parent", header.Parent),
