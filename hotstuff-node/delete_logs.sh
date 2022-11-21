@@ -9,7 +9,8 @@ done
 
 for (( idx=0; idx<numNodes; idx++ ))
 do
-	rm -f "./hotstuff-$idx.log"
-	rm -f "./node-$idx-traffic.log"
+	rm -f "./logs/hotstuff-$idx.log"
+	rm -f "./logs/node-$idx-traffic.log"
+        rm -f "./logs/node-$idx-tcp.log"
 done
 
