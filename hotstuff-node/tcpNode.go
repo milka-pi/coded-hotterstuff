@@ -12,6 +12,7 @@ import (
 
 	// use it as "hotstuff", e.g., hotstuff.Node{}
 	"github.com/dshulyak/go-hotstuff/types"
+	"github.com/xtaci/kcp-go/v5"	
 )
 
 // ASK: correct handling of cases? maybe need something other than default?
@@ -173,7 +174,8 @@ func acceptConnections(ln net.Listener, idx int, arrayOfChannels []chan *types.M
 
 
 func listenForConnections(ipAddress string, idx int, arrayOfChannels []chan *types.Message, inMsgsChan chan *types.Message) {
-	ln, err := net.Listen(NETWORK_TYPE_LISTEN, ipAddress) // DONE: change NETWORK_TYPE to "tcp4"
+	block, _ := kcp.NewNoneBlockCrypt(nil)
+	ln, err := kcp.ListenWithOptions(ipAddress, block, 10, 3);
 	// error handling
 	if err != nil {
 		log.Fatal(err)
@@ -188,7 +190,8 @@ func initiateConnection(ipAddress string, idx int, arrayOfChannels []chan *types
 	fmt.Printf("node %v initiating connection to %v\n", idx, ipAddress)
 	// if connection is closed, try to Dial again.
 	for {
-		conn, err_conn := net.Dial(NETWORK_TYPE_DIAL, ipAddress)
+		block, _ := kcp.NewNoneBlockCrypt(nil)
+		conn, err_conn := kcp.DialWithOptions(ipAddress, block, 10, 3)
 		// error handling
 		if err_conn != nil {
 			fmt.Printf("node %v initiating connection to %v: %v\n", idx, ipAddress, err_conn)
