@@ -49,5 +49,5 @@ echo "List of IP addresses: $ipAddresses"
 for (( index=0; index<numNodes; index++ )); do
 	ip netns exec ramjet-s1-n$index ./hotstuff-node -numNodes=$numNodes -index=$index -ipAddresses=$ipAddresses &> logs/hotstuff-$index.log &
 	ip netns exec ramjet-s1-n$index bmon -o format:fmt='$(element:name) rxbytes=$(attr:rx:bytes) txbytes=$(attr:tx:bytes)\n' -p 'veth0' &> logs/node-$index-traffic.log &
-	ip netns exec ramjet-s1-n$index ./tcpcollect.sh &> logs/node-$index-tcp.log &
+	ip netns exec ramjet-s1-n$index ./udpcollect.sh &> logs/node-$index-udp.log &
 done

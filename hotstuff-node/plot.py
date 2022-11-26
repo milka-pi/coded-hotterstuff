@@ -12,20 +12,20 @@ import json
 
 parser = ArgumentParser(description="Data processing")
 
-# parser.add_argument('--dir',
-#                     type=str,
-#                     help="Directory of the result files",
-#                     default=".")
+parser.add_argument('--dir',
+                     type=str,
+                     help="Directory of the result files",
+                     default=".")
 
 parser.add_argument('--n',
                     type=int,
                     help="Number of nodes",
                     default="4")
 
-parser.add_argument('--m',
-                    type=str,
-                    help="mode: orig or coded broadcast",
-                    default="orig")
+#parser.add_argument('--m',
+#                    type=str,
+#                    help="mode: orig or coded broadcast",
+#                    default="orig")
 
 # parser.add_argument('--node',
 #                     type=int,
@@ -35,13 +35,16 @@ parser.add_argument('--m',
 # Expt parameters
 args = parser.parse_args()
 
-directory = '../experiments/' + args.m + '-' + str(args.n) + '-nodes/'
+#directory = '../experiments/' + args.m + '-' + str(args.n) + '-nodes/'
 
+directory = args.dir+"/"
+print(directory)
 string_to_print = ""
 
 traffic_re = re.compile(r"rxbytes=([0-9]+) txbytes=([0-9]+)$")
 if __name__ == "__main__":
     files=glob.glob(directory + "*-traffic.log")
+    print(files)
     for filepath in files:
         datapoints = []
         lastRx = None
