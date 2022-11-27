@@ -11,22 +11,40 @@ import re
 import json
 
 parser = ArgumentParser(description="Data processing")
-parser.add_argument('--dir',
-                    type=str,
-                    help="Directory of the result files",
-                    default=".")
 
-parser.add_argument('--node',
+parser.add_argument('--dir',
+                     type=str,
+                     help="Directory of the result files",
+                     default=".")
+
+parser.add_argument('--n',
                     type=int,
-                    help="Index of the victim node to plot",
-                    default=0)
+                    help="Number of nodes",
+                    default="4")
+
+#parser.add_argument('--m',
+#                    type=str,
+#                    help="mode: orig or coded broadcast",
+#                    default="orig")
+
+# parser.add_argument('--node',
+#                     type=int,
+#                     help="Index of the victim node to plot",
+#                     default=0)
 
 # Expt parameters
 args = parser.parse_args()
 
+#directory = '../experiments/' + args.m + '-' + str(args.n) + '-nodes/'
+
+directory = args.dir+"/"
+print(directory)
+string_to_print = ""
+
 traffic_re = re.compile(r"rxbytes=([0-9]+) txbytes=([0-9]+)$")
 if __name__ == "__main__":
-    files=glob.glob(args.dir+"/*-traffic.log")
+    files=glob.glob(directory + "*-traffic.log")
+    print(files)
     for filepath in files:
         datapoints = []
         lastRx = None
@@ -43,7 +61,13 @@ if __name__ == "__main__":
                         lastRx = tx
         N = len(datapoints)
         print("# time", "mbps")
+        string_to_print += "# time mbps\n"
         for i in range(N):
             print(i, datapoints[i])
-        print("\n\n")
+            string_to_print += str(i) + " " + str(datapoints[i]) + "\n"
+        print("\n")
+        string_to_print += "\n\n"
 
+f = open(directory + "data.dat", "w+")
+f.write(string_to_print)
+f.close()

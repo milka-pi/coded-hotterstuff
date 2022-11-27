@@ -21,7 +21,7 @@ ip=${msgarray[6]}
 ipAddresses="$ip"
 
 mkdir -p logs
-
+go build
 ## create rest of network nodes (with idx >= 1)
 for (( index=1; index<numNodes; index++ ))
 do 
