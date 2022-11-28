@@ -1,955 +1,540 @@
-State Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 2304   0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 2304   0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 768    0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 2304   0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
-UNCONN 0      0            0.0.0.0:59405      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:34832      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:39105      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:60457      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:44573      0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:45654      0.0.0.0:*          
-UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
-UNCONN 0      0            0.0.0.0:54480      0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 2304   0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+UNCONN 0      0            0.0.0.0:35765      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:60796      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:48589      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:36557      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:49152      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:45604      0.0.0.0:*          
+UNCONN 0      0            0.0.0.0:33342      0.0.0.0:*          
+UNCONN 0      0          10.0.1.14:9007       0.0.0.0:*          

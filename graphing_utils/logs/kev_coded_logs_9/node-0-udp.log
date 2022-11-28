@@ -48,15 +48,7 @@ UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 768    0           10.0.1.0:9000      0.0.0.0:*          
+UNCONN 2304   0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
@@ -86,7 +78,13 @@ UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+UNCONN 1536   0           10.0.1.0:9000      0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
+State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
+UNCONN 2304   0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
@@ -98,47 +96,11 @@ UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
+UNCONN 2304   0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
-State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
-UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
+UNCONN 5376   0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
 UNCONN 0      0           10.0.1.0:9000      0.0.0.0:*          
 State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess
