@@ -5,13 +5,13 @@ node 5 initiating connection to 10.0.1.2:9001
 node 5 initiating connection to 10.0.1.6:9003
 node 5 initiating connection to 10.0.1.8:9004
 node 5 successfully initiated connection to 10.0.1.0:9000
-node 5 successfully initiated connection to 10.0.1.2:9001
-node 5 successfully initiated connection to 10.0.1.4:9002
 node 5 successfully initiated connection to 10.0.1.6:9003
+node 5 successfully initiated connection to 10.0.1.4:9002
+node 5 successfully initiated connection to 10.0.1.2:9001
 node 5 successfully initiated connection to 10.0.1.8:9004
+2022-11-28T20:34:07.312Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 1, "view timeout": 2, "timedout": false}
 connection established 5 - 7
 Node  5 -->  Listening for messages... 
-2022-11-28T17:49:23.763Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 1, "view timeout": 2, "timedout": false}
 connection established 5 - 6
 Node  5 -->  Listening for messages... 
 connection established 5 - 8
@@ -19,95 +19,334 @@ Node  5 -->  Listening for messages...
 connection established 5 - 0
 Node  5 -->  Listening for messages... 
 connection established 5 - 2
+Node  5 -->  Listening for messages... 
 connection established 5 - 1
-Node  5 -->  Listening for messages... 
-Node  5 -->  Listening for messages... 
 connection established 5 - 3
+Node  5 -->  Listening for messages... 
 Node  5 -->  Listening for messages... 
 connection established 5 - 4
 Node  5 -->  Listening for messages... 
-2022-11-28T17:49:30.258Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 1, "prepare view": 0, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8=", "parent": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
-2022-11-28T17:49:30.267Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:487	could not find gparent header	{"CURRENT VIEW": 1, "view": 0, "hash": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
-2022-11-28T17:49:30.270Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 1, "prepare view": 0, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8=", "parent": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
-2022-11-28T17:49:36.367Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 2, "prepare view": 0, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs=", "parent": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
-2022-11-28T17:49:36.374Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 1, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
-2022-11-28T17:49:36.374Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 2, "view timeout": 2, "timedout": false}
-2022-11-28T17:49:36.374Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:492	could not find ggparent header	{"CURRENT VIEW": 2, "view": 0, "hash": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
-2022-11-28T17:49:36.376Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 2, "prepare view": 0, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs=", "parent": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
-2022-11-28T17:49:41.873Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 2, "msg": "proposal", "header view": 2, "prepare view": 1, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs=", "parent": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
-2022-11-28T17:49:41.880Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:492	could not find ggparent header	{"CURRENT VIEW": 2, "view": 0, "hash": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
-2022-11-28T17:49:43.267Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 2, "msg": "proposal", "header view": 3, "prepare view": 1, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
-2022-11-28T17:49:43.275Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 2, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
-2022-11-28T17:49:43.275Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 3, "view timeout": 2, "timedout": false}
-2022-11-28T17:49:43.275Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 3, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
-2022-11-28T17:49:43.276Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 2, "msg": "proposal", "header view": 3, "prepare view": 1, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
-2022-11-28T17:49:49.492Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 3, "prepare view": 2, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
-2022-11-28T17:49:49.603Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 4, "prepare view": 2, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:49:49.618Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 3, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:49:49.618Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 4, "view timeout": 2, "timedout": false}
-2022-11-28T17:49:49.618Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:235	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 4}
-2022-11-28T17:49:49.618Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 4, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
-2022-11-28T17:49:49.618Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 4, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
-2022-11-28T17:49:49.628Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 4, "prepare view": 2, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:49:49.630Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 5, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.634Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 4, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.640Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 0, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-Node  5 +1 block finalized at time:  2022-11-28 17:49:49.645555999 +0000 UTC m=+26.049430521
-2022-11-28T17:49:49.657Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 6, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.662Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 8, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.669Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 7, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.676Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 2, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.681Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 4, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.681Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 5, "view timeout": 2, "timedout": false}
-2022-11-28T17:49:49.681Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 5}
-2022-11-28T17:49:49.681Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 5, "view timeout": 2, "timedout": false}
-2022-11-28T17:49:49.681Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 5}
-2022-11-28T17:49:49.685Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "signer": 5}
-2022-11-28T17:49:49.685Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 5, "prepare view": 4, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.693Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 5, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:49:49.693Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 5, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
-2022-11-28T17:49:49.695Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 5, "prepare view": 4, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:49:49.697Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 5, "msg": "vote", "voter": 1, "view": 5, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-Node  5 +1 block finalized at time:  2022-11-28 17:49:49.697789742 +0000 UTC m=+26.101664278
-2022-11-28T17:49:49.706Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 5, "view timeout": 2, "timedout": false}
-2022-11-28T17:49:49.706Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 5}
-2022-11-28T17:49:49.712Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "signer": 5}
-2022-11-28T17:49:49.712Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 5, "prepare view": 4, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:50:01.728Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 4, "prepare view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:50:01.738Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 4, "prepare view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:50:01.901Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 3, "prepare view": 4, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
-2022-11-28T17:50:01.909Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 3, "prepare view": 4, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
-2022-11-28T17:50:03.224Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 6, "prepare view": 4, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
-2022-11-28T17:50:03.232Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 5, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
-2022-11-28T17:50:03.232Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 6, "view timeout": 2, "timedout": false}
-2022-11-28T17:50:03.232Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 6, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:50:03.232Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 6, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:50:03.234Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 6, "prepare view": 4, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
-Node  5 +1 block finalized at time:  2022-11-28 17:50:03.237875741 +0000 UTC m=+39.641750277
-2022-11-28T17:50:04.757Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 4, "prepare view": 5, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:50:04.766Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 4, "prepare view": 5, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
-2022-11-28T17:50:09.659Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 7, "prepare view": 5, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
-2022-11-28T17:50:09.668Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 6, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
-2022-11-28T17:50:09.668Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 7, "view timeout": 2, "timedout": false}
-2022-11-28T17:50:09.668Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 7, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
-2022-11-28T17:50:09.668Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 7, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
-2022-11-28T17:50:09.669Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 7, "prepare view": 5, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
-Node  5 +1 block finalized at time:  2022-11-28 17:50:09.672960484 +0000 UTC m=+46.076835012
-2022-11-28T17:50:10.413Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 6, "prepare view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
-2022-11-28T17:50:10.421Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 6, "prepare view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
-2022-11-28T17:50:15.555Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 7, "prepare view": 6, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
-2022-11-28T17:50:16.214Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 8, "prepare view": 6, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
-2022-11-28T17:50:16.221Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 7, "view": 7, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
-2022-11-28T17:50:16.221Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 8, "view timeout": 2, "timedout": false}
-2022-11-28T17:50:16.221Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 8, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
-2022-11-28T17:50:16.221Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 8, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
-2022-11-28T17:50:16.223Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 8, "prepare view": 6, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
-Node  5 +1 block finalized at time:  2022-11-28 17:50:16.225206169 +0000 UTC m=+52.629080709
-2022-11-28T17:50:22.257Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 8, "prepare view": 7, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
-2022-11-28T17:50:22.998Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 9, "prepare view": 7, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
-2022-11-28T17:50:23.006Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 8, "view": 8, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
-2022-11-28T17:50:23.006Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 9, "view timeout": 2, "timedout": false}
-2022-11-28T17:50:23.006Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 9, "view": 7, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
-2022-11-28T17:50:23.006Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 9, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
-2022-11-28T17:50:23.008Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 9, "prepare view": 7, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
-Node  5 +1 block finalized at time:  2022-11-28 17:50:23.01022416 +0000 UTC m=+59.414098683
+2022-11-28T20:34:08.332Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 1, "prepare view": 0, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8=", "parent": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+2022-11-28T20:34:08.364Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:487	could not find gparent header	{"CURRENT VIEW": 1, "view": 0, "hash": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+2022-11-28T20:34:08.368Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 1, "prepare view": 0, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8=", "parent": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+2022-11-28T20:34:09.445Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 2, "prepare view": 0, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs=", "parent": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-28T20:34:09.456Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 1, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-28T20:34:09.456Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 2, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:09.456Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:492	could not find ggparent header	{"CURRENT VIEW": 2, "view": 0, "hash": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+2022-11-28T20:34:09.459Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 2, "prepare view": 0, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs=", "parent": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-28T20:34:10.562Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 2, "msg": "proposal", "header view": 3, "prepare view": 1, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-28T20:34:10.582Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 2, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-28T20:34:10.582Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 3, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:10.583Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 3, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-28T20:34:10.586Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 2, "msg": "proposal", "header view": 3, "prepare view": 1, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-28T20:34:11.673Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 4, "prepare view": 2, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-28T20:34:11.696Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 3, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-28T20:34:11.696Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 4, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:11.696Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:235	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 4}
+2022-11-28T20:34:11.696Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 4, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-28T20:34:11.696Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 4, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-28T20:34:11.698Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 4, "prepare view": 2, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-28T20:34:11.702Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 5, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.706Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 4, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:11.706404452 +0000 UTC m=+4.524765902
+2022-11-28T20:34:11.714Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 3, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.720Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 2, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.739Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 1, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.744Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 8, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.750Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 6, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.755Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 4, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.755Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 5, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:11.755Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 5}
+2022-11-28T20:34:11.755Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 5, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:11.755Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 5}
+2022-11-28T20:34:11.755Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 5, "msg": "vote", "voter": 0, "view": 5, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.760Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 5, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:11.760Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 5}
+2022-11-28T20:34:11.763Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "signer": 5}
+2022-11-28T20:34:11.763Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 5, "prepare view": 4, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.771Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 5, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-28T20:34:11.771Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 5, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-28T20:34:11.774Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 5, "prepare view": 4, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.777Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 5, "msg": "vote", "voter": 7, "view": 5, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:11.782Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 5, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:11.782Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 5}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:11.784180963 +0000 UTC m=+4.602542354
+2022-11-28T20:34:11.790Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "signer": 5}
+2022-11-28T20:34:11.790Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 5, "prepare view": 4, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:14.050Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 6, "prepare view": 4, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-28T20:34:14.058Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 5, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-28T20:34:14.058Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 6, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:14.058Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 6, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:14.058Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 6, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-28T20:34:14.060Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 6, "prepare view": 4, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:14.06288377 +0000 UTC m=+6.881245149
+2022-11-28T20:34:14.945Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 7, "prepare view": 5, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-28T20:34:14.958Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 6, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-28T20:34:14.958Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 7, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:14.958Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 7, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-28T20:34:14.958Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 7, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-28T20:34:14.960Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 7, "prepare view": 5, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:14.967932388 +0000 UTC m=+7.786293786
+2022-11-28T20:34:15.611Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 7, "prepare view": 6, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-28T20:34:15.988Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 8, "prepare view": 6, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-28T20:34:15.998Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 7, "view": 7, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-28T20:34:15.998Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 8, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:15.998Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 8, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-28T20:34:15.998Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 8, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-28T20:34:16.000Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 8, "prepare view": 6, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:16.002871507 +0000 UTC m=+8.821232926
+2022-11-28T20:34:16.643Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 8, "prepare view": 7, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-28T20:34:17.027Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 9, "prepare view": 7, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-28T20:34:17.038Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 8, "view": 8, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-28T20:34:17.038Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 9, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:17.038Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 9, "view": 7, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-28T20:34:17.038Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 9, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-28T20:34:17.039Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 9, "prepare view": 7, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:17.042666557 +0000 UTC m=+9.861027949
+2022-11-28T20:34:17.659Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 9, "msg": "proposal", "header view": 9, "prepare view": 8, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-28T20:34:17.861Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 9, "msg": "proposal", "header view": 10, "prepare view": 8, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4=", "parent": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-28T20:34:17.871Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 9, "view": 9, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-28T20:34:17.871Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 10, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:17.871Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 10, "view": 8, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-28T20:34:17.871Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 10, "view": 7, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-28T20:34:17.873Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 9, "msg": "proposal", "header view": 10, "prepare view": 8, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4=", "parent": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:17.877371283 +0000 UTC m=+10.695732686
+2022-11-28T20:34:18.686Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 10, "msg": "proposal", "header view": 11, "prepare view": 9, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-28T20:34:18.720Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 10, "view": 10, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-28T20:34:18.720Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 11, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:18.720Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 11, "view": 9, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-28T20:34:18.720Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 11, "view": 8, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-28T20:34:18.728Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 10, "msg": "proposal", "header view": 11, "prepare view": 9, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:18.730810746 +0000 UTC m=+11.549172142
+2022-11-28T20:34:18.821Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 11, "msg": "proposal", "header view": 10, "prepare view": 10, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4=", "parent": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-28T20:34:18.833Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 11, "msg": "proposal", "header view": 10, "prepare view": 10, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4=", "parent": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-28T20:34:19.512Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 11, "msg": "proposal", "header view": 12, "prepare view": 10, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-28T20:34:19.523Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 11, "view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-28T20:34:19.523Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 12, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:19.523Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 12, "view": 10, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-28T20:34:19.523Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 12, "view": 9, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-28T20:34:19.524Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 11, "msg": "proposal", "header view": 12, "prepare view": 10, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:19.526829939 +0000 UTC m=+12.345191334
+2022-11-28T20:34:19.600Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 12, "msg": "proposal", "header view": 11, "prepare view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-28T20:34:19.609Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 12, "msg": "proposal", "header view": 11, "prepare view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-28T20:34:20.218Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 12, "msg": "proposal", "header view": 11, "prepare view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-28T20:34:20.226Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 12, "msg": "proposal", "header view": 11, "prepare view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-28T20:34:20.297Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 12, "msg": "proposal", "header view": 13, "prepare view": 11, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-28T20:34:20.321Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 12, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-28T20:34:20.321Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 13, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:20.321Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:235	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 13}
+2022-11-28T20:34:20.321Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 13, "view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-28T20:34:20.321Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 13, "view": 10, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-28T20:34:20.322Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 12, "msg": "proposal", "header view": 13, "prepare view": 11, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-28T20:34:20.324Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 5, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.327Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 4, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:20.333197373 +0000 UTC m=+13.151558766
+2022-11-28T20:34:20.364Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 8, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.372Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 7, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.379Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 1, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.384Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 6, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.389Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 0, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.394Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 13, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.394Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 14, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:20.394Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 14}
+2022-11-28T20:34:20.394Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 14, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:20.394Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 14}
+2022-11-28T20:34:20.397Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "signer": 5}
+2022-11-28T20:34:20.397Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 14, "prepare view": 13, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.404Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 14, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-28T20:34:20.405Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 14, "view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-28T20:34:20.406Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 14, "prepare view": 13, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:20.40867609 +0000 UTC m=+13.227037473
+2022-11-28T20:34:20.414Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 12, "prepare view": 13, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-28T20:34:20.422Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 12, "prepare view": 13, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-28T20:34:20.422Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 14, "msg": "vote", "voter": 3, "view": 14, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.427Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 14, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:20.427Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 14}
+2022-11-28T20:34:20.431Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "signer": 5}
+2022-11-28T20:34:20.431Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 14, "prepare view": 13, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.441Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 14, "msg": "vote", "voter": 2, "view": 14, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:20.447Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 14, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:20.447Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 14}
+2022-11-28T20:34:20.451Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "signer": 5}
+2022-11-28T20:34:20.451Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 14, "prepare view": 13, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:21.721Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 15, "prepare view": 13, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA=", "parent": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-28T20:34:21.731Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 14, "view": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-28T20:34:21.731Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 15, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:21.731Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 15, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:21.731Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 15, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-28T20:34:21.732Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 15, "prepare view": 13, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA=", "parent": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:21.734864758 +0000 UTC m=+14.553226153
+2022-11-28T20:34:21.867Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 13, "prepare view": 14, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-28T20:34:21.876Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 13, "prepare view": 14, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-28T20:34:22.208Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 15, "prepare view": 14, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA=", "parent": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-28T20:34:22.621Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 15, "prepare view": 14, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA=", "parent": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-28T20:34:22.891Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 16, "prepare view": 14, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw=", "parent": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-28T20:34:22.899Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 15, "view": 15, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-28T20:34:22.899Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 16, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:22.899Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 16, "view": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-28T20:34:22.899Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 16, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-28T20:34:22.900Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 16, "prepare view": 14, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw=", "parent": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:22.903213212 +0000 UTC m=+15.721574612
+2022-11-28T20:34:23.463Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 16, "msg": "proposal", "header view": 16, "prepare view": 15, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw=", "parent": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-28T20:34:23.601Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 16, "msg": "proposal", "header view": 17, "prepare view": 15, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-28T20:34:23.630Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 16, "view": 16, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-28T20:34:23.630Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 17, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:23.630Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 17, "view": 15, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-28T20:34:23.630Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 17, "view": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-28T20:34:23.632Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 16, "msg": "proposal", "header view": 17, "prepare view": 15, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:23.635111571 +0000 UTC m=+16.453472972
+2022-11-28T20:34:24.225Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 17, "msg": "proposal", "header view": 17, "prepare view": 16, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-28T20:34:24.531Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 17, "msg": "proposal", "header view": 18, "prepare view": 16, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM=", "parent": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-28T20:34:24.552Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 17, "view": 17, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-28T20:34:24.552Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 18, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:24.552Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 18, "view": 16, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-28T20:34:24.552Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 18, "view": 15, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-28T20:34:24.552Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 17, "msg": "proposal", "header view": 18, "prepare view": 16, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM=", "parent": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:24.558465442 +0000 UTC m=+17.376826838
+2022-11-28T20:34:24.864Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 17, "prepare view": 17, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-28T20:34:24.887Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 17, "prepare view": 17, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-28T20:34:25.089Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 18, "prepare view": 17, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM=", "parent": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-28T20:34:25.460Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 19, "prepare view": 17, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-28T20:34:25.485Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 18, "view": 18, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-28T20:34:25.485Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 19, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:25.485Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 19, "view": 17, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-28T20:34:25.485Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 19, "view": 16, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-28T20:34:25.487Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 19, "prepare view": 17, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:25.490005654 +0000 UTC m=+18.308367049
+2022-11-28T20:34:26.026Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 19, "msg": "proposal", "header view": 19, "prepare view": 18, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-28T20:34:26.257Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 19, "msg": "proposal", "header view": 20, "prepare view": 18, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-28T20:34:26.285Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 19, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-28T20:34:26.285Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 20, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:26.285Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 20, "view": 18, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-28T20:34:26.285Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 20, "view": 17, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-28T20:34:26.289Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 19, "msg": "proposal", "header view": 20, "prepare view": 18, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:26.296227317 +0000 UTC m=+19.114588702
+2022-11-28T20:34:27.102Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 21, "prepare view": 19, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc=", "parent": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-28T20:34:27.119Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 20, "view": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-28T20:34:27.119Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 21, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:27.121Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 21, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-28T20:34:27.121Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 21, "view": 18, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-28T20:34:27.129Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 21, "prepare view": 19, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc=", "parent": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:27.140820803 +0000 UTC m=+19.959182198
+2022-11-28T20:34:27.745Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 21, "msg": "proposal", "header view": 21, "prepare view": 20, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc=", "parent": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-28T20:34:27.927Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 21, "msg": "proposal", "header view": 22, "prepare view": 20, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "parent": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-28T20:34:27.948Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 21, "view": 21, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-28T20:34:27.948Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 22, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:27.948Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:235	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 22}
+2022-11-28T20:34:27.948Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 22, "view": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-28T20:34:27.948Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 22, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-28T20:34:27.951Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 21, "msg": "proposal", "header view": 22, "prepare view": 20, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "parent": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-28T20:34:27.954Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 22, "msg": "vote", "voter": 5, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:27.959Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 22, "msg": "vote", "voter": 4, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:27.959697076 +0000 UTC m=+20.778058473
+2022-11-28T20:34:27.994Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 22, "msg": "vote", "voter": 2, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.000Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 22, "msg": "vote", "voter": 1, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.014Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 22, "msg": "vote", "voter": 7, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.020Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 22, "msg": "vote", "voter": 8, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.025Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 22, "msg": "vote", "voter": 0, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.030Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 22, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.030Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 23, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:28.030Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 23}
+2022-11-28T20:34:28.030Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 23, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:28.030Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 23}
+2022-11-28T20:34:28.030Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 23, "msg": "vote", "voter": 6, "view": 23, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.036Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 23, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:28.036Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 23}
+2022-11-28T20:34:28.039Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 23, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "signer": 5}
+2022-11-28T20:34:28.039Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 23, "prepare view": 22, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.048Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 23, "view": 21, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-28T20:34:28.048Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 23, "view": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-28T20:34:28.050Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 23, "prepare view": 22, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:28.052427613 +0000 UTC m=+20.870788996
+2022-11-28T20:34:28.411Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 23, "msg": "vote", "voter": 3, "view": 23, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.417Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 23, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:28.417Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 23}
+2022-11-28T20:34:28.421Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 23, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "signer": 5}
+2022-11-28T20:34:28.422Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 23, "prepare view": 22, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:28.797Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 22, "prepare view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "parent": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-28T20:34:28.809Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:377	proposal view doesn't match local view	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 22, "prepare view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "parent": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-28T20:34:29.188Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 24, "prepare view": 22, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0=", "parent": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-28T20:34:29.195Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 23, "view": 23, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-28T20:34:29.195Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 24, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:29.195Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 24, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:29.195Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 24, "view": 21, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-28T20:34:29.196Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 24, "prepare view": 22, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0=", "parent": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:29.199001601 +0000 UTC m=+22.017362981
+2022-11-28T20:34:29.655Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 24, "msg": "proposal", "header view": 24, "prepare view": 23, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0=", "parent": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-28T20:34:30.479Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 24, "msg": "proposal", "header view": 25, "prepare view": 23, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78=", "parent": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-28T20:34:30.502Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 24, "view": 24, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-28T20:34:30.502Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 25, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:30.502Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 25, "view": 23, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-28T20:34:30.502Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 25, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-28T20:34:30.503Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 24, "msg": "proposal", "header view": 25, "prepare view": 23, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78=", "parent": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:30.506664807 +0000 UTC m=+23.325026201
+2022-11-28T20:34:31.103Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 25, "msg": "proposal", "header view": 25, "prepare view": 24, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78=", "parent": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-28T20:34:31.307Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 25, "msg": "proposal", "header view": 26, "prepare view": 24, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8=", "parent": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-28T20:34:31.339Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 25, "view": 25, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-28T20:34:31.349Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 26, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:31.349Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 26, "view": 24, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-28T20:34:31.349Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 26, "view": 23, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-28T20:34:31.350Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 25, "msg": "proposal", "header view": 26, "prepare view": 24, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8=", "parent": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:31.352742411 +0000 UTC m=+24.171103795
+2022-11-28T20:34:31.940Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 26, "msg": "proposal", "header view": 26, "prepare view": 25, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8=", "parent": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-28T20:34:32.246Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 26, "msg": "proposal", "header view": 27, "prepare view": 25, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes=", "parent": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-28T20:34:32.273Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 26, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-28T20:34:32.273Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 27, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:32.273Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 27, "view": 25, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-28T20:34:32.273Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 27, "view": 24, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-28T20:34:32.273Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 26, "msg": "proposal", "header view": 27, "prepare view": 25, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes=", "parent": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:32.275885019 +0000 UTC m=+25.094246413
+2022-11-28T20:34:32.811Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 27, "msg": "proposal", "header view": 27, "prepare view": 26, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes=", "parent": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-28T20:34:33.089Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 27, "msg": "proposal", "header view": 28, "prepare view": 26, "hash": "3+UNLakfs7xey4DO9WAie2wp4O9UkkidUzDArWMloJk=", "parent": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes="}
+2022-11-28T20:34:33.111Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 27, "view": 27, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes="}
+2022-11-28T20:34:33.111Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 28, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:33.111Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 28, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-28T20:34:33.111Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 28, "view": 25, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-28T20:34:33.112Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 27, "msg": "proposal", "header view": 28, "prepare view": 26, "hash": "3+UNLakfs7xey4DO9WAie2wp4O9UkkidUzDArWMloJk=", "parent": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:33.117212502 +0000 UTC m=+25.935573898
+2022-11-28T20:34:33.934Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 28, "msg": "proposal", "header view": 29, "prepare view": 27, "hash": "WPWSQVq6Mjf6TW2L/IUprG25gKA9bKylKcfYxlWriGc=", "parent": "3+UNLakfs7xey4DO9WAie2wp4O9UkkidUzDArWMloJk="}
+2022-11-28T20:34:33.960Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 28, "view": 28, "hash": "3+UNLakfs7xey4DO9WAie2wp4O9UkkidUzDArWMloJk="}
+2022-11-28T20:34:33.960Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 29, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:33.960Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 29, "view": 27, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes="}
+2022-11-28T20:34:33.960Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 29, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-28T20:34:33.967Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 28, "msg": "proposal", "header view": 29, "prepare view": 27, "hash": "WPWSQVq6Mjf6TW2L/IUprG25gKA9bKylKcfYxlWriGc=", "parent": "3+UNLakfs7xey4DO9WAie2wp4O9UkkidUzDArWMloJk="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:33.972708529 +0000 UTC m=+26.791069925
+2022-11-28T20:34:34.572Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 29, "msg": "proposal", "header view": 29, "prepare view": 28, "hash": "WPWSQVq6Mjf6TW2L/IUprG25gKA9bKylKcfYxlWriGc=", "parent": "3+UNLakfs7xey4DO9WAie2wp4O9UkkidUzDArWMloJk="}
+2022-11-28T20:34:34.742Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 29, "msg": "proposal", "header view": 30, "prepare view": 28, "hash": "l7yC9cG4W5sZPDBkud6gulHJpYjJmbxYymYP44FvAgc=", "parent": "WPWSQVq6Mjf6TW2L/IUprG25gKA9bKylKcfYxlWriGc="}
+2022-11-28T20:34:34.751Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 29, "view": 29, "hash": "WPWSQVq6Mjf6TW2L/IUprG25gKA9bKylKcfYxlWriGc="}
+2022-11-28T20:34:34.751Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 30, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:34.751Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 30, "view": 28, "hash": "3+UNLakfs7xey4DO9WAie2wp4O9UkkidUzDArWMloJk="}
+2022-11-28T20:34:34.751Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 30, "view": 27, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes="}
+2022-11-28T20:34:34.752Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 29, "msg": "proposal", "header view": 30, "prepare view": 28, "hash": "l7yC9cG4W5sZPDBkud6gulHJpYjJmbxYymYP44FvAgc=", "parent": "WPWSQVq6Mjf6TW2L/IUprG25gKA9bKylKcfYxlWriGc="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:34.755613567 +0000 UTC m=+27.573974966
+Receiver: failed to read first 4 bytes from reader, EOF
+Error: failed to read data!
+handleConnection: listenForMessages returned error, calling cancelFunction
+Failed to read first 4 bytes from reader
+sendMessages: Time to return
+2022-11-28T20:34:35.447Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 30, "msg": "proposal", "header view": 31, "prepare view": 29, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94=", "parent": "l7yC9cG4W5sZPDBkud6gulHJpYjJmbxYymYP44FvAgc="}
+2022-11-28T20:34:35.461Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 30, "view": 30, "hash": "l7yC9cG4W5sZPDBkud6gulHJpYjJmbxYymYP44FvAgc="}
+2022-11-28T20:34:35.461Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 31, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:35.461Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:235	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 31}
+2022-11-28T20:34:35.461Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 31, "view": 29, "hash": "WPWSQVq6Mjf6TW2L/IUprG25gKA9bKylKcfYxlWriGc="}
+2022-11-28T20:34:35.461Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 31, "view": 28, "hash": "3+UNLakfs7xey4DO9WAie2wp4O9UkkidUzDArWMloJk="}
+2022-11-28T20:34:35.462Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 30, "msg": "proposal", "header view": 31, "prepare view": 29, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94=", "parent": "l7yC9cG4W5sZPDBkud6gulHJpYjJmbxYymYP44FvAgc="}
+2022-11-28T20:34:35.466Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 31, "msg": "vote", "voter": 5, "view": 31, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+2022-11-28T20:34:35.469Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 31, "msg": "vote", "voter": 4, "view": 31, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:35.474725612 +0000 UTC m=+28.293086996
+2022-11-28T20:34:35.507Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 31, "msg": "vote", "voter": 8, "view": 31, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+2022-11-28T20:34:35.516Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 31, "msg": "vote", "voter": 3, "view": 31, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+2022-11-28T20:34:35.520Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 31, "msg": "vote", "voter": 2, "view": 31, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+2022-11-28T20:34:35.527Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 31, "msg": "vote", "voter": 0, "view": 31, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+2022-11-28T20:34:35.545Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:676	received vote	{"CURRENT VIEW": 31, "msg": "vote", "voter": 1, "view": 31, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+2022-11-28T20:34:35.550Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:519	new block certified	{"CURRENT VIEW": 31, "view": 31, "hash": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+2022-11-28T20:34:35.550Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 32, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:35.550Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 32}
+2022-11-28T20:34:35.550Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:220	entered new view	{"CURRENT VIEW": 32, "view timeout": 2, "timedout": false}
+2022-11-28T20:34:35.550Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:244	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 32}
+2022-11-28T20:34:35.553Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:152	sending proposal	{"CURRENT VIEW": 32, "hash": "oQiUQ/yGNObdOkrsQVwcftBmBAmWAxf6BHSkMqUJafg=", "parent": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94=", "signer": 5}
+2022-11-28T20:34:35.553Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:285	received proposal, called onProposal	{"CURRENT VIEW": 32, "msg": "proposal", "header view": 32, "prepare view": 31, "hash": "oQiUQ/yGNObdOkrsQVwcftBmBAmWAxf6BHSkMqUJafg=", "parent": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+2022-11-28T20:34:35.560Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:498	new block locked	{"CURRENT VIEW": 32, "view": 30, "hash": "l7yC9cG4W5sZPDBkud6gulHJpYjJmbxYymYP44FvAgc="}
+2022-11-28T20:34:35.560Z	INFO	replica=5	coded-hotterstuff/consensus.go:507	new block commited	{"CURRENT VIEW": 32, "view": 29, "hash": "WPWSQVq6Mjf6TW2L/IUprG25gKA9bKylKcfYxlWriGc="}
+2022-11-28T20:34:35.561Z	DEBUG	replica=5	coded-hotterstuff/consensus.go:392	proposal is safe to vote on	{"CURRENT VIEW": 32, "msg": "proposal", "header view": 32, "prepare view": 31, "hash": "oQiUQ/yGNObdOkrsQVwcftBmBAmWAxf6BHSkMqUJafg=", "parent": "kfQy6mvAXkSyuxH4ana85haDJzVYsZpvBkRX9pVIi94="}
+Node  5 +1 block finalized at time:  2022-11-28 20:34:35.563708268 +0000 UTC m=+28.382069648

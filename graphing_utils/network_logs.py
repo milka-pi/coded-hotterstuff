@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import os
+import statistics
 from pathlib import Path
 from argparse import ArgumentParser
 
-types = ["tcp_coded", "tcp_orig",  "udp_coded", "kev_coded"]
+#types = ["tcp_coded", "tcp_orig",  "udp_coded", "kev_coded"]
+types = ["tcp_orig"]
 
 parser = ArgumentParser(description="Data processing")
 
@@ -46,12 +48,16 @@ for log_type in types:
         if len(x.split()) < 2:
             continue
         data[log_type][node].append(float(x.split()[1]))
-    print(data)
+    #print(data)
 
 colors = ['r','c','b',"k"]
 color_ind = 0
 plt.figure(figsize=(10, 5))
 for type, vals in data.items():
+    t = []
+    for k, v in vals.items():
+        t.extend(v)
+    print(type, statistics.mean(t))
     plt.plot(vals[2][:100],colors[color_ind], label=type)
     color_ind+=1
 plt.title(f'throughput n = {n}')
