@@ -53,22 +53,6 @@ for (( index=0; index<numNodes; index++ )); do
 	ip netns exec ramjet-s1-n$index ./tcpcollect.sh &> $logFolder/node-$index-tcp.log &
 done
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#msgarray=($msg)
-#echo "Number of elements in msgarray: ${#msgarray[@]}"
-#ip=${msgarray[6]}
-#echo "IP address: $ip"
-
+sleep 60
+bash endtest.sh
+echo "done"
