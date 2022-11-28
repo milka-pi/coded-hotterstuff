@@ -1,0 +1,739 @@
+Node index: 6
+[10.0.1.0:9000 10.0.1.2:9001 10.0.1.4:9002 10.0.1.6:9003 10.0.1.8:9004 10.0.1.10:9005 10.0.1.12:9006]
+node 6 initiating connection to 10.0.1.6:9003
+node 6 initiating connection to 10.0.1.4:9002
+node 6 initiating connection to 10.0.1.8:9004
+node 6 initiating connection to 10.0.1.0:9000
+node 6 initiating connection to 10.0.1.10:9005
+node 6 initiating connection to 10.0.1.2:9001
+2022-11-27T04:37:56.890Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 1, "view timeout": 2, "timedout": false}
+node 6 successfully initiated connection to 10.0.1.6:9003
+node 6 successfully initiated connection to 10.0.1.4:9002
+node 6 successfully initiated connection to 10.0.1.8:9004
+node 6 successfully initiated connection to 10.0.1.0:9000
+node 6 successfully initiated connection to 10.0.1.10:9005
+node 6 successfully initiated connection to 10.0.1.2:9001
+connection established 6 - 4
+Node  6 -->  Listening for messages... 
+connection established 6 - 3
+Node  6 -->  Listening for messages... 
+connection established 6 - 2
+Node  6 -->  Listening for messages... 
+connection established 6 - 1
+Node  6 -->  Listening for messages... 
+connection established 6 - 5
+connection established 6 - 0
+Node  6 -->  Listening for messages... 
+Node  6 -->  Listening for messages... 
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:37:59.453781421 +0000 UTC m=+2.657105853 header hash: [72 160 180 233 149 231 108 139 103 97 149 83 197 114 214 128 107 110 76 231 61 205 42 18 190 82 86 133 4 78 235 255]
+2022-11-27T04:37:59.453Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 1, "prepare view": 0, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8=", "parent": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+2022-11-27T04:37:59.461Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:777	could not find gparent header	{"CURRENT VIEW": 1, "view": 0, "hash": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+2022-11-27T04:37:59.464Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 1, "prepare view": 0, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8=", "parent": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:02.157646798 +0000 UTC m=+5.360971285 header hash: [112 240 93 77 174 234 64 155 158 20 106 227 158 234 134 149 230 112 20 24 127 150 17 128 149 69 129 124 42 247 80 171]
+2022-11-27T04:38:02.157Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 2, "prepare view": 0, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs=", "parent": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-27T04:38:02.170Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 1, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-27T04:38:02.170Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 2, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:02.170Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:782	could not find ggparent header	{"CURRENT VIEW": 2, "view": 0, "hash": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+2022-11-27T04:38:02.174Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 1, "msg": "proposal", "header view": 2, "prepare view": 0, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs=", "parent": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+Decoded original proposal, time: 2022-11-27 04:38:03.359994723 +0000 UTC m=+6.563319203 header hash: [112 240 93 77 174 234 64 155 158 20 106 227 158 234 134 149 230 112 20 24 127 150 17 128 149 69 129 124 42 247 80 171]
+2022-11-27T04:38:03.360Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 2, "msg": "proposal", "header view": 2, "prepare view": 1, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs=", "parent": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-27T04:38:03.366Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:782	could not find ggparent header	{"CURRENT VIEW": 2, "view": 0, "hash": "GZWDhiYW+ib6TpJWRLDOftUd8y8ovAaEerQWDbefS7c="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:06.049172798 +0000 UTC m=+9.252497239 header hash: [112 177 115 22 63 1 229 2 188 132 41 134 91 243 148 216 155 140 26 48 57 5 100 136 252 109 95 105 67 73 234 227]
+2022-11-27T04:38:06.049Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 2, "msg": "proposal", "header view": 3, "prepare view": 1, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-27T04:38:06.057Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 2, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-27T04:38:06.057Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 3, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:06.057Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 3, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-27T04:38:06.058Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 2, "msg": "proposal", "header view": 3, "prepare view": 1, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:07.189739889 +0000 UTC m=+10.393064368 header hash: [112 177 115 22 63 1 229 2 188 132 41 134 91 243 148 216 155 140 26 48 57 5 100 136 252 109 95 105 67 73 234 227]
+2022-11-27T04:38:07.189Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 3, "prepare view": 2, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+Decoded original proposal, time: 2022-11-27 04:38:08.697683225 +0000 UTC m=+11.901007665 header hash: [112 177 115 22 63 1 229 2 188 132 41 134 91 243 148 216 155 140 26 48 57 5 100 136 252 109 95 105 67 73 234 227]
+2022-11-27T04:38:08.697Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 3, "prepare view": 2, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM=", "parent": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:10.076659574 +0000 UTC m=+13.279984006 header hash: [241 106 152 62 46 209 156 146 237 16 116 52 193 237 0 80 85 192 166 182 15 238 2 99 236 42 182 26 232 130 25 190]
+2022-11-27T04:38:10.076Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 4, "prepare view": 2, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-27T04:38:10.085Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 3, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-27T04:38:10.085Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 4, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:10.085Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 4, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-27T04:38:10.085Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 4, "view": 1, "hash": "SKC06ZXnbItnYZVTxXLWgGtuTOc9zSoSvlJWhQRO6/8="}
+2022-11-27T04:38:10.090Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 3, "msg": "proposal", "header view": 4, "prepare view": 2, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:10.093101668 +0000 UTC m=+13.296426087
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:38:11.488Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 4, "msg": "vote", "voter": 5, "view": 4, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+Node  6  received vote before proposal, saving vote in pending votes, hash is  [142 10 227 234 199 14 168 203 47 218 211 136 230 41 94 109 68 52 16 5 27 142 16 70 5 23 250 1 182 25 221 148]  and string is,  5
+2022-11-27T04:38:11.488Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:970	Received vote before proposal, key is, 5	{"CURRENT VIEW": 4}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:12.783603595 +0000 UTC m=+15.986928086 header hash: [142 10 227 234 199 14 168 203 47 218 211 136 230 41 94 109 68 52 16 5 27 142 16 70 5 23 250 1 182 25 221 148]
+2022-11-27T04:38:12.783Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 4, "msg": "proposal", "header view": 5, "prepare view": 3, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-27T04:38:12.792Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 4, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-27T04:38:12.792Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 5, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:12.792Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:535	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 5}
+2022-11-27T04:38:12.792Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 5, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-27T04:38:12.792Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 5, "view": 2, "hash": "cPBdTa7qQJueFGrjnuqGleZwFBh/lhGAlUWBfCr3UKs="}
+2022-11-27T04:38:12.793Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 4, "msg": "proposal", "header view": 5, "prepare view": 3, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-27T04:38:12.793Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:758	Taking care of pending vote 5	{"CURRENT VIEW": 5}
+2022-11-27T04:38:12.793Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 5, "msg": "vote", "voter": 5, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:12.800Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 5, "msg": "vote", "voter": 6, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:12.805864696 +0000 UTC m=+16.009189135
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:38:13.716Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 5, "msg": "vote", "voter": 4, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+Decoded original proposal, time: 2022-11-27 04:38:13.854952134 +0000 UTC m=+17.058276618 header hash: [241 106 152 62 46 209 156 146 237 16 116 52 193 237 0 80 85 192 166 182 15 238 2 99 236 42 182 26 232 130 25 190]
+2022-11-27T04:38:13.854Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 4, "prepare view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-27T04:38:13.863Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 5, "msg": "proposal", "header view": 4, "prepare view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-27T04:38:13.864Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 5, "msg": "vote", "voter": 3, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:13.954Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 5, "msg": "vote", "voter": 2, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:13.960Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 5, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:13.960Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 6, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:13.960Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 6}
+2022-11-27T04:38:13.960Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 6, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:13.960Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 6}
+2022-11-27T04:38:13.964Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "signer": 6}
+2022-11-27T04:38:13.965Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 6, "prepare view": 5, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:13.973Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 6, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-27T04:38:13.973Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 6, "view": 3, "hash": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-27T04:38:13.976Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 6, "prepare view": 5, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:13.978810391 +0000 UTC m=+17.182134824
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+Decoded original proposal, time: 2022-11-27 04:38:14.952330814 +0000 UTC m=+18.155655302 header hash: [142 10 227 234 199 14 168 203 47 218 211 136 230 41 94 109 68 52 16 5 27 142 16 70 5 23 250 1 182 25 221 148]
+2022-11-27T04:38:14.952Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 5, "prepare view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-27T04:38:14.962Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 5, "prepare view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+Decoded original proposal, time: 2022-11-27 04:38:16.009080854 +0000 UTC m=+19.212405351 header hash: [241 106 152 62 46 209 156 146 237 16 116 52 193 237 0 80 85 192 166 182 15 238 2 99 236 42 182 26 232 130 25 190]
+2022-11-27T04:38:16.009Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 4, "prepare view": 5, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-27T04:38:16.017Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 4, "prepare view": 5, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4=", "parent": "cLFzFj8B5QK8hCmGW/OU2JuMGjA5BWSI/G1faUNJ6uM="}
+2022-11-27T04:38:16.017Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 6, "msg": "vote", "voter": 1, "view": 6, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:16.023Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 6, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:16.023Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 6}
+2022-11-27T04:38:16.026Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "signer": 6}
+2022-11-27T04:38:16.027Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 6, "prepare view": 5, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+Decoded original proposal, time: 2022-11-27 04:38:16.355333296 +0000 UTC m=+19.558657776 header hash: [142 10 227 234 199 14 168 203 47 218 211 136 230 41 94 109 68 52 16 5 27 142 16 70 5 23 250 1 182 25 221 148]
+2022-11-27T04:38:16.355Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 5, "prepare view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-27T04:38:16.364Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 5, "prepare view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "parent": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-27T04:38:16.376Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 6, "msg": "vote", "voter": 0, "view": 6, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:16.382Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 6, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:16.382Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 6}
+2022-11-27T04:38:16.385Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ=", "signer": 6}
+2022-11-27T04:38:16.386Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 6, "prepare view": 5, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4=", "parent": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:21.582571215 +0000 UTC m=+24.785895697 header hash: [82 186 70 5 171 170 163 31 242 237 216 214 91 95 174 96 9 56 150 120 198 10 139 98 230 188 67 131 78 157 60 15]
+2022-11-27T04:38:21.582Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 7, "prepare view": 5, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-27T04:38:21.590Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 6, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-27T04:38:21.590Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 7, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:21.590Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 7, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:21.590Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 7, "view": 4, "hash": "8WqYPi7RnJLtEHQ0we0AUFXAprYP7gJj7Cq2GuiCGb4="}
+2022-11-27T04:38:21.590Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 6, "msg": "proposal", "header view": 7, "prepare view": 5, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:21.593024969 +0000 UTC m=+24.796349392
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:24.46964941 +0000 UTC m=+27.672973841 header hash: [82 186 70 5 171 170 163 31 242 237 216 214 91 95 174 96 9 56 150 120 198 10 139 98 230 188 67 131 78 157 60 15]
+2022-11-27T04:38:24.469Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 7, "prepare view": 6, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:25.73946702 +0000 UTC m=+28.942791502 header hash: [82 186 70 5 171 170 163 31 242 237 216 214 91 95 174 96 9 56 150 120 198 10 139 98 230 188 67 131 78 157 60 15]
+2022-11-27T04:38:25.739Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 7, "prepare view": 6, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8=", "parent": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+Decoded original proposal, time: 2022-11-27 04:38:25.923676149 +0000 UTC m=+29.127000630 header hash: [9 212 205 28 110 251 47 242 141 111 167 241 108 89 12 35 155 222 125 75 78 184 7 35 235 24 77 74 102 255 131 11]
+2022-11-27T04:38:25.923Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 8, "prepare view": 6, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-27T04:38:25.932Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 7, "view": 7, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-27T04:38:25.932Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 8, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:25.932Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 8, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-27T04:38:25.932Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 8, "view": 5, "hash": "jgrj6scOqMsv2tOI5ilebUQ0EAUbjhBGBRf6AbYZ3ZQ="}
+2022-11-27T04:38:25.936Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 7, "msg": "proposal", "header view": 8, "prepare view": 6, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:25.939208154 +0000 UTC m=+29.142532592
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:27.773892135 +0000 UTC m=+30.977216618 header hash: [9 212 205 28 110 251 47 242 141 111 167 241 108 89 12 35 155 222 125 75 78 184 7 35 235 24 77 74 102 255 131 11]
+2022-11-27T04:38:27.773Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 8, "prepare view": 7, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:28.959176445 +0000 UTC m=+32.162500934 header hash: [9 212 205 28 110 251 47 242 141 111 167 241 108 89 12 35 155 222 125 75 78 184 7 35 235 24 77 74 102 255 131 11]
+2022-11-27T04:38:28.959Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 8, "prepare view": 7, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws=", "parent": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:30.150523233 +0000 UTC m=+33.353847670 header hash: [75 152 239 23 193 229 152 187 193 198 49 17 94 0 66 98 109 76 252 99 208 6 227 177 121 255 81 193 174 84 93 16]
+2022-11-27T04:38:30.150Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 9, "prepare view": 7, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-27T04:38:30.159Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 8, "view": 8, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-27T04:38:30.159Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 9, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:30.159Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 9, "view": 7, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-27T04:38:30.159Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 9, "view": 6, "hash": "kFp8+So3McG2yp/crA+UXLJ7e1+L/NadJHrbEZU+si4="}
+2022-11-27T04:38:30.160Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 8, "msg": "proposal", "header view": 9, "prepare view": 7, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:30.162980399 +0000 UTC m=+33.366304840
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:31.506341031 +0000 UTC m=+34.709665519 header hash: [75 152 239 23 193 229 152 187 193 198 49 17 94 0 66 98 109 76 252 99 208 6 227 177 121 255 81 193 174 84 93 16]
+2022-11-27T04:38:31.506Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 9, "msg": "proposal", "header view": 9, "prepare view": 8, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+Decoded original proposal, time: 2022-11-27 04:38:32.69163179 +0000 UTC m=+35.894956231 header hash: [75 152 239 23 193 229 152 187 193 198 49 17 94 0 66 98 109 76 252 99 208 6 227 177 121 255 81 193 174 84 93 16]
+2022-11-27T04:38:32.691Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 9, "msg": "proposal", "header view": 9, "prepare view": 8, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA=", "parent": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:34.910754885 +0000 UTC m=+38.114079372 header hash: [27 41 162 234 216 56 3 146 217 203 198 162 48 110 164 219 109 81 22 147 45 180 199 35 245 217 107 204 240 129 84 110]
+2022-11-27T04:38:34.910Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 9, "msg": "proposal", "header view": 10, "prepare view": 8, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4=", "parent": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-27T04:38:34.922Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 9, "view": 9, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-27T04:38:34.922Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 10, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:34.922Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 10, "view": 8, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-27T04:38:34.922Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 10, "view": 7, "hash": "UrpGBauqox/y7djWW1+uYAk4lnjGCoti5rxDg06dPA8="}
+2022-11-27T04:38:34.923Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 9, "msg": "proposal", "header view": 10, "prepare view": 8, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4=", "parent": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:34.930683451 +0000 UTC m=+38.134007913
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:36.03951101 +0000 UTC m=+39.242835490 header hash: [27 41 162 234 216 56 3 146 217 203 198 162 48 110 164 219 109 81 22 147 45 180 199 35 245 217 107 204 240 129 84 110]
+2022-11-27T04:38:36.039Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 10, "msg": "proposal", "header view": 10, "prepare view": 9, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4=", "parent": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:38.043115592 +0000 UTC m=+41.246440083 header hash: [27 41 162 234 216 56 3 146 217 203 198 162 48 110 164 219 109 81 22 147 45 180 199 35 245 217 107 204 240 129 84 110]
+2022-11-27T04:38:38.043Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 10, "msg": "proposal", "header view": 10, "prepare view": 9, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4=", "parent": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:39.329001858 +0000 UTC m=+42.532326341 header hash: [36 112 202 110 235 231 254 169 68 108 200 133 25 89 215 19 188 251 85 241 73 155 115 67 11 176 16 17 106 100 183 124]
+2022-11-27T04:38:39.329Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 10, "msg": "proposal", "header view": 11, "prepare view": 9, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-27T04:38:39.336Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 10, "view": 10, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-27T04:38:39.336Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 11, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:39.336Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 11, "view": 9, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-27T04:38:39.336Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 11, "view": 8, "hash": "CdTNHG77L/KNb6fxbFkMI5vefUtOuAcj6xhNSmb/gws="}
+2022-11-27T04:38:39.336Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 10, "msg": "proposal", "header view": 11, "prepare view": 9, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:39.338775354 +0000 UTC m=+42.542099785
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:40.700962401 +0000 UTC m=+43.904286841 header hash: [36 112 202 110 235 231 254 169 68 108 200 133 25 89 215 19 188 251 85 241 73 155 115 67 11 176 16 17 106 100 183 124]
+2022-11-27T04:38:40.701Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 11, "msg": "proposal", "header view": 11, "prepare view": 10, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+Decoded original proposal, time: 2022-11-27 04:38:41.919767431 +0000 UTC m=+45.123091870 header hash: [36 112 202 110 235 231 254 169 68 108 200 133 25 89 215 19 188 251 85 241 73 155 115 67 11 176 16 17 106 100 183 124]
+2022-11-27T04:38:41.919Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 11, "msg": "proposal", "header view": 11, "prepare view": 10, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w=", "parent": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:38:42.703Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 11, "msg": "vote", "voter": 5, "view": 11, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+Node  6  received vote before proposal, saving vote in pending votes, hash is  [225 164 165 204 236 180 59 151 178 38 118 190 136 53 193 22 146 46 81 162 175 160 6 50 132 174 159 221 166 0 223 96]  and string is,  12
+2022-11-27T04:38:42.703Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:970	Received vote before proposal, key is, 12	{"CURRENT VIEW": 11}
+Decoded original proposal, time: 2022-11-27 04:38:43.623123889 +0000 UTC m=+46.826448372 header hash: [225 164 165 204 236 180 59 151 178 38 118 190 136 53 193 22 146 46 81 162 175 160 6 50 132 174 159 221 166 0 223 96]
+2022-11-27T04:38:43.623Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 11, "msg": "proposal", "header view": 12, "prepare view": 10, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-27T04:38:43.630Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 11, "view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-27T04:38:43.630Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 12, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:43.630Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:535	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 12}
+2022-11-27T04:38:43.630Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 12, "view": 10, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-27T04:38:43.630Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 12, "view": 9, "hash": "S5jvF8HlmLvBxjERXgBCYm1M/GPQBuOxef9Rwa5UXRA="}
+2022-11-27T04:38:43.632Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 11, "msg": "proposal", "header view": 12, "prepare view": 10, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-27T04:38:43.632Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:758	Taking care of pending vote 12	{"CURRENT VIEW": 12}
+2022-11-27T04:38:43.632Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 12, "msg": "vote", "voter": 5, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:43.638Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 12, "msg": "vote", "voter": 6, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:43.644205706 +0000 UTC m=+46.847530142
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:38:44.041Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 12, "msg": "vote", "voter": 4, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:44.378Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 12, "msg": "vote", "voter": 0, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:44.383Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 12, "msg": "vote", "voter": 1, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:44.388Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 12, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:44.389Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 13, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:44.389Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 13}
+2022-11-27T04:38:44.389Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 13, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:44.389Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 13}
+2022-11-27T04:38:44.392Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "signer": 6}
+2022-11-27T04:38:44.392Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 13, "prepare view": 12, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:44.400Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 13, "view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-27T04:38:44.400Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 13, "view": 10, "hash": "Gymi6tg4A5LZy8aiMG6k221RFpMttMcj9dlrzPCBVG4="}
+2022-11-27T04:38:44.401Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 13, "prepare view": 12, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:44.403011578 +0000 UTC m=+47.606336000
+2022-11-27T04:38:44.708Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 3, "view": 13, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:44.714Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 13, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:44.714Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 13}
+2022-11-27T04:38:44.717Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "signer": 6}
+2022-11-27T04:38:44.719Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 13, "prepare view": 12, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+Decoded original proposal, time: 2022-11-27 04:38:44.79597379 +0000 UTC m=+47.999298273 header hash: [225 164 165 204 236 180 59 151 178 38 118 190 136 53 193 22 146 46 81 162 175 160 6 50 132 174 159 221 166 0 223 96]
+2022-11-27T04:38:44.796Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 12, "prepare view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-27T04:38:44.803Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 12, "prepare view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-27T04:38:44.804Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 13, "msg": "vote", "voter": 2, "view": 13, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:44.809Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 13, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:44.809Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 13}
+2022-11-27T04:38:44.811Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "signer": 6}
+2022-11-27T04:38:44.812Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 13, "prepare view": 12, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E=", "parent": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+Decoded original proposal, time: 2022-11-27 04:38:45.92790338 +0000 UTC m=+49.131227862 header hash: [225 164 165 204 236 180 59 151 178 38 118 190 136 53 193 22 146 46 81 162 175 160 6 50 132 174 159 221 166 0 223 96]
+2022-11-27T04:38:45.927Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 12, "prepare view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-27T04:38:45.935Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 12, "prepare view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A=", "parent": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:52.055823505 +0000 UTC m=+55.259147989 header hash: [179 79 157 9 84 57 195 200 132 217 159 131 10 204 29 20 183 79 241 0 252 79 239 189 106 39 9 193 130 153 110 137]
+2022-11-27T04:38:52.055Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 14, "prepare view": 12, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-27T04:38:52.063Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 13, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-27T04:38:52.063Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 14, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:52.063Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 14, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:52.063Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 14, "view": 11, "hash": "JHDKbuvn/qlEbMiFGVnXE7z7VfFJm3NDC7AQEWpkt3w="}
+2022-11-27T04:38:52.066Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 13, "msg": "proposal", "header view": 14, "prepare view": 12, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:52.068759321 +0000 UTC m=+55.272083758
+Decoded original proposal, time: 2022-11-27 04:38:53.263295795 +0000 UTC m=+56.466620231 header hash: [179 79 157 9 84 57 195 200 132 217 159 131 10 204 29 20 183 79 241 0 252 79 239 189 106 39 9 193 130 153 110 137]
+2022-11-27T04:38:53.263Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 14, "prepare view": 13, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok=", "parent": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:55.896613548 +0000 UTC m=+59.099938026 header hash: [202 72 185 184 152 74 130 52 19 230 34 218 220 212 95 146 25 2 29 196 82 105 189 28 182 138 255 42 166 91 160 208]
+2022-11-27T04:38:55.896Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 15, "prepare view": 13, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA=", "parent": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-27T04:38:55.904Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 14, "view": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-27T04:38:55.904Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 15, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:55.904Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 15, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-27T04:38:55.904Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 15, "view": 12, "hash": "4aSlzOy0O5eyJna+iDXBFpIuUaKvoAYyhK6f3aYA32A="}
+2022-11-27T04:38:55.905Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 14, "msg": "proposal", "header view": 15, "prepare view": 13, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA=", "parent": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:55.908586068 +0000 UTC m=+59.111910633
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:57.19596826 +0000 UTC m=+60.399292691 header hash: [202 72 185 184 152 74 130 52 19 230 34 218 220 212 95 146 25 2 29 196 82 105 189 28 182 138 255 42 166 91 160 208]
+2022-11-27T04:38:57.196Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 15, "prepare view": 14, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA=", "parent": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+Decoded original proposal, time: 2022-11-27 04:38:58.310428202 +0000 UTC m=+61.513752642 header hash: [202 72 185 184 152 74 130 52 19 230 34 218 220 212 95 146 25 2 29 196 82 105 189 28 182 138 255 42 166 91 160 208]
+2022-11-27T04:38:58.310Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 15, "prepare view": 14, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA=", "parent": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:38:59.885540076 +0000 UTC m=+63.088864516 header hash: [60 3 172 192 158 69 228 82 139 18 154 192 39 84 167 184 246 172 168 97 72 51 107 161 52 135 29 101 211 31 104 44]
+2022-11-27T04:38:59.885Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 16, "prepare view": 14, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw=", "parent": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-27T04:38:59.893Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 15, "view": 15, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-27T04:38:59.893Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 16, "view timeout": 2, "timedout": false}
+2022-11-27T04:38:59.893Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 16, "view": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-27T04:38:59.893Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 16, "view": 13, "hash": "N0cMWKpZHmTkF/OJGwaFHU4Y2cZrG1h733+F25H9V6E="}
+2022-11-27T04:38:59.893Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 15, "msg": "proposal", "header view": 16, "prepare view": 14, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw=", "parent": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+Node  6 +1 block finalized at time:  2022-11-27 04:38:59.896202546 +0000 UTC m=+63.099526967
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:01.138742184 +0000 UTC m=+64.342066663 header hash: [60 3 172 192 158 69 228 82 139 18 154 192 39 84 167 184 246 172 168 97 72 51 107 161 52 135 29 101 211 31 104 44]
+2022-11-27T04:39:01.138Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 16, "msg": "proposal", "header view": 16, "prepare view": 15, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw=", "parent": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:02.642326204 +0000 UTC m=+65.845650687 header hash: [60 3 172 192 158 69 228 82 139 18 154 192 39 84 167 184 246 172 168 97 72 51 107 161 52 135 29 101 211 31 104 44]
+2022-11-27T04:39:02.642Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 16, "msg": "proposal", "header view": 16, "prepare view": 15, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw=", "parent": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+Decoded original proposal, time: 2022-11-27 04:39:03.84859993 +0000 UTC m=+67.051924414 header hash: [125 188 128 163 149 74 17 87 102 203 151 169 127 222 108 104 174 185 14 72 28 223 232 151 172 204 94 91 117 235 43 104]
+2022-11-27T04:39:03.848Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 16, "msg": "proposal", "header view": 17, "prepare view": 15, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-27T04:39:03.856Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 16, "view": 16, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-27T04:39:03.856Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 17, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:03.856Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 17, "view": 15, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-27T04:39:03.856Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 17, "view": 14, "hash": "s0+dCVQ5w8iE2Z+DCswdFLdP8QD8T++9aicJwYKZbok="}
+2022-11-27T04:39:03.858Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 16, "msg": "proposal", "header view": 17, "prepare view": 15, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:03.860932833 +0000 UTC m=+67.064257264
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:05.983149781 +0000 UTC m=+69.186474262 header hash: [125 188 128 163 149 74 17 87 102 203 151 169 127 222 108 104 174 185 14 72 28 223 232 151 172 204 94 91 117 235 43 104]
+2022-11-27T04:39:05.983Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 17, "msg": "proposal", "header view": 17, "prepare view": 16, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:07.319702242 +0000 UTC m=+70.523026745 header hash: [125 188 128 163 149 74 17 87 102 203 151 169 127 222 108 104 174 185 14 72 28 223 232 151 172 204 94 91 117 235 43 104]
+2022-11-27T04:39:07.319Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 17, "msg": "proposal", "header view": 17, "prepare view": 16, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g=", "parent": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:07.880825304 +0000 UTC m=+71.084149785 header hash: [233 71 193 36 185 72 95 92 29 220 193 120 223 14 188 72 252 159 62 199 112 113 252 214 161 209 254 215 214 224 205 19]
+2022-11-27T04:39:07.880Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 17, "msg": "proposal", "header view": 18, "prepare view": 16, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM=", "parent": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-27T04:39:07.889Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 17, "view": 17, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-27T04:39:07.889Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 18, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:07.889Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 18, "view": 16, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-27T04:39:07.889Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 18, "view": 15, "hash": "yki5uJhKgjQT5iLa3NRfkhkCHcRSab0ctor/KqZboNA="}
+2022-11-27T04:39:07.890Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 17, "msg": "proposal", "header view": 18, "prepare view": 16, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM=", "parent": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:07.892581803 +0000 UTC m=+71.095906237
+Decoded original proposal, time: 2022-11-27 04:39:09.514004623 +0000 UTC m=+72.717329212 header hash: [233 71 193 36 185 72 95 92 29 220 193 120 223 14 188 72 252 159 62 199 112 113 252 214 161 209 254 215 214 224 205 19]
+2022-11-27T04:39:09.514Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 18, "prepare view": 17, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM=", "parent": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:11.002439721 +0000 UTC m=+74.205764205 header hash: [233 71 193 36 185 72 95 92 29 220 193 120 223 14 188 72 252 159 62 199 112 113 252 214 161 209 254 215 214 224 205 19]
+2022-11-27T04:39:11.002Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 18, "prepare view": 17, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM=", "parent": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:39:11.498Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 18, "msg": "vote", "voter": 5, "view": 18, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+Node  6  received vote before proposal, saving vote in pending votes, hash is  [185 41 143 39 105 99 203 192 159 254 69 93 97 168 179 24 114 209 232 19 130 40 155 35 149 96 233 98 157 146 62 14]  and string is,  19
+2022-11-27T04:39:11.498Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:970	Received vote before proposal, key is, 19	{"CURRENT VIEW": 18}
+Decoded original proposal, time: 2022-11-27 04:39:11.86582415 +0000 UTC m=+75.069148589 header hash: [185 41 143 39 105 99 203 192 159 254 69 93 97 168 179 24 114 209 232 19 130 40 155 35 149 96 233 98 157 146 62 14]
+2022-11-27T04:39:11.865Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 19, "prepare view": 17, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-27T04:39:11.873Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 18, "view": 18, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-27T04:39:11.873Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 19, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:11.873Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:535	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 19}
+2022-11-27T04:39:11.873Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 19, "view": 17, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-27T04:39:11.873Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 19, "view": 16, "hash": "PAOswJ5F5FKLEprAJ1SnuPasqGFIM2uhNIcdZdMfaCw="}
+2022-11-27T04:39:11.874Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 18, "msg": "proposal", "header view": 19, "prepare view": 17, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-27T04:39:11.874Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:758	Taking care of pending vote 19	{"CURRENT VIEW": 19}
+2022-11-27T04:39:11.874Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 19, "msg": "vote", "voter": 5, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:11.881Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 19, "msg": "vote", "voter": 6, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:11.886595508 +0000 UTC m=+75.089919945
+2022-11-27T04:39:11.918Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 19, "msg": "vote", "voter": 3, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:12.010Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 19, "msg": "vote", "voter": 0, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:39:13.015Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 19, "msg": "vote", "voter": 4, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:13.020Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 19, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:13.020Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 20, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:13.020Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 20}
+2022-11-27T04:39:13.020Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 20, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:13.020Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 20}
+2022-11-27T04:39:13.024Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "signer": 6}
+2022-11-27T04:39:13.025Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 20, "prepare view": 19, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:13.035Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 20, "view": 18, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-27T04:39:13.035Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 20, "view": 17, "hash": "fbyAo5VKEVdmy5epf95saK65Dkgc3+iXrMxeW3XrK2g="}
+2022-11-27T04:39:13.038Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 20, "prepare view": 19, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:13.041Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 20, "msg": "vote", "voter": 1, "view": 20, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:13.041163066 +0000 UTC m=+76.244487495
+2022-11-27T04:39:13.046Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 20, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:13.046Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 20}
+2022-11-27T04:39:13.050Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "signer": 6}
+2022-11-27T04:39:13.052Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 20, "prepare view": 19, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+Decoded original proposal, time: 2022-11-27 04:39:13.094948106 +0000 UTC m=+76.298272584 header hash: [185 41 143 39 105 99 203 192 159 254 69 93 97 168 179 24 114 209 232 19 130 40 155 35 149 96 233 98 157 146 62 14]
+2022-11-27T04:39:13.094Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 19, "prepare view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-27T04:39:13.103Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 19, "prepare view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-27T04:39:13.190Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 20, "msg": "vote", "voter": 2, "view": 20, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:13.196Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 20, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:13.196Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 20}
+2022-11-27T04:39:13.199Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "signer": 6}
+2022-11-27T04:39:13.200Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 20, "prepare view": 19, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ=", "parent": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+Decoded original proposal, time: 2022-11-27 04:39:14.869620335 +0000 UTC m=+78.072944822 header hash: [185 41 143 39 105 99 203 192 159 254 69 93 97 168 179 24 114 209 232 19 130 40 155 35 149 96 233 98 157 146 62 14]
+2022-11-27T04:39:14.869Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 19, "prepare view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-27T04:39:14.877Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 19, "prepare view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4=", "parent": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+Decoded original proposal, time: 2022-11-27 04:39:19.415516429 +0000 UTC m=+82.618840908 header hash: [209 38 65 65 46 4 226 145 106 139 61 138 29 3 67 4 115 15 92 233 3 182 204 209 81 205 132 59 223 246 130 103]
+2022-11-27T04:39:19.415Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 21, "prepare view": 19, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc=", "parent": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-27T04:39:19.423Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 20, "view": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-27T04:39:19.423Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 21, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:19.423Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 21, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:19.423Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 21, "view": 18, "hash": "6UfBJLlIX1wd3MF43w68SPyfPsdwcfzWodH+19bgzRM="}
+2022-11-27T04:39:19.424Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 20, "msg": "proposal", "header view": 21, "prepare view": 19, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc=", "parent": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:19.427631366 +0000 UTC m=+82.630955789
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:21.579987312 +0000 UTC m=+84.783311798 header hash: [209 38 65 65 46 4 226 145 106 139 61 138 29 3 67 4 115 15 92 233 3 182 204 209 81 205 132 59 223 246 130 103]
+2022-11-27T04:39:21.580Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 21, "msg": "proposal", "header view": 21, "prepare view": 20, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc=", "parent": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:23.113073116 +0000 UTC m=+86.316397547 header hash: [236 22 254 114 249 137 84 235 103 187 22 243 254 52 241 221 163 197 58 85 216 147 6 31 172 60 252 77 199 10 162 122]
+2022-11-27T04:39:23.113Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 21, "msg": "proposal", "header view": 22, "prepare view": 20, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "parent": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-27T04:39:23.120Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 21, "view": 21, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-27T04:39:23.120Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 22, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:23.120Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 22, "view": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-27T04:39:23.120Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 22, "view": 19, "hash": "uSmPJ2ljy8Cf/kVdYaizGHLR6BOCKJsjlWDpYp2SPg4="}
+2022-11-27T04:39:23.123Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 21, "msg": "proposal", "header view": 22, "prepare view": 20, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "parent": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:23.125996681 +0000 UTC m=+86.329321113
+Decoded original proposal, time: 2022-11-27 04:39:24.299087492 +0000 UTC m=+87.502411923 header hash: [209 38 65 65 46 4 226 145 106 139 61 138 29 3 67 4 115 15 92 233 3 182 204 209 81 205 132 59 223 246 130 103]
+2022-11-27T04:39:24.299Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 22, "msg": "proposal", "header view": 21, "prepare view": 21, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc=", "parent": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-27T04:39:24.306Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:667	proposal view doesn't match local view	{"CURRENT VIEW": 22, "msg": "proposal", "header view": 21, "prepare view": 21, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc=", "parent": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+Decoded original proposal, time: 2022-11-27 04:39:25.010841892 +0000 UTC m=+88.214166324 header hash: [236 22 254 114 249 137 84 235 103 187 22 243 254 52 241 221 163 197 58 85 216 147 6 31 172 60 252 77 199 10 162 122]
+2022-11-27T04:39:25.010Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 22, "msg": "proposal", "header view": 22, "prepare view": 21, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "parent": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:26.126380528 +0000 UTC m=+89.329704959 header hash: [236 22 254 114 249 137 84 235 103 187 22 243 254 52 241 221 163 197 58 85 216 147 6 31 172 60 252 77 199 10 162 122]
+2022-11-27T04:39:26.126Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 22, "msg": "proposal", "header view": 22, "prepare view": 21, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono=", "parent": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:28.695477329 +0000 UTC m=+91.898801811 header hash: [166 104 248 56 156 200 56 21 234 36 160 106 253 96 127 136 80 12 64 153 26 46 23 40 178 246 209 130 199 137 106 50]
+2022-11-27T04:39:28.695Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 22, "msg": "proposal", "header view": 23, "prepare view": 21, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-27T04:39:28.703Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 22, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-27T04:39:28.703Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 23, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:28.703Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 23, "view": 21, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-27T04:39:28.703Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 23, "view": 20, "hash": "Dba/D48qmB3vVH8kTd18xxswcR8z4rJnptAsC3sfvzQ="}
+2022-11-27T04:39:28.704Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 22, "msg": "proposal", "header view": 23, "prepare view": 21, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:28.707087248 +0000 UTC m=+91.910411682
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:30.482239204 +0000 UTC m=+93.685563687 header hash: [166 104 248 56 156 200 56 21 234 36 160 106 253 96 127 136 80 12 64 153 26 46 23 40 178 246 209 130 199 137 106 50]
+2022-11-27T04:39:30.482Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 23, "prepare view": 22, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:31.19138003 +0000 UTC m=+94.394704514 header hash: [166 104 248 56 156 200 56 21 234 36 160 106 253 96 127 136 80 12 64 153 26 46 23 40 178 246 209 130 199 137 106 50]
+2022-11-27T04:39:31.191Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 23, "prepare view": 22, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI=", "parent": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:32.496198474 +0000 UTC m=+95.699522897 header hash: [130 41 63 142 209 112 247 120 166 50 171 153 124 242 157 248 90 160 106 115 199 97 142 87 9 193 156 212 226 178 124 29]
+2022-11-27T04:39:32.496Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 24, "prepare view": 22, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0=", "parent": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-27T04:39:32.505Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 23, "view": 23, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-27T04:39:32.505Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 24, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:32.505Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 24, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-27T04:39:32.505Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 24, "view": 21, "hash": "0SZBQS4E4pFqiz2KHQNDBHMPXOkDtszRUc2EO9/2gmc="}
+2022-11-27T04:39:32.506Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 23, "msg": "proposal", "header view": 24, "prepare view": 22, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0=", "parent": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:32.508930353 +0000 UTC m=+95.712254783
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:33.916670867 +0000 UTC m=+97.119995306 header hash: [130 41 63 142 209 112 247 120 166 50 171 153 124 242 157 248 90 160 106 115 199 97 142 87 9 193 156 212 226 178 124 29]
+2022-11-27T04:39:33.916Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 24, "msg": "proposal", "header view": 24, "prepare view": 23, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0=", "parent": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 4
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:35.783550487 +0000 UTC m=+98.986874972 header hash: [130 41 63 142 209 112 247 120 166 50 171 153 124 242 157 248 90 160 106 115 199 97 142 87 9 193 156 212 226 178 124 29]
+2022-11-27T04:39:35.783Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 24, "msg": "proposal", "header view": 24, "prepare view": 23, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0=", "parent": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+Decoded original proposal, time: 2022-11-27 04:39:36.807409441 +0000 UTC m=+100.010733919 header hash: [82 12 33 240 93 197 165 1 94 69 38 44 114 111 131 23 13 53 141 22 127 230 180 195 211 17 240 209 42 66 163 191]
+2022-11-27T04:39:36.807Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 24, "msg": "proposal", "header view": 25, "prepare view": 23, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78=", "parent": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-27T04:39:36.814Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 24, "view": 24, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-27T04:39:36.814Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 25, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:36.814Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 25, "view": 23, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-27T04:39:36.814Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 25, "view": 22, "hash": "7Bb+cvmJVOtnuxbz/jTx3aPFOlXYkwYfrDz8TccKono="}
+2022-11-27T04:39:36.815Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 24, "msg": "proposal", "header view": 25, "prepare view": 23, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78=", "parent": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:36.8172589 +0000 UTC m=+100.020583319
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+Decoded original proposal, time: 2022-11-27 04:39:38.468131746 +0000 UTC m=+101.671456231 header hash: [82 12 33 240 93 197 165 1 94 69 38 44 114 111 131 23 13 53 141 22 127 230 180 195 211 17 240 209 42 66 163 191]
+2022-11-27T04:39:38.468Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 25, "msg": "proposal", "header view": 25, "prepare view": 24, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78=", "parent": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 5
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:39:39.476Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 25, "msg": "vote", "voter": 5, "view": 25, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+Node  6  received vote before proposal, saving vote in pending votes, hash is  [4 92 222 242 88 244 7 42 136 122 14 69 49 227 58 66 22 66 11 141 253 91 119 103 62 24 21 53 219 2 9 239]  and string is,  26
+2022-11-27T04:39:39.476Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:970	Received vote before proposal, key is, 26	{"CURRENT VIEW": 25}
+Decoded original proposal, time: 2022-11-27 04:39:40.285227208 +0000 UTC m=+103.488551695 header hash: [82 12 33 240 93 197 165 1 94 69 38 44 114 111 131 23 13 53 141 22 127 230 180 195 211 17 240 209 42 66 163 191]
+2022-11-27T04:39:40.285Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 25, "msg": "proposal", "header view": 25, "prepare view": 24, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78=", "parent": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+Decoded original proposal, time: 2022-11-27 04:39:40.868144741 +0000 UTC m=+104.071469271 header hash: [4 92 222 242 88 244 7 42 136 122 14 69 49 227 58 66 22 66 11 141 253 91 119 103 62 24 21 53 219 2 9 239]
+2022-11-27T04:39:40.868Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 25, "msg": "proposal", "header view": 26, "prepare view": 24, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8=", "parent": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-27T04:39:40.879Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 25, "view": 25, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-27T04:39:40.879Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 26, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:40.879Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:535	replica is a leader for next view. collecting new-view messages	{"CURRENT VIEW": 26}
+2022-11-27T04:39:40.879Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 26, "view": 24, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-27T04:39:40.879Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 26, "view": 23, "hash": "pmj4OJzIOBXqJKBq/WB/iFAMQJkaLhcosvbRgseJajI="}
+2022-11-27T04:39:40.883Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 25, "msg": "proposal", "header view": 26, "prepare view": 24, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8=", "parent": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-27T04:39:40.883Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:758	Taking care of pending vote 26	{"CURRENT VIEW": 26}
+2022-11-27T04:39:40.883Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 26, "msg": "vote", "voter": 5, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-27T04:39:40.889Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 26, "msg": "vote", "voter": 6, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:40.894870991 +0000 UTC m=+104.098195428
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:39:41.513Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 26, "msg": "vote", "voter": 4, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-27T04:39:41.892Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 26, "msg": "vote", "voter": 1, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+Decoded original proposal, time: 2022-11-27 04:39:42.060115458 +0000 UTC m=+105.263439918 header hash: [4 92 222 242 88 244 7 42 136 122 14 69 49 227 58 66 22 66 11 141 253 91 119 103 62 24 21 53 219 2 9 239]
+2022-11-27T04:39:42.060Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 26, "msg": "proposal", "header view": 26, "prepare view": 25, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8=", "parent": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-27T04:39:42.068Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 26, "msg": "vote", "voter": 0, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-27T04:39:42.073Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:809	new block certified	{"CURRENT VIEW": 26, "view": 26, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-27T04:39:42.073Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 27, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:42.073Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 27}
+2022-11-27T04:39:42.073Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 27, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:42.073Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 27}
+2022-11-27T04:39:42.076Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 27, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes=", "parent": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8=", "signer": 6}
+2022-11-27T04:39:42.077Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 27, "msg": "proposal", "header view": 27, "prepare view": 26, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes=", "parent": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-27T04:39:42.084Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:788	new block locked	{"CURRENT VIEW": 27, "view": 25, "hash": "Ugwh8F3FpQFeRSYscm+DFw01jRZ/5rTD0xHw0SpCo78="}
+2022-11-27T04:39:42.084Z	INFO	replica=6	coded-hotterstuff/consensus.go:797	new block commited	{"CURRENT VIEW": 27, "view": 24, "hash": "gik/jtFw93imMquZfPKd+FqganPHYY5XCcGc1OKyfB0="}
+2022-11-27T04:39:42.085Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:678	proposal is safe to vote on	{"CURRENT VIEW": 27, "msg": "proposal", "header view": 27, "prepare view": 26, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes=", "parent": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+Node  6 +1 block finalized at time:  2022-11-27 04:39:42.08772281 +0000 UTC m=+105.291047229
+replica 6 is forwarding chunk to replica 0
+replica 6 is forwarding chunk to replica 1
+replica 6 is forwarding chunk to replica 2
+replica 6 is forwarding chunk to replica 3
+replica 6 is forwarding chunk to replica 4
+2022-11-27T04:39:42.404Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:965	received vote	{"CURRENT VIEW": 27, "msg": "vote", "voter": 3, "view": 27, "hash": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}
+2022-11-27T04:39:42.409Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:520	entered new view	{"CURRENT VIEW": 27, "view timeout": 2, "timedout": false}
+2022-11-27T04:39:42.409Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:544	replica is a leader for this view. waiting for data	{"CURRENT VIEW": 27}
+2022-11-27T04:39:42.412Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:238	sending proposal	{"CURRENT VIEW": 27, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes=", "parent": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8=", "signer": 6}
+2022-11-27T04:39:42.413Z	DEBUG	replica=6	coded-hotterstuff/consensus.go:576	received proposal	{"CURRENT VIEW": 27, "msg": "proposal", "header view": 27, "prepare view": 26, "hash": "e5XoSmN/fXSHLaD7UtB65IvI3HwizG1xo4howmvtAes=", "parent": "BFze8lj0ByqIeg5FMeM6QhZCC439W3dnPhgVNdsCCe8="}

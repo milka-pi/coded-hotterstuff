@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 from argparse import ArgumentParser
 
-types = ["tcp_coded", "tcp_orig",  "udp_coded"]
+types = ["tcp_coded", "tcp_orig",  "udp_coded", "kev_coded"]
 
 parser = ArgumentParser(description="Data processing")
 
