@@ -52,3 +52,7 @@ for (( index=0; index<numNodes; index++ )); do
 	ip netns exec ramjet-s1-n$index bmon -o format:fmt='$(element:name) rxbytes=$(attr:rx:bytes) txbytes=$(attr:tx:bytes)\n' -p 'veth0' &> $logFolder/node-$index-traffic.log &
 	ip netns exec ramjet-s1-n$index ./tcpcollect.sh &> $logFolder/node-$index-tcp.log &
 done
+
+sleep 60
+
+bash endtest.sh
