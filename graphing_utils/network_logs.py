@@ -3,8 +3,19 @@ import os
 from pathlib import Path
 from argparse import ArgumentParser
 
-types = ["tcp_coded", "tcp_orig",  "udp_coded"]
+'''
+Examples:
+python3 network_logs.py --dir logs --savedir plots --n 7 --graph single --node 4
+python3 network_logs.py --dir logs --savedir plots --n 4 --graph sum
+python3 network_logs.py --dir logs --savedir plots --n 7 --graph all # fyi this looks absurd, I recommend reducing types to just 1 type if you want to do this
+'''
 
+ALL_NODES = "all"
+SINGLE = "single"
+SUM = "sum"
+types = ["tcp_coded", "tcp_orig",  "udp_coded"]
+# max = 100
+max = 60
 parser = ArgumentParser(description="Data processing")
 
 parser.add_argument('--savedir',
@@ -21,42 +32,80 @@ parser.add_argument('--n',
                     type=int,
                     help="Number of nodes")
 
-args = parser.parse_args()
+parser.add_argument('--node',
+                    type=int,
+                    help="node to graph",
+                    default=1)
 
+parser.add_argument('--graph',
+                     type=str,
+                     help="what to graph - single, sum, all",
+                     default="single")
+
+args = parser.parse_args()
 n = args.n
 
 
 # if any folder doesn't have .dat file, create it
-for log_type in types:
-    f = Path(f"{args.dir}/{log_type}_logs_{n}/data.dat")
+for hotstuff_type in types:
+    f = Path(f"{args.dir}/{hotstuff_type}_logs_{n}/data.dat")
     if not f.exists():
-       os.system(f"python3 parse_data.py --n {n} --dir {args.dir}/{log_type}_logs_{n}")
+       os.system(f"python3 parse_data.py --n {n} --dir {args.dir}/{hotstuff_type}_logs_{n}")
 
 data = {}
 
-for log_type in types:
-    f = open(f"{args.dir}/{log_type}_logs_{n}/data.dat", "r")
-    data[log_type]={}
-    node = 0
+for hotstuff_type in types:
+    f = open(f"{args.dir}/{hotstuff_type}_logs_{n}/data.dat", "r")
+    data[hotstuff_type]={}
+    node = -1
     for x in f:
         if x[0] == "#":
             node+=1
-            data[log_type][node] = []
+            data[hotstuff_type][node] = []
             continue
         if len(x.split()) < 2:
             continue
-        data[log_type][node].append(float(x.split()[1]))
-    print(data)
+        data[hotstuff_type][node].append(float(x.split()[1]))
 
-colors = ['r','c','b',"k"]
+colors = ['c','m','y',"k"]
 color_ind = 0
 plt.figure(figsize=(10, 5))
-for type, vals in data.items():
-    plt.plot(vals[2][:100],colors[color_ind], label=type)
+
+def get_thpt_sum(vals):
+    out = []
+    for i in range(len(vals[0])):
+        out.append(sum([vals[node][i] for node in range(n-1)]))
+    return out
+
+for hotstuff_type, vals in data.items():
+    print(hotstuff_type, type(vals), vals.keys())
+    if args.graph == ALL_NODES:
+        for i in range(n):
+            plt.plot(vals[i][:max], label=f'{hotstuff_type}_{i}')
+    elif args.graph == SINGLE:
+        plt.plot(vals[args.node][:max],colors[color_ind], label=hotstuff_type)
+    elif args.graph == SUM:
+        plt.plot(get_thpt_sum(vals)[:max], colors[color_ind], label=hotstuff_type)
+    else:
+        raise Exception("unexpected input to graph option")
+
     color_ind+=1
-plt.title(f'throughput n = {n}')
+
+if args.graph == ALL_NODES:
+    title = f'egress throughput for all nodes n={n}' 
+    filename = f'thpt_all_nodes_{n}'
+elif args.graph == SINGLE:
+    title = f'egress throughput for node {args.node} n={n}'
+    filename = f'thpt_node{args.node}_{n}' 
+elif args.graph == SUM:
+    title = f'sum of throughput for all nodes n={n}' 
+    filename = f'thpt_sum_{n}'  
+else:
+    raise Exception("unexpected input to graph option")
+
+plt.title(title)
 plt.legend()
-plt.savefig(f"plots/{n}")
+plt.savefig(f"plots/{filename}")
 # plt.show()
 
 # You can use this to compare 
