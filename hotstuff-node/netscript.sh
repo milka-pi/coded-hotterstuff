@@ -54,5 +54,5 @@ for (( index=0; index<numNodes; index++ )); do
 done
 
 sleep 60
-
 bash endtest.sh
+echo "done"
