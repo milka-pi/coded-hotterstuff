@@ -34,10 +34,14 @@ if __name__ == "__main__":
             continue
         log_start = to_timestamp(split_line[0])
         break
+    # then iterate over whole file
     for line in full_file:
         split_line = line.split()
         if len(split_line) < 2 or split_line[1] != LOG_LEVEL:    
             continue
         timestamp = to_timestamp(split_line[0])
         time_since_start = timestamp-log_start
-
+        # other parsing goes here
+        # i imagine we want to have 3 pieces of info:
+        # (time_since_start, name of event, current view #)
+        # maybe can be stored as a list of tuples?
