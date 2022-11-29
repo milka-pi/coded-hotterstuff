@@ -1,5 +1,5 @@
-results/
-figures/
+logs/
+plots/
 pull.sh
 bandwidth.py
 *.pdf
