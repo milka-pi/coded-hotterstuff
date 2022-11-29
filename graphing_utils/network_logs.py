@@ -66,24 +66,11 @@ for hotstuff_type in types:
             continue
         if len(x.split()) < 2:
             continue
-<<<<<<< HEAD
-        data[log_type][node].append(float(x.split()[1]))
-    #print(data)
-=======
         data[hotstuff_type][node].append(float(x.split()[1]))
->>>>>>> bcc8b91bf6369e17d12566791f586e43ab4e5c02
 
 colors = ['c','m','y',"k"]
 color_ind = 0
 plt.figure(figsize=(10, 5))
-<<<<<<< HEAD
-for type, vals in data.items():
-    t = []
-    for k, v in vals.items():
-        t.extend(v)
-    print(type, statistics.mean(t))
-    plt.plot(vals[2][:100],colors[color_ind], label=type)
-=======
 
 def get_thpt_sum(vals):
     out = []
@@ -92,7 +79,10 @@ def get_thpt_sum(vals):
     return out
 
 for hotstuff_type, vals in data.items():
-    print(hotstuff_type, type(vals), vals.keys())
+    t = []
+    for k, v in vals.items():
+        t.extend(v)
+    print(hotstuff_type, statistics.mean(t))
     if args.graph == ALL_NODES:
         for i in range(n):
             plt.plot(vals[i][:max], label=f'{hotstuff_type}_{i}')
@@ -103,7 +93,6 @@ for hotstuff_type, vals in data.items():
     else:
         raise Exception("unexpected input to graph option")
 
->>>>>>> bcc8b91bf6369e17d12566791f586e43ab4e5c02
     color_ind+=1
 
 if args.graph == ALL_NODES:
