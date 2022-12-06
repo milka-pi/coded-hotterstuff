@@ -314,9 +314,15 @@ func (c *consensus) broadcastCodedChunk(msg *types.Proposal){
 	for i := 0; i < len(c.replicas); i++ {
 		// FIXED: broadcast chunk to all nodes except myself (and the leader?)
 		if uint64(i) != c.id && uint64(i) != c.getLeader(msg.Header.View) {
+			log := c.vlog.With(
+				zap.String("msg", "chunk"),
+				zap.Uint64("header view", msg.Header.View),
+				zap.Uint64("prepare view", c.prepare.View),
+				zap.Binary("hash", msg.Header.Hash()),
+				zap.Binary("parent", msg.Header.Parent))
 			// DONE: What is the correct way to index into the replicas?
 			c.sendMsg(NewProposalMsg(msg), uint64(i))
-			fmt.Println("replica", c.id, "is forwarding chunk to replica", i)
+			log.Debug("replica " + fmt.Sprint(c.id) + " is forwarding chunk to replica " + fmt.Sprint(i))
 
 			if uint64(i) == c.getLeader(msg.Header.View) {
 				log := c.vlog.With(
