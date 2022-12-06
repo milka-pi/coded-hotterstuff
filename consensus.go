@@ -373,6 +373,13 @@ func (c *consensus) Step(msg *types.Message) {
 	case *types.Message_Proposal:
 		// change logic
 
+		log := c.vlog.With(
+			zap.String("msg", "proposal"),
+			zap.Binary("hash", m.Proposal.Header.Hash()))
+			// zap.Binary("parent", msg.Header.Parent))
+		// DONE: What is the correct way to index into the replicas?
+		log.Debug("received proposal")
+
 		if c.id == c.getLeader(m.Proposal.Header.View) {
 			fmt.Println("LEADER ENTERED Step -> types.Message_Proposal !")
 		} else {
