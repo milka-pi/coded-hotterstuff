@@ -399,7 +399,7 @@ func (c *consensus) Step(msg *types.Message) {
 				zap.Int("shareNumberField", shareNumberField))
 				// zap.Binary("parent", msg.Header.Parent))
 			// DONE: What is the correct way to index into the replicas?
-			log.Debug("received proposal")
+			log.Debug("receive")
 
 			// check if leading bit is 0/1 to decide whether to broadcast
 			// also save other fields (header, ..)
