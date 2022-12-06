@@ -447,12 +447,13 @@ func (c *consensus) Step(msg *types.Message) {
 				// check if have received enough chunks. If so, attempt decoding the proposal
 				if len(c.randomIDToChunks[randomID].chunksList) >= c.errCodeConfig.required {
 					// TODO 6/3: add error handling --> don't call onProposal
-					log.Debug("ready", zap.Uint64("random_id", randomID))
+					originalChunk := c.randomIDToChunks[randomID].originalChunk
+					log.Debug("ready", zap.Uint64("random_id", randomID), zap.Binary("hash", originalChunk.GetHeader().Hash()))
 					proposalData, errDecode := c.decodeProposal(randomID)
 					if errDecode != nil {
 						c.vlog.Debug("Could not decode original proposal")
 					} else {
-						originalChunk := c.randomIDToChunks[randomID].originalChunk
+						// originalChunk := c.randomIDToChunks[randomID].originalChunk
 						fullProposal := types.Proposal{
 											Header:     originalChunk.GetHeader(),
 											// might need fixing
