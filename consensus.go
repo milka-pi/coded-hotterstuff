@@ -373,12 +373,12 @@ func (c *consensus) Step(msg *types.Message) {
 	case *types.Message_Proposal:
 		// change logic
 
-		log := c.vlog.With(
-			zap.String("msg", "proposal"),
-			zap.Binary("hash", m.Proposal.Header.Hash()))
-			// zap.Binary("parent", msg.Header.Parent))
-		// DONE: What is the correct way to index into the replicas?
-		log.Debug("received proposal")
+		// log := c.vlog.With(
+		// 	zap.String("msg", "proposal"),
+		// 	zap.Binary("hash", m.Proposal.Header.Hash()))
+		// 	// zap.Binary("parent", msg.Header.Parent))
+		// // DONE: What is the correct way to index into the replicas?
+		// log.Debug("received proposal")
 
 		if c.id == c.getLeader(m.Proposal.Header.View) {
 			fmt.Println("LEADER ENTERED Step -> types.Message_Proposal !")
@@ -399,6 +399,14 @@ func (c *consensus) Step(msg *types.Message) {
 			shareNumberField := int(binary.BigEndian.Uint32(shareData[9:13]))
 			// share.Data = share.Data[9:]
 
+			log := c.vlog.With(
+				zap.String("msg", "proposal"),
+				zap.Binary("hash", m.Proposal.Header.Hash()),
+				zap.Int("leaderBit", leaderBit),
+				zap.Int("shareNumberField", shareNumberField))
+				// zap.Binary("parent", msg.Header.Parent))
+			// DONE: What is the correct way to index into the replicas?
+			log.Debug("received proposal")
 
 			// check if leading bit is 0/1 to decide whether to broadcast
 			// also save other fields (header, ..)
