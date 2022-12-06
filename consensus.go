@@ -452,7 +452,7 @@ func (c *consensus) Step(msg *types.Message) {
 											Sig:        originalChunk.GetSig(),
 										}
 						// c.vlog.Debug("Decoded original proposal" + fmt.Sprint(fullProposal.Header.Hash()))
-						c.vlog.Debug("Decoded original proposal, time:", time.Now().String(), "header hash:", fmt.Sprint(fullProposal.Header.Hash()))
+						c.vlog.Debug("Decoded original proposal, time: " + time.Now().String() + " header hash: " + fmt.Sprint(fullProposal.Header.Hash()))
 						c.onProposal(&fullProposal)
 						
 						// discard saved chunks
