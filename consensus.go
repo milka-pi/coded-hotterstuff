@@ -6,7 +6,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"sort"
-	"time"
+	// "time"
 
 	// "math/rand"
 
@@ -235,7 +235,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 			Timeout:    c.timeoutCert,
 			Sig:        c.signer.Sign(nil, header.Hash()),
 		}
-		c.vlog.Debug("sending proposal",
+		c.vlog.Debug("send",
 			zap.Binary("hash", header.Hash()),
 			zap.Binary("parent", header.Parent),
 			zap.Uint64("signer", c.id))
@@ -322,7 +322,7 @@ func (c *consensus) broadcastCodedChunk(msg *types.Proposal){
 				zap.Binary("parent", msg.Header.Parent))
 			// DONE: What is the correct way to index into the replicas?
 			c.sendMsg(NewProposalMsg(msg), uint64(i))
-			log.Debug("replica " + fmt.Sprint(c.id) + " is forwarding chunk to replica " + fmt.Sprint(i))
+			log.Debug("forward", zap.Int("to_node", i))
 
 			if uint64(i) == c.getLeader(msg.Header.View) {
 				log := c.vlog.With(
@@ -372,13 +372,6 @@ func (c *consensus) Step(msg *types.Message) {
 
 	case *types.Message_Proposal:
 		// change logic
-
-		// log := c.vlog.With(
-		// 	zap.String("msg", "proposal"),
-		// 	zap.Binary("hash", m.Proposal.Header.Hash()))
-		// 	// zap.Binary("parent", msg.Header.Parent))
-		// // DONE: What is the correct way to index into the replicas?
-		// log.Debug("received proposal")
 
 		if c.id == c.getLeader(m.Proposal.Header.View) {
 			fmt.Println("LEADER ENTERED Step -> types.Message_Proposal !")
@@ -470,7 +463,7 @@ func (c *consensus) Step(msg *types.Message) {
 							zap.Binary("hash", originalChunk.GetHeader().Hash()),
 							zap.Uint64("CURRENT VIEW", c.view))
 						// c.vlog.Debug("Decoded original proposal" + fmt.Sprint(fullProposal.Header.Hash()))
-						log.Debug("Decoded original proposal, time: " + time.Now().String() + " header hash: " + fmt.Sprint(fullProposal.Header.Hash()))
+						log.Debug("decode")
 						c.onProposal(&fullProposal)
 						
 						// discard saved chunks
@@ -597,7 +590,8 @@ func (c *consensus) onProposal(msg *types.Proposal) {
 		zap.Binary("hash", msg.Header.Hash()),
 		zap.Binary("parent", msg.Header.Parent))
 
-	log.Debug("received proposal")
+	// commenting this out because it does not actually align with when the message was recieved
+	// log.Debug("receive")
 
 	if msg.ParentCert == nil {
 		return
