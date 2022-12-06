@@ -396,7 +396,8 @@ func (c *consensus) Step(msg *types.Message) {
 				zap.String("msg", "proposal"),
 				zap.Binary("hash", m.Proposal.Header.Hash()),
 				zap.Int("leaderBit", leaderBit),
-				zap.Int("shareNumberField", shareNumberField))
+				zap.Int("shareNumberField", shareNumberField),
+				zap.Uint64("random_id", randomID))
 				// zap.Binary("parent", msg.Header.Parent))
 			// DONE: What is the correct way to index into the replicas?
 			log.Debug("receive")
@@ -446,6 +447,7 @@ func (c *consensus) Step(msg *types.Message) {
 				// check if have received enough chunks. If so, attempt decoding the proposal
 				if len(c.randomIDToChunks[randomID].chunksList) >= c.errCodeConfig.required {
 					// TODO 6/3: add error handling --> don't call onProposal
+					log.Debug("ready", zap.Uint64("random_id", randomID))
 					proposalData, errDecode := c.decodeProposal(randomID)
 					if errDecode != nil {
 						c.vlog.Debug("Could not decode original proposal")
@@ -459,11 +461,10 @@ func (c *consensus) Step(msg *types.Message) {
 											Timeout:    originalChunk.GetTimeout(),
 											Sig:        originalChunk.GetSig(),
 										}
-						log := c.vlog.With(
-							zap.Binary("hash", originalChunk.GetHeader().Hash()),
-							zap.Uint64("CURRENT VIEW", c.view))
 						// c.vlog.Debug("Decoded original proposal" + fmt.Sprint(fullProposal.Header.Hash()))
-						log.Debug("decode")
+						log.Debug("decode", zap.Binary("hash", originalChunk.GetHeader().Hash()),
+						zap.Uint64("CURRENT VIEW", c.view),
+						zap.Uint64("random_id", randomID))
 						c.onProposal(&fullProposal)
 						
 						// discard saved chunks
