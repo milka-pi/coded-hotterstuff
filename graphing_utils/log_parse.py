@@ -2,16 +2,22 @@ from datetime import datetime
 from argparse import ArgumentParser
 import json
 import pprint
+import numpy as np
+import matplotlib.pyplot as plt
 
 LOG_LEVEL = "DEBUG"
-# to_timestamp = lambda x: datetime.strptime(x,"%Y-%m-%dT%H:%M:%S.%fZ").timestamp() 
 
 parser = ArgumentParser(description="log parsing")
 
-parser.add_argument('--n',
+parser.add_argument('--start',
                     type=int,
-                    help="Which experiment to use (what # of nodes)",
+                    help="start number of nodes in logs to parse",
                     default=4)
+
+parser.add_argument('--end',
+                    type=int,
+                    help="end number of nodes in logs to parse",
+                    default=12)                    
 
 parser.add_argument('--dir',
                     type=str,
@@ -19,7 +25,9 @@ parser.add_argument('--dir',
                     default='logs_arch')
 
 args = parser.parse_args()
-num_nodes = 4 
+start_node = args.start
+end_node = args.end
+
 to_timestamp = lambda x: datetime.strptime(x,"%Y-%m-%dT%H:%M:%S.%fZ").timestamp() 
 
 
@@ -67,14 +75,14 @@ def process_file(num_nodes, n, data):
         else:
             continue
 
-if __name__ == "__main__":
+def process_logs_for_num_nodes(num_nodes):
     data = {}
     for n in range(num_nodes):
         process_file(num_nodes, n, data)
     
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(data)
-    print(len(data))
+    #print(len(data))
     per_block_data = {}
 
     #### AN ENTRY IN data DICT LOOKS LIKE THIS #####
@@ -139,6 +147,7 @@ if __name__ == "__main__":
         compare_func = max # min for first node to do it, max for last node to do it
         per_block_data[block_hash]["last_decode"] = compare_func(decodes) - per_block_data[block_hash]["send"] 
         per_block_data[block_hash]["last_ready"] = compare_func(peer_ready) - per_block_data[block_hash]["send"] 
+        #print(per_block_data[block_hash]["last_ready"])
         
         # You can uncomment this to visualize the data better perhaps
         # print(f"block hash: {block_hash}")
@@ -150,4 +159,37 @@ if __name__ == "__main__":
     rates = []
     for block_hash in per_block_data:
         last = per_block_data[block_hash]["last_ready"]
-        rates.append(8/last)
+        rates.append(last) # 8/last?
+    return rates
+
+if __name__ == "__main__":
+    coded_time_mean = []
+    coded_time_std = []
+    for n in range(start_node, end_node + 1):
+        data = np.array(process_logs_for_num_nodes(n))
+        coded_time_mean.append(np.mean(data))
+        coded_time_std.append(np.std(data))
+    coded_time_mean = np.array(coded_time_mean)
+    coded_time_std = np.array(coded_time_std)
+
+    orig_time_mean = []
+    orig_time_std = []
+    for n in range(start_node, end_node + 1):
+        data = np.array([1]) # plug in the array of times instead of [1]
+        orig_time_mean.append(np.mean(data))
+        orig_time_std.append(np.std(data))
+    orig_time_mean = np.array(orig_time_mean)
+    orig_time_std = np.array(orig_time_std)    
+
+    x = np.arange(start_node, end_node + 1)
+
+    plt.plot(x, coded_time_mean, 'b-', marker='o', label='coded: mean broadcast time (with shaded std deviation)')
+    plt.fill_between(x, coded_time_mean - coded_time_std, coded_time_mean + coded_time_std, color='b', alpha=0.08)
+
+    plt.plot(x, orig_time_mean, 'r-', marker='o', label='orig: mean broadcast time (with shaded std deviation)')
+    plt.fill_between(x, orig_time_mean - orig_time_std, orig_time_mean + orig_time_std, color='r', alpha=0.08)
+
+    plt.legend()
+    plt.savefig('broadcast.png')
+
+    
