@@ -17,7 +17,7 @@ parser.add_argument('--start',
 parser.add_argument('--end',
                     type=int,
                     help="end number of nodes in logs to parse",
-                    default=12)                    
+                    default=11)                    
 
 parser.add_argument('--dir',
                     type=str,
@@ -191,7 +191,7 @@ def process_orig_logs_for_num_nodes(file_prefix, num_nodes):
                     send = time
                     per_block_data[block_hash]["send"] = time
                 elif action == "receive":
-                    receieve_from_leader.append(time[0])
+                    receieve_from_leader.append(time)
 
         if send == 0 or len(receieve_from_leader) == 0:
             del per_block_data[block_hash]
@@ -228,13 +228,14 @@ if __name__ == "__main__":
 
     x = np.arange(start_node, end_node + 1)
 
-    plt.plot(x, coded_time_mean, 'b-', marker='o', label='coded: mean broadcast time (with shaded std deviation)')
+    plt.plot(x, coded_time_mean, 'b-', marker='o', label='coded: mean broadcast time (std deviation shaded)')
     plt.fill_between(x, coded_time_mean - coded_time_std, coded_time_mean + coded_time_std, color='b', alpha=0.08)
 
-    plt.plot(x, orig_time_mean, 'r-', marker='o', label='orig: mean broadcast time (with shaded std deviation)')
+    plt.plot(x, orig_time_mean, 'r-', marker='o', label='orig: mean broadcast time (std deviation shaded)')
     plt.fill_between(x, orig_time_mean - orig_time_std, orig_time_mean + orig_time_std, color='r', alpha=0.08)
 
     plt.legend()
-    plt.savefig('broadcast.png')
+    plt.title("Average Broadcast Time from Leader to Final Node")
+    plt.savefig('broadcast2.pdf')
 
     
