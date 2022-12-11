@@ -165,8 +165,8 @@ func (c *consensus) Step(msg *types.Message) {
 
 	case *types.Message_Proposal:
 		c.vlog.Debug("receive",
-		zap.Binary("hash", m.header.Hash()),
-		zap.Binary("parent", m.header.Parent))	
+		zap.Binary("hash", msg.header.Hash()),
+		zap.Binary("parent", msg.header.Parent))	
 		c.onProposal(m.Proposal)
 	case *types.Message_Vote:
 		c.onVote(m.Vote)
