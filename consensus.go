@@ -149,7 +149,7 @@ func (c *consensus) Send(state, root []byte, data []byte) {
 			Sig:        c.signer.Sign(nil, header.Hash()),
 		}
 		// fmt.Println("sending proposal")
-		c.vlog.Debug("sending proposal",
+		c.vlog.Debug("send",
 			zap.Binary("hash", header.Hash()),
 			zap.Binary("parent", header.Parent),
 			zap.Uint64("signer", c.id))
@@ -164,6 +164,9 @@ func (c *consensus) Step(msg *types.Message) {
 	switch m := msg.GetType().(type) {
 
 	case *types.Message_Proposal:
+		c.vlog.Debug("receive",
+		zap.Binary("hash", m.header.Hash()),
+		zap.Binary("parent", m.header.Parent))	
 		c.onProposal(m.Proposal)
 	case *types.Message_Vote:
 		c.onVote(m.Vote)
