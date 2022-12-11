@@ -40,8 +40,8 @@ to_timestamp = lambda x: datetime.strptime(x,"%Y-%m-%dT%H:%M:%S.%fZ").timestamp(
 # Follower has enough sub-chunks to decode - "ready" log
 # Follower decodes the sub-chunks into a proposal - "decode" log
 
-def process_file(num_nodes, n, data):
-    f = open(f"{args.dir}/tcp_coded_logs_microbenchmark_{num_nodes}/hotstuff-{n}.log", "r")
+def process_file(file_prefix, num_nodes, n, data, coded=True):
+    f = open(f"{args.dir}/{file_prefix}_{num_nodes}/hotstuff-{n}.log", "r")
     full_file = f.read().split('\n')
     for line in full_file:
         whitespace_split_line = line.split()
@@ -63,10 +63,14 @@ def process_file(num_nodes, n, data):
                 if action not in data[block_hash][node]: 
                     data[block_hash][node][action] = timestamp
             elif action == "receive":
-                share = json_dict["shareNumberField"]
-                data[block_hash][node].setdefault(action, {})
-                if share not in data[block_hash][node][action]: 
-                    data[block_hash][node][action][share] = timestamp 
+                if coded:
+                    share = json_dict["shareNumberField"]
+                    data[block_hash][node].setdefault(action, {})
+                    if share not in data[block_hash][node][action]: 
+                        data[block_hash][node][action][share] = timestamp 
+                else:
+                    data[block_hash][node][action] = timestamp
+
             elif action == "forward":
                 to_node = json_dict["to_node"]
                 data[block_hash][node].setdefault(action, {})
@@ -75,10 +79,10 @@ def process_file(num_nodes, n, data):
         else:
             continue
 
-def process_logs_for_num_nodes(num_nodes):
+def process_logs_for_num_nodes(file_prefix, num_nodes):
     data = {}
     for n in range(num_nodes):
-        process_file(num_nodes, n, data)
+        process_file(file_prefix, num_nodes, n, data)
     
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(data)
@@ -162,11 +166,51 @@ def process_logs_for_num_nodes(num_nodes):
         rates.append(last) # 8/last?
     return rates
 
+
+def process_orig_logs_for_num_nodes(file_prefix, num_nodes):
+    data = {}
+    for n in range(num_nodes):
+        process_file(file_prefix, num_nodes, n, data, False)
+    
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(data)
+    #print(len(data))
+    per_block_data = {}
+
+    for block_hash, node_info in data.items():
+        # print("============")
+        receieve_from_leader = []
+        send = 0
+        per_block_data.setdefault(block_hash, {})
+        for node, node_info in node_info.items():
+            # print(node)
+            for action, time in node_info.items():
+                # print(action, time)
+                if action == "send":
+                    assert(send == 0)
+                    send = time
+                    per_block_data[block_hash]["send"] = time
+                elif action == "receive":
+                    receieve_from_leader.append(time[0])
+
+        if send == 0 or len(receieve_from_leader) == 0:
+            del per_block_data[block_hash]
+            continue
+
+        compare_func = max # min for first node to do it, max for last node to do it
+        per_block_data[block_hash]["last_ready"] = compare_func(receieve_from_leader) - per_block_data[block_hash]["send"] 
+        
+    rates = []
+    for block_hash in per_block_data:
+        last = per_block_data[block_hash]["last_ready"]
+        rates.append(last) # 8/last?
+    return rates
+
 if __name__ == "__main__":
     coded_time_mean = []
     coded_time_std = []
     for n in range(start_node, end_node + 1):
-        data = np.array(process_logs_for_num_nodes(n))
+        data = np.array(process_logs_for_num_nodes("tcp_coded_parse_logs", n))
         coded_time_mean.append(np.mean(data))
         coded_time_std.append(np.std(data))
     coded_time_mean = np.array(coded_time_mean)
@@ -175,7 +219,8 @@ if __name__ == "__main__":
     orig_time_mean = []
     orig_time_std = []
     for n in range(start_node, end_node + 1):
-        data = np.array([1]) # plug in the array of times instead of [1]
+        data = np.array(process_orig_logs_for_num_nodes("tcp_orig_parse_logs", n))
+        # data = np.array([1]) # plug in the array of times instead of [1]
         orig_time_mean.append(np.mean(data))
         orig_time_std.append(np.std(data))
     orig_time_mean = np.array(orig_time_mean)
