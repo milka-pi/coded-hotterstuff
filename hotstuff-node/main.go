@@ -26,7 +26,7 @@ const (
 	DEFAULT_MESSAGE = "hello"
 	NUMBER_OF_NODES = 4
 	SEED = 0
-	BLOCK_SIZE = 1_000_000  // 1 MBytes
+	BLOCK_SIZE = 1_000_000_000  // 1 MBytes
 )
 
 var (
