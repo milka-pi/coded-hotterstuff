@@ -233,7 +233,8 @@ if __name__ == "__main__":
 
     plt.plot(x, orig_time_mean, 'r-', marker='o', label='orig: mean broadcast time (std deviation shaded)')
     plt.fill_between(x, orig_time_mean - orig_time_std, orig_time_mean + orig_time_std, color='r', alpha=0.08)
-
+    plt.xlabel('Number of nodes (N)')
+    plt.ylabel('Time (sec)')
     plt.legend()
     plt.title("Average Broadcast Time from Leader to Final Node")
     plt.savefig('broadcast2.pdf')
